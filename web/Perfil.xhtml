@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Registro</title>
+    </h:head>
+    <h:body>
+        <h1>Perfil de usuario</h1>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Nombre: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.nombre}"/>
+                <h:outputLabel value="Apellidos: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.apellidos}"/>
+                <h:outputLabel value="Nif: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.NIF}"/>
+                <h:outputLabel value="Sexo: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.sexo}"/>
+                <h:outputLabel value="Email: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.email}"/>
+                <h:outputLabel value="Fecha de nacimiento: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.fecha_nacimiento}"/>
+                <h:outputLabel value="Código postal: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.codigo_postal}"/>
+                <h:outputLabel value="Dirección: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.direccion}"/>
+        
+             
+                <h:outputLabel value="Provincia: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.provincia}"/>
+                <h:outputLabel value="Localidad: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.localidad}"/>
+                <h:outputLabel value="Fecha de ingreso: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.fecha_ingreso}"/>
+                <h:outputLabel value="Fecha de baja: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.fecha_baja}"/>
+                <h:outputLabel value="Cuota total: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.cuota_total}"/>
+                <h:outputLabel value="Teléfono: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.telefono}"/>
+                <h:outputLabel value="Móvil: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.movil}"/>
+                <h:outputLabel value="Método de pago: "/>
+                <h:outputLabel value="#{control_Perfil.usuario.metodo_pago}"/>
+                </h:panelGrid>
+          
+             </h:form>
+    </h:body>
+
+</html>
