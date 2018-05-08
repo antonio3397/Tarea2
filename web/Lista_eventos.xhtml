@@ -14,14 +14,16 @@
     <ui:define name="title">Eventos</ui:define>
     
     <ui:define name="content">
-        
+        <div class="container">
         <p:dataTable var="events" value="#{Eventos.eventosj}">
             <p:column headerText="Titulo">
                 <h:outputText value="#{events.titulo}" />
             </p:column>
                 
             <p:column headerText="Descripcion">
-                <h:outputText value="#{events.descripcion}" />
+                <div class="col-80 text-truncate">
+                    #{events.descripcion}
+                </div>
             </p:column>
                 
             <p:column headerText="Fecha">
@@ -31,7 +33,10 @@
             <p:column headerText="Lugar">
                 <h:outputText value="#{events.localizacion}" />
             </p:column>
+            <p:column headerText="Más">
+                <h:commandLink action="#{user.goLoginPage}" value="Ver más" />	
+            </p:column>
         </p:dataTable>
-        
+        </div>
     </ui:define>
 </ui:composition>
