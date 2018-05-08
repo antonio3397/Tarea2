@@ -1,3 +1,5 @@
+package clases_apoyo;
+
 
 
 /*
@@ -10,7 +12,7 @@
  *
  * @author anton
  */
-public class Evento{
+public class Evento_apoyo{
     
     private int ID;
     private String titulo;
@@ -19,7 +21,7 @@ public class Evento{
     private String descripcion;
     private int precio;
     
-    public Evento(int ID, String titulo, String fecha, String localizacion, String descripcion, int precio){
+    public Evento_apoyo(int ID, String titulo, String fecha, String localizacion, String descripcion, int precio){
         this.ID=ID;
         this.descripcion=descripcion;
         this.fecha=fecha;
