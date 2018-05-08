@@ -11,24 +11,27 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     
-    <ui:define name="title">Evento</ui:define>
+    <ui:define name="title">Eventos</ui:define>
     
     <ui:define name="content">
-        <h:form>
-        <p:accordionPanel value="#{Eventos.eventosj}" var="even">
-        <p:tab title="Car - #{even.ID}">
-            <h:panelGrid columns="2" cellpadding="5">                   
-                <h:outputText value="Titulo:" style="font-weight: bold" />
-                <h:outputText value="#{even.titulo}" />
- 
-                <h:outputText value="Descripcion:" style="font-weight: bold" />
-                <h:outputText value="#{even.descripcion}" />
- 
-                <h:outputText value="Fecha:" style="font-weight: bold" />
-                <h:outputText value="#{even.fecha}" />
-            </h:panelGrid>
-        </p:tab>
-    </p:accordionPanel>
-    </h:form>
+        
+        <p:dataTable var="events" value="#{Eventos.eventosj}">
+            <p:column headerText="Titulo">
+                <h:outputText value="#{events.titulo}" />
+            </p:column>
+                
+            <p:column headerText="Descripcion">
+                <h:outputText value="#{events.descripcion}" />
+            </p:column>
+                
+            <p:column headerText="Fecha">
+                <h:outputText value="#{events.fecha}" />
+            </p:column>
+                
+            <p:column headerText="Lugar">
+                <h:outputText value="#{events.localizacion}" />
+            </p:column>
+        </p:dataTable>
+        
     </ui:define>
 </ui:composition>
