@@ -24,16 +24,16 @@ import org.primefaces.event.TabCloseEvent;
 @Named(value = "eventos")
 @ManagedBean
 @SessionScoped
-public class Eventos implements Serializable {
+public class Eventos{
 
     private List<Evento> eventosj;
     
     @PostConstruct
     public void init() {
-        setEventosj(new ArrayList<Evento>());
-        getEventosj().add(new Evento(1, "Viaje al monte", new Date(1900+2018,3,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        getEventosj().add(new Evento(2, "Viaje al monte 2", new Date(1900+2018,6,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        getEventosj().add(new Evento(3, "Salvemos a las ardillas", new Date(1900+2018,3,24), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+        eventosj = new ArrayList<Evento>();
+        getEventosj().add(new Evento(1, "Viaje al monte", "24/03/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        getEventosj().add(new Evento(2, "Viaje al monte 2", "24/06/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        getEventosj().add(new Evento(3, "Salvemos a las ardillas", "27/09/2019", "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
     }
 
     /**

@@ -10,20 +10,35 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <p:accordionPanel value="#{Eventos.eventosj}" var="evento">
-            <p:tab title="Evento - #{evento.titulo}">
-                <h:panelGrid columns="2" cellpadding="10">
-                    <h:outputText value="Titulo:" style="font-weight: bold" />
-                    <h:outputText value="#{evento.titulo}" />
-                <h:panelGrid columns="2" cellpadding="10">
-                    <h:outputText value="Fecha:" style="font-weight: bold" />
-                    <h:outputText value="#{evento.fecha}" />
-                    <h:outputText value="Localizacion" style="font-weight: bold" />
-                    <h:outputText value="#{evento.localizacion}" />
-                </h:panelGrid>
-                </h:panelGrid>
-            </p:tab>
-        </p:accordionPanel>
+        <h:form>
+        <p:growl id="msgs" showDetail="true" />
+        
+        <h3 style="margin-top:0">Basic</h3>
+    <p:accordionPanel value="#{Eventos.eventosj}" var="even">
+        <p:tab title="Titulo: #{even.getID()}">
+            <h:panelGrid columns="2" cellpadding="10">
+                <p:graphicImage name="/images/godfather/godfather1.jpg" />
+                <h:outputText
+                    value="#{even.getDescripcion()}" />
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>
+        
+       <!-- <p:accordionPanel value="#{Eventos.eventosj}" var="even">
+        <p:tab title="Car - #{even.ID}">
+            <h:panelGrid columns="2" cellpadding="5">                   
+                <h:outputText value="Titulo:" style="font-weight: bold" />
+                <h:outputText value="#{even.titulo}" />
+ 
+                <h:outputText value="Descripcion:" style="font-weight: bold" />
+                <h:outputText value="#{even.descripcion}" />
+ 
+                <h:outputText value="Fecha:" style="font-weight: bold" />
+                <h:outputText value="#{even.fecha}" />
+            </h:panelGrid>
+        </p:tab>
+    </p:accordionPanel>-->
+    </h:form>
     </h:body>
 </html>
 

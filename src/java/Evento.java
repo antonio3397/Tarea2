@@ -1,6 +1,4 @@
 
-import java.io.Serializable;
-import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,16 +10,16 @@ import java.util.Date;
  *
  * @author anton
  */
-public class Evento implements Serializable {
+public class Evento{
     
     private int ID;
     private String titulo;
-    private Date fecha;
+    private String fecha;
     private String localizacion;
     private String descripcion;
     private int precio;
     
-    public Evento(int ID, String titulo, Date fecha, String localizacion, String descripcion, int precio){
+    public Evento(int ID, String titulo, String fecha, String localizacion, String descripcion, int precio){
         this.ID=ID;
         this.descripcion=descripcion;
         this.fecha=fecha;
@@ -61,14 +59,14 @@ public class Evento implements Serializable {
     /**
      * @return the fecha
      */
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
     /**
      * @param fecha the fecha to set
      */
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

@@ -21,26 +21,38 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <!--Esto es la cabecera de la pagina-->
-        <div class="d-flex p-2 bd-highlight">
-        <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">Inicio</button>
-            <button type="button" class="btn btn-secondary">Eventos</button>
-            <button type="button" class="btn btn-secondary">Usuarios</button>
-            <button type="button" class="btn btn-secondary">Documentos</button>
-        </div>
-        <div class="btn-group dropleft btn-group-lg ml-auto p-2 bd-highlight">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Perfil
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+            <a class="navbar-brand">Grupo Scout 39</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Mis datos</a>
-                <a class="dropdown-item" href="#">Notificaciones</a>
-                <a class="dropdown-item" href="#">Eventos</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cerrar Sesión</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Documentos</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Perfil</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Mis datos</a>
+                            <a class="dropdown-item" href="#">Notificaciones</a>
+                            <a class="dropdown-item" href="#">Eventos</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
-        </div>
+        </nav>
         <!--Muestra el contenido de la pagina-->
         <div id="content">
             <ui:insert name="content">Content</ui:insert>
