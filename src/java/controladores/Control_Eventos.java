@@ -1,40 +1,47 @@
+package controladores;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
 
 import clases_apoyo.Evento_apoyo;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
  * @author anton
  */
-@Named(value = "control_Eventos")
-@Dependent
-public class Control_Eventos {
+@ManagedBean(name="Eventos")
+@ViewScoped
+public class Control_Eventos{
 
-    private Evento_apoyo event;
+    private List<Evento_apoyo> eventosj;
     
-    public String verEvento(){
-        return event.getID()+"";
+    @PostConstruct
+    public void init() {
+        eventosj = new ArrayList<>();
+        eventosj.add(new Evento_apoyo(1, "Viaje al monte", "24/03/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento_apoyo(2, "Viaje al monte 2", "24/06/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento_apoyo(3, "Salvemos a las ardillas", "27/09/2019", "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
     }
 
     /**
-     * @return the event
+     * @return the eventosj
      */
-    public Evento_apoyo getEvent() {
-        return event;
+    public List<Evento_apoyo> getEventosj() {
+        return eventosj;
     }
 
     /**
-     * @param event the event to set
+     * @param eventosj the eventosj to set
      */
-    public void setEvent(Evento_apoyo event) {
-        this.event = event;
+    public void setEventosj(List<Evento_apoyo> eventosj) {
+        this.eventosj = eventosj;
     }
-    
 }

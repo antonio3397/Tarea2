@@ -1,5 +1,7 @@
 package clases_apoyo;
 
+import java.util.List;
+
 
 
 /*
@@ -14,14 +16,38 @@ package clases_apoyo;
  */
 public class Evento_apoyo{
     
-    private int ID;
+    private Integer ID;
     private String titulo;
     private String fecha;
     private String localizacion;
     private String descripcion;
     private int precio;
+    private List<Documento_apoyo> documentos;
+    private List<Comentario_apoyo> comentarios;
+    private Seccion_apoyo seccion;
+    private Usuario_apoyo usuario;
+    private List<Notificacion_apoyo> notificaciones;
+    private List<Usuario_apoyo> usuarios;
     
-    public Evento_apoyo(int ID, String titulo, String fecha, String localizacion, String descripcion, int precio){
+    public Evento_apoyo(Integer ID, String titulo, String fecha, String localizacion,
+           String descripcion, int precio, List<Documento_apoyo> documentos,
+           List<Comentario_apoyo> comentarios, Seccion_apoyo seccion, Usuario_apoyo usuario,
+           List<Notificacion_apoyo> notificaciones, List<Usuario_apoyo> usuarios){
+        this.ID=ID;
+        this.descripcion=descripcion;
+        this.fecha=fecha;
+        this.localizacion=localizacion;
+        this.precio=precio;
+        this.titulo=titulo;
+        this.documentos=documentos;
+        this.comentarios=comentarios;
+        this.seccion=seccion;
+        this.usuario=usuario;
+        this.notificaciones=notificaciones;
+        this.usuarios=usuarios;
+    }
+    public Evento_apoyo(Integer ID, String titulo, String fecha, String localizacion,
+           String descripcion, int precio){
         this.ID=ID;
         this.descripcion=descripcion;
         this.fecha=fecha;
@@ -33,14 +59,14 @@ public class Evento_apoyo{
     /**
      * @return the ID
      */
-    public int getID() {
+    public Integer getID() {
         return ID;
     }
 
     /**
      * @param ID the ID to set
      */
-    public void setID(int ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 
@@ -112,6 +138,90 @@ public class Evento_apoyo{
      */
     public void setPrecio(int precio) {
         this.precio = precio;
+    }
+
+    /**
+     * @return the documentos
+     */
+    public List<Documento_apoyo> getDocumentos() {
+        return documentos;
+    }
+
+    /**
+     * @param documentos the documentos to set
+     */
+    public void setDocumentos(List<Documento_apoyo> documentos) {
+        this.documentos = documentos;
+    }
+
+    /**
+     * @return the comentarios
+     */
+    public List<Comentario_apoyo> getComentarios() {
+        return comentarios;
+    }
+
+    /**
+     * @param comentarios the comentarios to set
+     */
+    public void setComentarios(List<Comentario_apoyo> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    /**
+     * @return the seccion
+     */
+    public Seccion_apoyo getSeccion() {
+        return seccion;
+    }
+
+    /**
+     * @param seccion the seccion to set
+     */
+    public void setSeccion(Seccion_apoyo seccion) {
+        this.seccion = seccion;
+    }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario_apoyo getUsuario() {
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario_apoyo usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @return the notificaciones
+     */
+    public List<Notificacion_apoyo> getNotificaciones() {
+        return notificaciones;
+    }
+
+    /**
+     * @param notificaciones the notificaciones to set
+     */
+    public void setNotificaciones(List<Notificacion_apoyo> notificaciones) {
+        this.notificaciones = notificaciones;
+    }
+
+    /**
+     * @return the usuarios
+     */
+    public List<Usuario_apoyo> getUsuarios() {
+        return usuarios;
+    }
+
+    /**
+     * @param usuarios the usuarios to set
+     */
+    public void setUsuarios(List<Usuario_apoyo> usuarios) {
+        this.usuarios = usuarios;
     }
     
 }
