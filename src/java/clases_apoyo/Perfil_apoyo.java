@@ -13,11 +13,16 @@ import java.util.List;
  */
 public class Perfil_apoyo {
     public enum Rol{
-        EDUCANDO, ADMIN //y lo que haga falta
+        EDUCANDO, ADMIN, COORDINADOR, SCOUTER //y lo que haga falta
     }
     private Rol rol;
     private List<Usuario_apoyo> usuarios;
     private List<Privilegios_apoyo> priv;
+    
+    
+    public Perfil_apoyo(Rol rol){
+        this.rol=rol;
+    }
     
     public Perfil_apoyo(Rol rol, List<Usuario_apoyo> usuarios, List<Privilegios_apoyo> priv){
         this.rol=rol;
