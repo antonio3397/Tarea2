@@ -1,60 +1,61 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
-        <title>Registro</title>
-    </h:head>
-    <h:body>
-        <h1>Perfil de usuario</h1>
+          
+      <ui:composition template="/WEB-INF/Templates/Plantilla.xhtml" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"></link>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    
+    <ui:define name="title">Documentos</ui:define>
+    
+    <ui:define name="content">
+        <div class="container">
+      
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nombre: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.nombre}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getNombre()}"/>
                 <h:outputLabel value="Apellidos: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.apellidos}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getApellidos()}"/>
                 <h:outputLabel value="Nif: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.NIF}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getNIF()}"/>
                 <h:outputLabel value="Sexo: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.sexo}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getSexo()}"/>
                 <h:outputLabel value="Email: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.email}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getEmail()}"/>
                 <h:outputLabel value="Fecha de nacimiento: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.fecha_nacimiento}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_nacimiento()}"/>
                 <h:outputLabel value="Código postal: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.codigo_postal}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getCodigo_postal()}"/>
                 <h:outputLabel value="Dirección: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.direccion}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getDireccion()}"/>
         
              
                 <h:outputLabel value="Provincia: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.provincia}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getProvincia()}"/>
                 <h:outputLabel value="Localidad: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.localidad}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getLocalidad()}"/>
                 <h:outputLabel value="Fecha de ingreso: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.fecha_ingreso}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_ingreso()}"/>
                 <h:outputLabel value="Fecha de baja: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.fecha_baja}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_baja()}"/>
                 <h:outputLabel value="Cuota total: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.cuota_total}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getCuota_total()}"/>
                 <h:outputLabel value="Teléfono: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.telefono}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getTelefono()}"/>
                 <h:outputLabel value="Móvil: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.movil}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getMovil()}"/>
                 <h:outputLabel value="Método de pago: "/>
-                <h:outputLabel value="#{control_Perfil.usuario.metodo_pago}"/>
+                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getMetodo_pago()}"/>   
                 </h:panelGrid>
-          
-             </h:form>
-    </h:body>
-
-</html>
+           </h:form>
+             </div>
+    </ui:define>
+</ui:composition>
