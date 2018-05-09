@@ -5,8 +5,6 @@
  */
 package controladores;
 
-import clases_apoyo.Perfil_apoyo;
-import clases_apoyo.Usuario_apoyo;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
