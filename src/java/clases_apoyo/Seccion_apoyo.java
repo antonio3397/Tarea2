@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class Seccion_apoyo {
     
-    private Long id;
+    private Integer id;
     private String Nombre;
     private Integer Edad_minima;
     private Integer Edad_maxima;
     private List<Usuario_apoyo> usuarios;
     private List<Evento_apoyo> eventos;
     
-    public Seccion_apoyo(Long id, String Nombre, Integer Edad_minima, Integer Edad_maxima, List<Usuario_apoyo> usuarios, List<Evento_apoyo> eventos){
+    public Seccion_apoyo(Integer id, String Nombre, Integer Edad_minima, Integer Edad_maxima, List<Usuario_apoyo> usuarios, List<Evento_apoyo> eventos){
         this.id=id;
         this.Nombre=Nombre;
         this.Edad_minima=Edad_minima;
@@ -28,18 +28,25 @@ public class Seccion_apoyo {
         this.usuarios=usuarios;
         this.eventos=eventos;
     }
+    
+    public Seccion_apoyo(Integer id, String Nombre, Integer Edad_minima, Integer Edad_maxima){
+        this.id=id;
+        this.Nombre=Nombre;
+        this.Edad_minima=Edad_minima;
+        this.Edad_maxima=Edad_maxima;
+    }
 
     /**
      * @return the id
      */
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

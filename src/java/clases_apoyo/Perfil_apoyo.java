@@ -13,27 +13,31 @@ import java.util.List;
  */
 public class Perfil_apoyo {
     
-    private Long rol;
+    private String rol;
     private List<Usuario_apoyo> usuarios;
     private List<Privilegios_apoyo> priv;
     
-    public Perfil_apoyo(Long rol, List<Usuario_apoyo> usuarios, List<Privilegios_apoyo> priv){
+    public Perfil_apoyo(String rol, List<Usuario_apoyo> usuarios, List<Privilegios_apoyo> priv){
         this.rol=rol;
         this.usuarios=usuarios;
         this.priv=priv;
+    }
+    
+    public Perfil_apoyo(String rol){
+        this.rol=rol;
     }
 
     /**
      * @return the rol
      */
-    public Long getRol() {
+    public String getRol() {
         return rol;
     }
 
     /**
      * @param rol the rol to set
      */
-    public void setRol(Long rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
