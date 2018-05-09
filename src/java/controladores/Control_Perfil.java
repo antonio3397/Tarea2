@@ -27,6 +27,7 @@ public class Control_Perfil {
     
     public Control_Perfil() {
         usuarios = new ArrayList<Usuario_apoyo>();
+        usuarios.add(new Usuario_apoyo(120, 012, "22432567S", "Educando", "jms@gmail.com", "Jose", "Martin Segura", "masc", "01/12/2004", 23010, "C/Marin de los Santos, 23", "Sevilla", "13/5/2012", 999112233, 666554433, "efectivo", 35));
         usuarios.add(new Usuario_apoyo(121, 123456, "78556410V","Admin","paco_mg99@hotmail.com", "Francisco", "Marin Garzon", "masc", "02/03/1997", 29610,"C/Luisa Ordoñez n15 1ºB" , "Malaga", "02/03/2015", 921121314,654121314, "tarjeta_credito", 50));
         usuarios.add(new Usuario_apoyo(122, 234567, "71156411N","Scouter","paula_vp@hotmail.com", "Paula", "Vergara Perez", "fem", "06/11/1997", 29615,"C/Santa Rosa n17 5ºC" , "Malaga", "11/10/2015", 921675432,654960584, "tarjeta_credito", 75));
     
