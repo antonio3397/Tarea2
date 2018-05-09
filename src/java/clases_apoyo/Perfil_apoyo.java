@@ -12,12 +12,19 @@ import java.util.List;
  * @author anton
  */
 public class Perfil_apoyo {
-    
-    private Long rol;
+    public enum Rol{
+        EDUCANDO, ADMIN, COORDINADOR, SCOUTER //y lo que haga falta
+    }
+    private Rol rol;
     private List<Usuario_apoyo> usuarios;
     private List<Privilegios_apoyo> priv;
     
-    public Perfil_apoyo(Long rol, List<Usuario_apoyo> usuarios, List<Privilegios_apoyo> priv){
+    
+    public Perfil_apoyo(Rol rol){
+        this.rol=rol;
+    }
+    
+    public Perfil_apoyo(Rol rol, List<Usuario_apoyo> usuarios, List<Privilegios_apoyo> priv){
         this.rol=rol;
         this.usuarios=usuarios;
         this.priv=priv;
@@ -26,14 +33,14 @@ public class Perfil_apoyo {
     /**
      * @return the rol
      */
-    public Long getRol() {
+    public Rol getRol() {
         return rol;
     }
 
     /**
      * @param rol the rol to set
      */
-    public void setRol(Long rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
