@@ -12,7 +12,7 @@ import java.util.List;
  * @author migue
  */
 public class Usuario_apoyo {
-    
+
     private Integer id;
     private String contrasenia;
     private String NIF;
@@ -40,92 +40,66 @@ public class Usuario_apoyo {
     private List<Notificacion_apoyo> notificaciones;
     private List<Evento_apoyo> inscripciones;
     private Responsable_Legal_apoyo responsable;
-    
+
     public Usuario_apoyo(Integer id, String contrasenia, String NIF, String email,
-           String nombre, String apellidos, String sexo, String fecha_nacimiento, 
-           Integer codigo_postal, String direccion, String provincia, 
-           String Localidad, String fecha_ingreso, String fecha_baja, 
-           Integer cuota_total, Integer telefono, Integer movil, String metodo_pago, 
-           List<Documento_apoyo> documentos, List<Comentario_apoyo> comentarios, 
-           Perfil_apoyo perfiles, List<Pago_cuota_apoyo> pago, Seccion_apoyo seccion, 
-           List<Evento_apoyo> eventos, List<Notificacion_apoyo> notificaciones, 
-           List<Evento_apoyo> inscripciones, Responsable_Legal_apoyo responsable){
-        this.id=id;
-        this.contrasenia=contrasenia;
-        this.Localidad=Localidad;
-        this.NIF=NIF;
-        this.apellidos=apellidos;
-        this.codigo_postal=codigo_postal;
-        this.comentarios=comentarios;
-        this.cuota_total=cuota_total;
-        this.direccion=direccion;
-        this.documentos=documentos;
-        this.email=email;
-        this.eventos=eventos;
-        this.fecha_baja=fecha_baja;
-        this.fecha_ingreso=fecha_ingreso;
-        this.fecha_nacimiento=fecha_nacimiento;
-        this.inscripciones=inscripciones;
-        this.metodo_pago=metodo_pago;
-        this.movil=movil;
-        this.nombre=nombre;
-        this.notificaciones=notificaciones;
-        this.pago=pago;
-        this.perfiles=perfiles;
-        this.provincia=provincia;
-        this.responsable=responsable;
-        this.responsable=responsable;
-        this.seccion=seccion;
-        this.sexo=sexo;
-        this.telefono=telefono;
+            String nombre, String apellidos, String sexo, String fecha_nacimiento,
+            Integer codigo_postal, String direccion, String provincia,
+            String Localidad, String fecha_ingreso, String fecha_baja,
+            Integer cuota_total, Integer telefono, Integer movil, String metodo_pago,
+            List<Documento_apoyo> documentos, List<Comentario_apoyo> comentarios,
+            Perfil_apoyo perfiles, List<Pago_cuota_apoyo> pago, Seccion_apoyo seccion,
+            List<Evento_apoyo> eventos, List<Notificacion_apoyo> notificaciones,
+            List<Evento_apoyo> inscripciones, Responsable_Legal_apoyo responsable) {
+        this.id = id;
+        this.contrasenia = contrasenia;
+        this.Localidad = Localidad;
+        this.NIF = NIF;
+        this.apellidos = apellidos;
+        this.codigo_postal = codigo_postal;
+        this.comentarios = comentarios;
+        this.cuota_total = cuota_total;
+        this.direccion = direccion;
+        this.documentos = documentos;
+        this.email = email;
+        this.eventos = eventos;
+        this.fecha_baja = fecha_baja;
+        this.fecha_ingreso = fecha_ingreso;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.inscripciones = inscripciones;
+        this.metodo_pago = metodo_pago;
+        this.movil = movil;
+        this.nombre = nombre;
+        this.notificaciones = notificaciones;
+        this.pago = pago;
+        this.perfiles = perfiles;
+        this.provincia = provincia;
+        this.responsable = responsable;
+        this.responsable = responsable;
+        this.seccion = seccion;
+        this.sexo = sexo;
+        this.telefono = telefono;
     }
-    
-       public Usuario_apoyo(int ID_usuario, String contrasena, String NIF, Perfil_apoyo rol, String email, String nombre, String apellidos, String sexo, String fecha_nacimiento, int cod_postal, String direccion, String localidad, String fecha_ingreso, String fecha_baja, int telefono, int movil, String metodo_pago, int cuota_total){
-       
-        this.id=ID_usuario;
-        this.contrasenia=contrasena;
-        this.NIF=NIF;
-        this.perfiles=rol;
-        this.email=email;
-        this.nombre=nombre;
-        this.apellidos=apellidos;
-        this.sexo=sexo;
-        this.fecha_nacimiento=fecha_nacimiento;
-        this.codigo_postal=cod_postal;
-        this.direccion=direccion;
-        this.Localidad=localidad;
-        this.fecha_ingreso=fecha_ingreso;
-        this.fecha_baja=fecha_baja;
-        this.telefono=telefono;
-        this.movil=movil;
-        this.metodo_pago=metodo_pago;
-        this.cuota_total=cuota_total;
-   }
-   
-   
-   
-   
-    
-   public Usuario_apoyo(int ID_usuario, String contrasena, String NIF,Perfil_apoyo rol, String email, String nombre, String apellidos, String sexo, String fecha_nacimiento, int cod_postal, String direccion, String localidad, String fecha_ingreso, int telefono, int movil, String metodo_pago, int cuota_total){
-       
-        this.id=ID_usuario;
-        this.contrasenia=contrasena;
-        this.NIF=NIF;
-        this.perfiles=rol;
-        this.email=email;
-        this.nombre=nombre;
-        this.apellidos=apellidos;
-        this.sexo=sexo;
-        this.fecha_nacimiento=fecha_nacimiento;
-        this.codigo_postal=cod_postal;
-        this.direccion=direccion;
-        this.Localidad=localidad;
-        this.fecha_ingreso=fecha_ingreso;
-        this.telefono=telefono;
-        this.movil=movil;
-        this.metodo_pago=metodo_pago;
-        this.cuota_total=cuota_total;
-   }
+
+    public Usuario_apoyo(int ID_usuario, String contrasena, String NIF, Perfil_apoyo rol, String email, String nombre, String apellidos, String sexo, String fecha_nacimiento, int cod_postal, String direccion, String localidad, String fecha_ingreso, int telefono, int movil, String metodo_pago, int cuota_total) {
+
+        this.id = ID_usuario;
+        this.contrasenia = contrasena;
+        this.NIF = NIF;
+        this.perfiles = rol;
+        this.email = email;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.sexo = sexo;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.codigo_postal = cod_postal;
+        this.direccion = direccion;
+        this.Localidad = localidad;
+        this.fecha_ingreso = fecha_ingreso;
+        this.telefono = telefono;
+        this.movil = movil;
+        this.metodo_pago = metodo_pago;
+        this.cuota_total = cuota_total;
+    }
 
     /**
      * @return the id
@@ -504,6 +478,5 @@ public class Usuario_apoyo {
     public void setResponsable(Responsable_Legal_apoyo responsable) {
         this.responsable = responsable;
     }
-    
-    
+
 }
