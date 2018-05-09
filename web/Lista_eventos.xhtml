@@ -23,7 +23,6 @@
             <p:column headerText="Titulo">
                 <h:outputText value="#{events.titulo}" />
             </p:column>
-                
             <p:column headerText="Descripcion">
                 <div class="col-80 text-truncate">
                     #{events.descripcion}
@@ -38,7 +37,10 @@
                 <h:outputText value="#{events.localizacion}" />
             </p:column>
             <p:column headerText="Más">
-                <h:commandLink action="#{user.goLoginPage}" value="Ver más" />	
+                <h:commandLink action="#{events}" value="Ver más" />	
+            </p:column>
+            <p:column headerText="Borrar">
+                <button type="button" class="btn btn-danger">Eliminar</button>	
             </p:column>
         </p:dataTable>
         </div>
