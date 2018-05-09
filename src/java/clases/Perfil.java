@@ -23,23 +23,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class Perfil implements Serializable {
 
-    
-    public enum Rol{
+    public enum Rol {
         EDUCANDO, COORDGEN, COORDSEC, SCOUTER;
     }
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Rol rol;
-    
-    @OneToMany (mappedBy="perfiles")
+
+    @OneToMany(mappedBy = "perfiles")
     private List<Usuario> usuarios;
     @ManyToMany
-    @JoinTable(name="privilegios_asociados",joinColumns = @JoinColumn(name = "perfil_user"),
+    @JoinTable(name = "privilegios_asociados", joinColumns = @JoinColumn(name = "perfil_user"),
             inverseJoinColumns = @JoinColumn(name = "privilegios_user"))
     private List<Privilegios> priv;
 
+    public Perfil(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -106,5 +110,5 @@ public class Perfil implements Serializable {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-    
+
 }

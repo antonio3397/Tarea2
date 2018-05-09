@@ -19,7 +19,7 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class Control_Registro {
     
-    private Usuario user=new Usuario();
+    //private Usuario user=new Usuario();
     private List<Usuario> list_User=new ArrayList<>();
     /**
      * Creates a new instance of Control_Registro
