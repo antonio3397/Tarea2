@@ -14,12 +14,15 @@
     <ui:define name="title">Eventos</ui:define>
     
     <ui:define name="content">
-        <div class="container">
+        <div class = "container-fluid">
+        <button type="button" class="btn btn-success" href="#">CREAR EVENTO +</button>
+        </div>
+        <br/>
+        <div class="container-fluid">
         <p:dataTable var="events" value="#{Eventos.eventosj}">
             <p:column headerText="Titulo">
                 <h:outputText value="#{events.titulo}" />
             </p:column>
-                
             <p:column headerText="Descripcion">
                 <div class="col-80 text-truncate">
                     #{events.descripcion}
@@ -34,7 +37,12 @@
                 <h:outputText value="#{events.localizacion}" />
             </p:column>
             <p:column headerText="Más">
-                <h:commandLink action="#{user.goLoginPage}" value="Ver más" />	
+                <h:commandLink action="#{events}" value="Ver más" />	
+            </p:column>
+            <p:column headerText="Borrar">
+                <h:form>
+                <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
+                </h:form>
             </p:column>
         </p:dataTable>
         </div>

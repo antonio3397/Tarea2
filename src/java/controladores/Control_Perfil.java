@@ -14,10 +14,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 
+
 /**
  *
- * @author migue
+ * @author anton
  */
+
 @ManagedBean(name="PerfilUsuario")
 @ViewScoped
 public class Control_Perfil {
@@ -56,5 +58,4 @@ public class Control_Perfil {
     public void setUsuarios(List<Usuario_apoyo> usuarios) {
         this.usuarios = usuarios;
     }
-
 }
