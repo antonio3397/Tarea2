@@ -34,6 +34,25 @@ public class Control_Eventos implements Serializable{
         eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
     }
 
+    public Evento buscarEvento(Long id) throws EventoException{
+        Evento enc=null;
+        for(Evento e : eventosj){
+            if(e.getId().equals(id)){
+                enc=e;
+            }
+        }
+        if(enc==null){
+            throw new EventoException("Evento no encontrado");
+        }
+        return enc;
+    }
+    
+    public String borrarEvento(Long id) throws EventoException{
+        Evento b=buscarEvento(id);
+        eventosj.remove(b);
+        return "Lista_eventos.xhtml";
+    }
+    
     /**
      * @return the eventosj
      */

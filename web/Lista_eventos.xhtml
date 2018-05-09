@@ -40,7 +40,9 @@
                 <h:commandLink action="#{events}" value="Ver más" />	
             </p:column>
             <p:column headerText="Borrar">
-                <button type="button" class="btn btn-danger">Eliminar</button>	
+                <h:form>
+                <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
+                </h:form>
             </p:column>
         </p:dataTable>
         </div>
