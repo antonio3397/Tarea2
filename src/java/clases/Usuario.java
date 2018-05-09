@@ -106,7 +106,7 @@ public class Usuario implements Serializable {
            String nombre, String apellidos, String sexo, Date fecha_nacimiento,
            Integer codigo_postal, String direccion, String provincia,
            String Localidad, Date fecha_ingreso, Integer cuota_total,
-           Integer telefono, Integer movil, String metodo_pago){
+           Integer telefono, Integer movil, String metodo_pago, Perfil perfil){
         this.id=id;
         this.contrasenia=contrasenia;
         this.NIF=NIF;
@@ -123,6 +123,7 @@ public class Usuario implements Serializable {
         this.telefono=telefono;
         this.movil=movil;
         this.metodo_pago=metodo_pago;
+        this.perfiles = perfil;
     }
     
     public Long getId() {
