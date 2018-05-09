@@ -21,39 +21,37 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:outputLabel value="Nombre: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getNombre()}"/>
+                <h:outputLabel value="#{perfil.user.nombre}"/>
                 <h:outputLabel value="Apellidos: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getApellidos()}"/>
-                <h:outputLabel value="Nif: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getNIF()}"/>
+                <h:outputLabel value="#{perfil.user.apellidos}"/>
+                <h:outputLabel value="NIF: "/>
+                <h:outputLabel value="#{perfil.user.NIF}"/>
                 <h:outputLabel value="Sexo: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getSexo()}"/>
+                <h:outputLabel value="#{perfil.user.sexo}"/>
                 <h:outputLabel value="Email: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getEmail()}"/>
+                <h:outputLabel value="#{perfil.user.email}"/>
                 <h:outputLabel value="Fecha de nacimiento: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_nacimiento()}"/>
+                <h:outputLabel value="#{perfil.user.fecha_nacimiento}"/>
                 <h:outputLabel value="Código postal: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getCodigo_postal()}"/>
+                <h:outputLabel value="#{perfil.user.codigo_postal}"/>
                 <h:outputLabel value="Dirección: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getDireccion()}"/>
-        
-             
+                <h:outputLabel value="#{perfil.user.direccion}"/>
                 <h:outputLabel value="Provincia: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getProvincia()}"/>
+                <h:outputLabel value="#{perfil.user.provincia}"/>
                 <h:outputLabel value="Localidad: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getLocalidad()}"/>
+                <h:outputLabel value="#{perfil.user.localidad}"/>
                 <h:outputLabel value="Fecha de ingreso: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_ingreso()}"/>
+                <h:outputLabel value="#{perfil.user.fecha_ingreso}"/>
                 <h:outputLabel value="Fecha de baja: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getFecha_baja()}"/>
-                <h:outputLabel value="Cuota total: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getCuota_total()}"/>
+                <h:outputLabel value="Aun activo"/>
+                <h:outputLabel value="Cuota mensual: "/>
+                <h:outputLabel value="#{perfil.user.cuota_total}"/>
                 <h:outputLabel value="Teléfono: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getTelefono()}"/>
+                <h:outputLabel value="#{perfil.user.telefono}"/>
                 <h:outputLabel value="Móvil: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getMovil()}"/>
+                <h:outputLabel value="#{perfil.user.movil}"/>
                 <h:outputLabel value="Método de pago: "/>
-                <h:outputLabel value="#{PerfilUsuario.usuarios.get(i).getMetodo_pago()}"/>   
+                <h:outputLabel value="#{perfil.user.metodo_pago}"/>   
                 </h:panelGrid>
            </h:form>
              </div>

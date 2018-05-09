@@ -12,13 +12,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -31,6 +29,9 @@ public class Controlador_Login implements Serializable {
     private String password;
     private String email;
     private List<Usuario> users;
+    
+    @Inject
+    Control_perfil perf;
 
     public Controlador_Login() {
         users = new ArrayList<>();
@@ -66,6 +67,8 @@ public class Controlador_Login implements Serializable {
             return null;
         }
 
+        perf.setUser(aux);
+        
         return "Inicio.xhtml";
     }
 
