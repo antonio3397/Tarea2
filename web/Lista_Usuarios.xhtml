@@ -19,7 +19,7 @@
         </div>
         <br/>
         <div class="container-fluid">
-            <p:dataTable var="users" value="#{controlador_Login.users}">
+            <p:dataTable var="users" value="#{miSesion.users}">
             <p:column headerText="ID">
                 <h:outputText value="#{users.id}" />
             </p:column>
@@ -41,7 +41,7 @@
             </p:column>
             <p:column headerText="Borrar">
                 <h:form>
-                    <p:commandButton value="Eliminar" ajax="false" actionListener="#{controlador_Login.borrarUsuario(users.id)}"></p:commandButton>
+                    <p:commandButton value="Eliminar" ajax="false" actionListener="#{miSesion.borrarUsuario(users.id)}"></p:commandButton>
                 </h:form>
             </p:column>
         </p:dataTable>
