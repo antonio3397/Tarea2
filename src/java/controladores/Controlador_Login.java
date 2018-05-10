@@ -13,15 +13,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-
 
 /**
  *
@@ -34,13 +30,13 @@ public class Controlador_Login implements Serializable {
     private String password;
     private String email;
     private List<Usuario> users;
+
     private Usuario user;
     
    @Inject
    private MiSesion ctrl;
-    
-    
-    public Controlador_Login() {
+  
+   public Controlador_Login() {
         users = new ArrayList<>();
         users.add(new Usuario(121L, "123456", "78556410V", "paco_mg99@hotmail.com", "Francisco", "Marin Garzón", "Hombre", new Date(1997 - 1900, 3, 2), 29610, "C/Luisa Ordoñez n15 1ºB", "Málaga", "Málaga", new Date(2015 - 1900, 3, 2), 50, 921121314, 654121314, "Tarjeta_Crédito", new Perfil(Perfil.Rol.EDUCANDO)));
         users.add(new Usuario(122L, "234567", "71156411N", "paula_vp@hotmail.com", "Paula", "Vergara Perez", "Mujer", new Date(1997 - 1900, 11, 6), 29615, "C/Santa Rosa n17 5ºC", "Málaga", "Málaga", new Date(2015 - 1900, 10, 11), 75, 921675432, 654960584, "Tarjeta_Crédito", new Perfil(Perfil.Rol.COORDGEN)));
@@ -75,6 +71,7 @@ public class Controlador_Login implements Serializable {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Password incorrecto", "Password incorrecto"));
             return null;
         }
+
 
         ctrl.setUser(aux);
         return "Inicio.xhtml";
