@@ -30,6 +30,8 @@ public class Controlador_Login implements Serializable {
     private String password;
     private String email;
     private List<Usuario> users;
+    
+    private String otro;
 
     private Usuario user;
     
@@ -76,34 +78,16 @@ public class Controlador_Login implements Serializable {
             return null;
         }
 
-
+        ctrl.setUsers(users);
         ctrl.setUser(aux);
         return "Inicio.xhtml";
     }
     
-    public Usuario buscarUsuario(Long id) throws UsuarioException {
-        
-        Usuario aux = null;
-
-        for (Usuario u : users) {
-            if (u.getId().equals(id)) {
-                aux = u;
-            }
-        }
-        if (aux == null) {
-            throw new UsuarioException("Usuarios no existente");
-        }
-
-        return aux;
-    }
-
-    public String borrarUsuario(Long id) throws UsuarioException {
-
-        Usuario b = buscarUsuario(id);
-
-        users.remove(b);
-
-        return "Lista_Usuarios.xhtml";
+        public Usuario verUsuario(){
+        int ID = Integer.decode(otro);
+        int i=0;
+        while(i<users.size()&&users.get(i).getId()!=ID)i++;
+        return users.get(i);
     }
 
     /**
@@ -146,6 +130,48 @@ public class Controlador_Login implements Serializable {
      */
     public void setUsers(List<Usuario> users) {
         this.users = users;
+    }
+
+    /**
+     * @return the otro
+     */
+    public String getOtro() {
+        return otro;
+    }
+
+    /**
+     * @param otro the otro to set
+     */
+    public void setOtro(String otro) {
+        this.otro = otro;
+    }
+
+    /**
+     * @return the user
+     */
+    public Usuario getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the ctrl
+     */
+    public MiSesion getCtrl() {
+        return ctrl;
+    }
+
+    /**
+     * @param ctrl the ctrl to set
+     */
+    public void setCtrl(MiSesion ctrl) {
+        this.ctrl = ctrl;
     }
 
 }
