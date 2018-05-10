@@ -35,7 +35,9 @@
                 <h:outputText value="#{users.apellidos}" />
             </p:column>
             <p:column headerText="Más">
-                <h:commandLink action="#{users}" value="Ver perfil" />	
+                <p:link outcome="OtroPerfil" value="Ver perfil">
+                        <f:param name="us" value="#{users.id}"/>
+                    </p:link>	
             </p:column>
             <p:column headerText="Borrar">
                 <h:form>
