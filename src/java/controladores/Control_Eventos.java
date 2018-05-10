@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,9 +31,9 @@ public class Control_Eventos implements Serializable{
     public void init() {
         
         eventosj = new ArrayList<>();
-        eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+        eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24,9, 30),"Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24,9,30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27,11,0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
     }
 
     public Evento buscarEvento(Long id) throws EventoException{
@@ -76,7 +77,12 @@ public class Control_Eventos implements Serializable{
         this.event = event;
     }
     
-    
+   /* public String VerFecha(Evento event){
+        Date fecha = event.getFecha();
+        try(Scanner sc = new Scanner(fecha.toString())){
+            
+        }
+    }*/
 
     public Evento verEvento(){
         int ID = Integer.decode(event);
