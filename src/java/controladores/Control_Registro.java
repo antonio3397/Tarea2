@@ -19,6 +19,7 @@ import javax.enterprise.context.Dependent;
 @Dependent
 public class Control_Registro {
     
+    Usuario user;
     //private Usuario user=new Usuario();
     private List<Usuario> list_User=new ArrayList<>();
     /**
