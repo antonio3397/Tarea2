@@ -76,6 +76,31 @@ public class Controlador_Login implements Serializable {
         ctrl.setUser(aux);
         return "Inicio.xhtml";
     }
+    
+    public Usuario buscarUsuario(Long id) throws UsuarioException {
+        
+        Usuario aux = null;
+
+        for (Usuario u : users) {
+            if (u.getId().equals(id)) {
+                aux = u;
+            }
+        }
+        if (aux == null) {
+            throw new UsuarioException("Usuarios no existente");
+        }
+
+        return aux;
+    }
+
+    public String borrarUsuario(Long id) throws UsuarioException {
+
+        Usuario b = buscarUsuario(id);
+
+        users.remove(b);
+
+        return "Lista_Usuarios.xhtml";
+    }
 
     /**
      * @return the password
