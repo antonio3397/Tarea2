@@ -19,31 +19,27 @@
         </div>
         <br/>
         <div class="container-fluid">
-        <p:dataTable var="events" value="#{Eventos.eventosj}">
-            <p:column headerText="Titulo">
-                <h:outputText value="#{events.titulo}" />
+            <p:dataTable var="users" value="#{controlador_Login.users}">
+            <p:column headerText="ID">
+                <h:outputText value="#{users.id}" />
             </p:column>
-            <p:column headerText="Descripcion">
-                <div class="col-80 text-truncate">
-                    #{events.descripcion}
-                </div>
+            <p:column headerText="DNI">
+                <h:outputText value="#{users.NIF}" />
             </p:column>
                 
-            <p:column headerText="Fecha">
-                <h:outputText value="#{events.fecha}" />
+            <p:column headerText="Nombre">
+                <h:outputText value="#{users.nombre}" />
             </p:column>
                 
-            <p:column headerText="Lugar">
-                <h:outputText value="#{events.localizacion}" />
+            <p:column headerText="Apellidos">
+                <h:outputText value="#{users.apellidos}" />
             </p:column>
             <p:column headerText="Más">
-                <p:link outcome="Eventos" value="Ver más">
-                    <f:param name="Evento" value="#{events.id}"/>
-                </p:link>	
+                <h:commandLink action="#{users}" value="Ver perfil" />	
             </p:column>
             <p:column headerText="Borrar">
                 <h:form>
-                <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
+                    <p:commandButton value="Eliminar" ajax="false" actionListener="#{controlador_Login.borrarUsuario(users.id)}"></p:commandButton>
                 </h:form>
             </p:column>
         </p:dataTable>

@@ -23,25 +23,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class Perfil implements Serializable {
 
+    public enum Rol {
+        EDUCANDO, COORDGEN, COORDSEC, SCOUTER;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rol;
-    
-    @OneToMany (mappedBy="perfiles")
+    private Rol rol;
+
+    @OneToMany(mappedBy = "perfiles")
     private List<Usuario> usuarios;
     @ManyToMany
-    @JoinTable(name="privilegios_asociados",joinColumns = @JoinColumn(name = "perfil_user"),
+    @JoinTable(name = "privilegios_asociados", joinColumns = @JoinColumn(name = "perfil_user"),
             inverseJoinColumns = @JoinColumn(name = "privilegios_user"))
     private List<Privilegios> priv;
-    public Long getId() {
-        return getRol();
-    }
 
-    public void setId(Long id) {
-        this.setRol(id);
+    public Perfil(Rol rol) {
+        this.rol = rol;
     }
-
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -65,20 +67,6 @@ public class Perfil implements Serializable {
     @Override
     public String toString() {
         return "trabajo.Perfil[ id=" + getRol() + " ]";
-    }
-
-    /**
-     * @return the rol
-     */
-    public Long getRol() {
-        return rol;
-    }
-
-    /**
-     * @param rol the rol to set
-     */
-    public void setRol(Long rol) {
-        this.rol = rol;
     }
 
     /**
@@ -108,5 +96,19 @@ public class Perfil implements Serializable {
     public void setPriv(List<Privilegios> priv) {
         this.priv = priv;
     }
-    
+
+    /**
+     * @return the rol
+     */
+    public Rol getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
 }

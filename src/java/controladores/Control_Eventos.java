@@ -6,42 +6,82 @@ package controladores;
  * and open the template in the editor.
  */
 
-import clases_apoyo.Evento_apoyo;
+import clases.Evento;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author anton
  */
 @ManagedBean(name="Eventos")
-@ViewScoped
-public class Control_Eventos{
+@SessionScoped
+public class Control_Eventos implements Serializable{
 
-    private List<Evento_apoyo> eventosj;
+    private List<Evento> eventosj;
+    private String event;
     
     @PostConstruct
     public void init() {
+        
         eventosj = new ArrayList<>();
-        eventosj.add(new Evento_apoyo(1, "Viaje al monte", "24/03/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento_apoyo(2, "Viaje al monte 2", "24/06/2018", "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento_apoyo(3, "Salvemos a las ardillas", "27/09/2019", "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+        eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
     }
 
+    public Evento buscarEvento(Long id) throws EventoException{
+        Evento enc=null;
+        for(Evento e : eventosj){
+            if(e.getId().equals(id)){
+                enc=e;
+            }
+        }
+        if(enc==null){
+            throw new EventoException("Evento no encontrado");
+        }
+        return enc;
+    }
+    
+    public String borrarEvento(Long id) throws EventoException{
+        Evento b=buscarEvento(id);
+        eventosj.remove(b);
+        return "Lista_eventos.xhtml";
+    }
+    
     /**
      * @return the eventosj
      */
-    public List<Evento_apoyo> getEventosj() {
+    public List<Evento> getEventosj() {
         return eventosj;
     }
 
     /**
      * @param eventosj the eventosj to set
      */
-    public void setEventosj(List<Evento_apoyo> eventosj) {
+    public void setEventosj(List<Evento> eventosj) {
         this.eventosj = eventosj;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+    
+    
+
+    public Evento verEvento(){
+        int ID = Integer.decode(event);
+        int i=0;
+        while(i<eventosj.size()&&eventosj.get(i).getId()!=ID)i++;
+        return eventosj.get(i);
     }
 }
