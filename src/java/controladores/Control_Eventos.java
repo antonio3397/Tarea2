@@ -24,6 +24,7 @@ import javax.faces.bean.SessionScoped;
 public class Control_Eventos implements Serializable{
 
     private List<Evento> eventosj;
+    private String event;
     
     @PostConstruct
     public void init() {
@@ -67,4 +68,20 @@ public class Control_Eventos implements Serializable{
         this.eventosj = eventosj;
     }
 
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+    
+    
+
+    public Evento verEvento(){
+        int ID = Integer.decode(event);
+        int i=0;
+        while(i<eventosj.size()&&eventosj.get(i).getId()!=ID)i++;
+        return eventosj.get(i);
+    }
 }
