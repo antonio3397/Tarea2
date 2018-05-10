@@ -5,9 +5,9 @@
  */
 package controladores;
 
+import clases.Evento;
 import clases.Perfil;
 import clases.Usuario;
-import java.awt.Event;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +40,10 @@ public class Controlador_Login implements Serializable {
         users = new ArrayList<>();
         users.add(new Usuario(121L, "123456", "78556410V", "paco_mg99@hotmail.com", "Francisco", "Marin Garzón", "Hombre", new Date(1997 - 1900, 3, 2), 29610, "C/Luisa Ordoñez n15 1ºB", "Málaga", "Málaga", new Date(2015 - 1900, 3, 2), 50, 921121314, 654121314, "Tarjeta_Crédito", new Perfil(Perfil.Rol.EDUCANDO)));
         users.add(new Usuario(122L, "234567", "71156411N", "paula_vp@hotmail.com", "Paula", "Vergara Perez", "Mujer", new Date(1997 - 1900, 11, 6), 29615, "C/Santa Rosa n17 5ºC", "Málaga", "Málaga", new Date(2015 - 1900, 10, 11), 75, 921675432, 654960584, "Tarjeta_Crédito", new Perfil(Perfil.Rol.COORDGEN)));
+        
+        List<Evento> events = new ArrayList<>();
+        events.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        users.get(0).setEventos(events);
     }
 
     public String autenticar() {
