@@ -37,7 +37,9 @@
                 <h:outputText value="#{events.localizacion}" />
             </p:column>
             <p:column headerText="Más">
-                <h:commandLink action="#{events}" value="Ver más" />	
+                <p:link outcome="Eventos" value="Ver más">
+                    <f:param name="Evento" value="#{events.id}"/>
+                </p:link>	
             </p:column>
             <p:column headerText="Borrar">
                 <h:form>
