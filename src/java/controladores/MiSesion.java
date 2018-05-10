@@ -9,6 +9,7 @@ import clases.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,6 +32,14 @@ public class MiSesion implements Serializable {
      * Creates a new instance of MiSesion
      */
     public MiSesion() {
+    }
+    
+    public String logout() {
+        // Destruye la sesión (y con ello, el ámbito de este bean)
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        ctx.getExternalContext().invalidateSession();
+        user = null;
+        return "login.xhtml";
     }
     
 }
