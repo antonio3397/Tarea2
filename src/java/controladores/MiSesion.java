@@ -84,7 +84,7 @@ public class MiSesion implements Serializable {
         this.users = users;
     }
     
-    public boolean isCoord() {
+    public boolean isCoordGen() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN);
     }
     
