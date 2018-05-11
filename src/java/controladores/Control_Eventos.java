@@ -13,20 +13,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author anton
  */
-@ManagedBean(name="Eventos")
 @SessionScoped
+@Named(value ="Eventos")
 public class Control_Eventos implements Serializable{
 
     private List<Evento> eventosj;
     private String event;
-    
+   /* 
     @PostConstruct
     public void init() {
         
@@ -34,7 +34,7 @@ public class Control_Eventos implements Serializable{
         eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24,9, 30),"Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
         eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24,9,30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
         eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27,11,0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
-    }
+    }*/
 
     public Evento buscarEvento(Long id) throws EventoException{
         Evento enc=null;
