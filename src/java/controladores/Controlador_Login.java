@@ -105,7 +105,23 @@ public class Controlador_Login implements Serializable {
             }
         }
         ctrl.setUsers2(auxs);
+
         ctrle.setEventosj(events);
+        List<Evento> events2 = new ArrayList<>();
+        if (aux.getPerfiles().equals(Perfil.Rol.COORDGEN)) {
+            for (Evento e : events) {
+                events2.add(e);
+            }
+        } else {
+            for (Evento e : events) {
+                if (aux.getSeccion().equals(e.getSeccion())) {
+                    events2.add(e);
+                }
+            }
+        }
+        
+        ctrle.setEventosj2(events2);
+
         return "Inicio.xhtml";
     }
 
