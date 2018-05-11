@@ -34,6 +34,18 @@ public class Controlador_Login implements Serializable {
     private String otro;
 
     private Usuario user;
+    
+    private Evento eventcrear;
+    
+    private int añocrear;
+    private int mescrear;
+    private int diacrear;
+    private Long idcrear;
+    private String titulocrear;
+    private Date fechacrear;
+    private String localizacioncrear;
+    private String descripcioncrear;
+    private Integer preciocrear;
 
     @Inject
     private MiSesion ctrl;
@@ -101,6 +113,18 @@ public class Controlador_Login implements Serializable {
             i++;
         }
         return users.get(i);
+    }
+    
+    public void CrearEvento(){
+        
+        idcrear=events.get(events.size()-1).getId()+1L;
+        
+        Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, preciocrear);
+        
+        
+        
+        events.add(ev);
+        ctrle.setEventosj(events);
     }
 
     /**
@@ -199,6 +223,160 @@ public class Controlador_Login implements Serializable {
      */
     public void setEvents(List<Evento> events) {
         this.events = events;
+    }
+
+    /**
+     * @return the eventcrear
+     */
+    public Evento getEventcrear() {
+        return eventcrear;
+    }
+
+    /**
+     * @param eventcrear the eventcrear to set
+     */
+    public void setEventcrear(Evento eventcrear) {
+        this.eventcrear = eventcrear;
+    }
+
+    /**
+     * @return the idcrear
+     */
+    public Long getIdcrear() {
+        return idcrear;
+    }
+
+    /**
+     * @param idcrear the idcrear to set
+     */
+    public void setIdcrear(Long idcrear) {
+        this.idcrear = idcrear;
+    }
+
+    /**
+     * @return the titulocrear
+     */
+    public String getTitulocrear() {
+        return titulocrear;
+    }
+
+    /**
+     * @param titulocrear the titulocrear to set
+     */
+    public void setTitulocrear(String titulocrear) {
+        this.titulocrear = titulocrear;
+    }
+
+    /**
+     * @return the fechacrear
+     */
+    public Date getFechacrear() {
+        return fechacrear;
+    }
+
+    /**
+     * @param fechacrear the fechacrear to set
+     */
+    public void setFechacrear(Date fechacrear) {
+        this.fechacrear = fechacrear;
+    }
+
+    /**
+     * @return the localizacioncrear
+     */
+    public String getLocalizacioncrear() {
+        return localizacioncrear;
+    }
+
+    /**
+     * @param localizacioncrear the localizacioncrear to set
+     */
+    public void setLocalizacioncrear(String localizacioncrear) {
+        this.localizacioncrear = localizacioncrear;
+    }
+
+    /**
+     * @return the descripcioncrear
+     */
+    public String getDescripcioncrear() {
+        return descripcioncrear;
+    }
+
+    /**
+     * @param descripcioncrear the descripcioncrear to set
+     */
+    public void setDescripcioncrear(String descripcioncrear) {
+        this.descripcioncrear = descripcioncrear;
+    }
+
+    /**
+     * @return the preciocrear
+     */
+    public Integer getPreciocrear() {
+        return preciocrear;
+    }
+
+    /**
+     * @param preciocrear the preciocrear to set
+     */
+    public void setPreciocrear(Integer preciocrear) {
+        this.preciocrear = preciocrear;
+    }
+
+    /**
+     * @return the ctrle
+     */
+    public Control_Eventos getCtrle() {
+        return ctrle;
+    }
+
+    /**
+     * @param ctrle the ctrle to set
+     */
+    public void setCtrle(Control_Eventos ctrle) {
+        this.ctrle = ctrle;
+    }
+
+    /**
+     * @return the añocrear
+     */
+    public int getAñocrear() {
+        return añocrear;
+    }
+
+    /**
+     * @param añocrear the añocrear to set
+     */
+    public void setAñocrear(int añocrear) {
+        this.añocrear = añocrear;
+    }
+
+    /**
+     * @return the mescrear
+     */
+    public int getMescrear() {
+        return mescrear;
+    }
+
+    /**
+     * @param mescrear the mescrear to set
+     */
+    public void setMescrear(int mescrear) {
+        this.mescrear = mescrear;
+    }
+
+    /**
+     * @return the diacrear
+     */
+    public int getDiacrear() {
+        return diacrear;
+    }
+
+    /**
+     * @param diacrear the diacrear to set
+     */
+    public void setDiacrear(int diacrear) {
+        this.diacrear = diacrear;
     }
 
 }
