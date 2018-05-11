@@ -6,6 +6,7 @@
 package clases;
 
 import clases.Comentario;
+import clases.Seccion.Secciones;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -61,13 +62,14 @@ public class Evento implements Serializable {
     private List<Usuario> usuarios;
     
     public Evento(Long id, String titulo, Date fecha, String localizacion,
-           String descripcion, int precio){
+           String descripcion, int precio, Seccion seccion){
         this.id=id;
         this.descripcion=descripcion;
         this.fecha=fecha;
         this.localizacion=localizacion;
         this.precio=precio;
         this.titulo=titulo;
+        this.seccion=seccion;
     }
     
     /**

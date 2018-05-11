@@ -8,6 +8,7 @@ package controladores;
 import clases.Evento;
 import clases.Perfil;
 import clases.Seccion;
+import clases.Seccion.Secciones;
 import clases.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,15 +39,15 @@ public class Controlador_Login implements Serializable {
     
     private Evento eventcrear;
     
-    private int añocrear;
-    private int mescrear;
-    private int diacrear;
+    private String añocrear;
+    private String mescrear;
+    private String diacrear;
     private Long idcrear;
     private String titulocrear;
-    private Date fechacrear;
     private String localizacioncrear;
     private String descripcioncrear;
-    private Integer preciocrear;
+    private String preciocrear;
+    private String seccioncrear;
 
     @Inject
     private MiSesion ctrl;
@@ -61,9 +62,9 @@ public class Controlador_Login implements Serializable {
         users.add(new Usuario(123L, "1234", "22551122H", "pepe_ss@gmail.com", "José", "Salas Segura", "Hombre", new Date(1997 - 1900, 11, 6), 29700, "C/Agustina n22 2ºI", "Málaga", "Málaga", new Date(2015 - 1900, 4, 1), 80, 950221436, 651203344, "Efectivo", new Perfil(Perfil.Rol.SCOUTER), new Seccion(Seccion.Secciones.Scouter_Apoyo)));
         users.add(new Usuario(124L, "1234", "12345678A", "anam_gg@gmail.com", "Ana María", "González Gómez", "Mujer", new Date(1997 - 1900, 22, 4), 29720, "C/Manuela Carmona n1 1ºF", "Málaga", "Málaga", new Date(2015 - 1900, 2, 1), 65, 953646811, 621300044, "Efectivo", new Perfil(Perfil.Rol.COORDSEC), new Seccion(Seccion.Secciones.Lobatos)));
         events = new ArrayList<>();
-        events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+        events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(Secciones.Castores)));
+        events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(Secciones.Lobatos)));
+        events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200, new Seccion(Secciones.Rovers_Compañeros)));
 
         List<Evento> eventsaux = new ArrayList<>();
         eventsaux.add(events.get(0));
@@ -117,16 +118,44 @@ public class Controlador_Login implements Serializable {
         return users.get(i);
     }
     
-    public void CrearEvento(){
+    public String CrearEvento(){
         
         idcrear=events.get(events.size()-1).getId()+1L;
+        Seccion sec=null;
+        int año=Integer.parseInt(añocrear);
+        int mes=Integer.parseInt(mescrear);
+        int dia=Integer.parseInt(diacrear);
+        int precio=Integer.parseInt(preciocrear);
         
-        Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, preciocrear);
+        Date fechacrear=new Date(año-1900, mes-1, dia);
+        
+        switch (seccioncrear) {
+            case "Castores":
+                sec= new Seccion(Secciones.Castores);
+                break;
+            case "Lobatos":
+                sec= new Seccion(Secciones.Lobatos);
+                break;
+            case "Scouts":
+                sec= new Seccion(Secciones.Tropa_Scout);
+                break;
+            case "Escultas":
+                sec= new Seccion(Secciones.Escultas_Pioneros);
+                break;
+            case "Rovers":
+                sec= new Seccion(Secciones.Rovers_Compañeros);
+                break;
+            default:
+                break;
+        }
         
         
+        Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, precio, sec);
         
         events.add(ev);
         ctrle.setEventosj(events);
+        
+        return "Lista_eventos.xhtml";
     }
 
     /**
@@ -270,20 +299,6 @@ public class Controlador_Login implements Serializable {
     }
 
     /**
-     * @return the fechacrear
-     */
-    public Date getFechacrear() {
-        return fechacrear;
-    }
-
-    /**
-     * @param fechacrear the fechacrear to set
-     */
-    public void setFechacrear(Date fechacrear) {
-        this.fechacrear = fechacrear;
-    }
-
-    /**
      * @return the localizacioncrear
      */
     public String getLocalizacioncrear() {
@@ -312,20 +327,6 @@ public class Controlador_Login implements Serializable {
     }
 
     /**
-     * @return the preciocrear
-     */
-    public Integer getPreciocrear() {
-        return preciocrear;
-    }
-
-    /**
-     * @param preciocrear the preciocrear to set
-     */
-    public void setPreciocrear(Integer preciocrear) {
-        this.preciocrear = preciocrear;
-    }
-
-    /**
      * @return the ctrle
      */
     public Control_Eventos getCtrle() {
@@ -342,43 +343,71 @@ public class Controlador_Login implements Serializable {
     /**
      * @return the añocrear
      */
-    public int getAñocrear() {
+    public String getAñocrear() {
         return añocrear;
     }
 
     /**
      * @param añocrear the añocrear to set
      */
-    public void setAñocrear(int añocrear) {
+    public void setAñocrear(String añocrear) {
         this.añocrear = añocrear;
     }
 
     /**
      * @return the mescrear
      */
-    public int getMescrear() {
+    public String getMescrear() {
         return mescrear;
     }
 
     /**
      * @param mescrear the mescrear to set
      */
-    public void setMescrear(int mescrear) {
+    public void setMescrear(String mescrear) {
         this.mescrear = mescrear;
     }
 
     /**
      * @return the diacrear
      */
-    public int getDiacrear() {
+    public String getDiacrear() {
         return diacrear;
     }
 
     /**
      * @param diacrear the diacrear to set
      */
-    public void setDiacrear(int diacrear) {
+    public void setDiacrear(String diacrear) {
         this.diacrear = diacrear;
+    }
+
+    /**
+     * @return the preciocrear
+     */
+    public String getPreciocrear() {
+        return preciocrear;
+    }
+
+    /**
+     * @param preciocrear the preciocrear to set
+     */
+    public void setPreciocrear(String preciocrear) {
+        this.preciocrear = preciocrear;
+    }
+
+    /**
+     * @return the seccioncrear
+     */
+    public String getSeccioncrear() {
+        return seccioncrear;
+    }
+
+    /**
+     * @param seccioncrear the seccioncrear to set
+     */
+    public void setSeccioncrear(String seccioncrear) {
+        this.seccioncrear = seccioncrear;
     }
 
 }
