@@ -31,8 +31,12 @@
                 <p> Estás inscrito en este evento.</p>
             </c:when>
             <c:otherwise>
-                <h:button value="Inscribirse" ></h:button>
-                <br></br><br></br>
+                <c:choose>
+                    <c:when test="#{!(miSesion.coordGen || miSesion.cordSec)}">
+                        <h:button value="Inscribirse" ></h:button>
+                        <br></br><br></br>
+                    </c:when>
+                </c:choose>
             </c:otherwise>
         </c:choose>
         <h:button value="Modificar" ></h:button>
@@ -48,7 +52,7 @@
                         <p:layoutUnit position="west" resizable="true" size="300" minSize="40" maxSize="500">
                             <h:outputText value="#{comments.usuario.nombre} #{comments.usuario.apellidos} #{comments.fecha_creacion}" />
                         </p:layoutUnit>
-                            
+
                         <p:layoutUnit position="center">
                             <h:outputText value="#{comments.texto}" />
                         </p:layoutUnit>

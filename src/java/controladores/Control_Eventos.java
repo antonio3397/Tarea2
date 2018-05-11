@@ -27,6 +27,7 @@ import javax.enterprise.context.SessionScoped;
 public class Control_Eventos implements Serializable{
 
     private List<Evento> eventosj;
+    private List<Evento> eventosj2;
     private String event;
     private String añocrear;
     private String mescrear;
@@ -285,6 +286,20 @@ public class Control_Eventos implements Serializable{
      */
     public void setSeccioncrear(String seccioncrear) {
         this.seccioncrear = seccioncrear;
+    }
+
+    /**
+     * @return the eventosj2
+     */
+    public List<Evento> getEventosj2() {
+        return eventosj2;
+    }
+
+    /**
+     * @param eventosj2 the eventosj2 to set
+     */
+    public void setEventosj2(List<Evento> eventosj2) {
+        this.eventosj2 = eventosj2;
     }
 
 }
