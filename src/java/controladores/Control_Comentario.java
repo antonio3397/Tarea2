@@ -71,7 +71,7 @@ public class Control_Comentario {
         long ID = Integer.decode(event);
         Evento evento = ev.buscarEvento(ID);
         long tam = Comentarios.size();
-        Comentario coment = new Comentario(ID, men, dia, evento, user);
+        Comentario coment = new Comentario(tam, men, dia, evento, user);
         Comentarios.add(coment);
         
     }
