@@ -23,14 +23,8 @@ public class MiSesion implements Serializable {
 
     private Usuario user;
     private List<Usuario> users;
+    private List<Usuario> users2;
 
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
     /**
      * Creates a new instance of MiSesion
      */
@@ -66,6 +60,7 @@ public class MiSesion implements Serializable {
         Usuario b = buscarUsuario(id);
 
         users.remove(b);
+        users2.remove(b);
 
         return "Lista_Usuarios.xhtml";
     }
@@ -83,9 +78,31 @@ public class MiSesion implements Serializable {
     public void setUsers(List<Usuario> users) {
         this.users = users;
     }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
     
-    public boolean isCoord() {
+    public boolean isCoordGen() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN);
+    }
+
+    /**
+     * @return the users2
+     */
+    public List<Usuario> getUsers2() {
+        return users2;
+    }
+
+    /**
+     * @param users2 the users2 to set
+     */
+    public void setUsers2(List<Usuario> users2) {
+        this.users2 = users2;
     }
     
 }

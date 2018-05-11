@@ -125,6 +125,7 @@ public class Usuario implements Serializable {
         this.metodo_pago=metodo_pago;
         this.perfiles = perfil;
         this.seccion=seccion;
+        this.cuota_total=cuota_total;
     }
     
     public Long getId() {
