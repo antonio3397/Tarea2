@@ -90,6 +90,14 @@ public class MiSesion implements Serializable {
     public boolean isCoordGen() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN);
     }
+    
+    public boolean isCordSec() {
+        return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDSEC);
+    }
+    
+    public boolean isScouter() {
+        return this.user.getPerfiles().getRol().equals(Perfil.Rol.SCOUTER);
+    }
 
     /**
      * @return the users2

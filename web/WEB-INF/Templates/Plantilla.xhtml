@@ -36,7 +36,7 @@ and open the template in the editor.
                         <a class="nav-link" href="Lista_eventos.xhtml">Eventos</a>
                     </li>
                     <c:choose>
-                        <c:when test="#{miSesion.coordGen}">
+                        <c:when test="#{miSesion.coordGen || miSesion.cordSec || miSesion.scouter}">
                             <li class="nav-item">
                                 <a class="nav-link" href="Lista_Usuarios.xhtml">Usuarios</a>
                             </li>
