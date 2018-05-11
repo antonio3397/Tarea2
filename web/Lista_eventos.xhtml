@@ -14,10 +14,14 @@
     <ui:define name="title">Eventos</ui:define>
 
     <ui:define name="content">
-        <div class = "container-fluid">
-            <button type="button" class="btn btn-success" href="#">CREAR EVENTO +</button>
-        </div>
-        <br/>
+        <c:choose>
+            <c:when test="#{miSesion.isCoord()}">
+                <div class = "container-fluid">
+                    <a class="btn btn-success" href="CrearEvento.xhtml" role="button">CREAR EVENTO +</a>
+                </div>
+                <br/>
+            </c:when>
+        </c:choose>
         <div class="container-fluid">
             <p:dataTable var="events" value="#{Eventos.eventosj}">
                 <p:column headerText="Titulo">
@@ -41,11 +45,15 @@
                         <f:param name="Evento" value="#{events.id}"/>
                     </p:link>	
                 </p:column>
-                <p:column headerText="Borrar">
-                    <h:form>
-                        <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
-                    </h:form>
-                </p:column>
+                <c:choose>
+                    <c:when test="#{miSesion.isCoord()}">
+                        <p:column headerText="Borrar">
+                            <h:form>
+                                <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                    </c:when>
+                </c:choose>
             </p:dataTable>
         </div>
     </ui:define>

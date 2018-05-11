@@ -16,29 +16,39 @@
     <ui:define name="content">
         <br/>
         <div class="container-fluid">
-            <p:dataTable var="events" value="#{miSesion.user.eventos}">
-                <p:column headerText="Titulo">
-                    <h:outputText value="#{events.titulo}" />F
-                </p:column>
-                <p:column headerText="Descripcion">
-                    <div class="col-80 text-truncate">
-                        #{events.descripcion}
-                    </div>
-                </p:column>
+            <c:choose>
+                <c:when test="#{miSesion.user.eventos == null}">
+                    <h:outputText value="No te has suscrito a ningún evento"></h:outputText><br />
+                </c:when>
+                <c:when test="#{miSesion.user.eventos.size() == 0}">
+                    <h:outputText value="No te has suscrito a ningún evento"></h:outputText><br />
+                </c:when>
+                <c:otherwise>
+                    <p:dataTable var="events" value="#{miSesion.user.eventos}">
+                        <p:column headerText="Titulo">
+                            <h:outputText value="#{events.titulo}" />
+                        </p:column>
+                        <p:column headerText="Descripcion">
+                            <div class="col-80 text-truncate">
+                                #{events.descripcion}
+                            </div>
+                        </p:column>
 
-                <p:column headerText="Fecha">
-                    <h:outputText value="#{events.fecha}" />
-                </p:column>
+                        <p:column headerText="Fecha">
+                            <h:outputText value="#{events.fecha}" />
+                        </p:column>
 
-                <p:column headerText="Lugar">
-                    <h:outputText value="#{events.localizacion}" />
-                </p:column>
-                <p:column headerText="Más">
-                    <p:link outcome="Eventos" value="Ver más">
-                        <f:param name="Evento" value="#{events.id}"/>
-                    </p:link>	
-                </p:column>
-            </p:dataTable>
+                        <p:column headerText="Lugar">
+                            <h:outputText value="#{events.localizacion}" />
+                        </p:column>
+                        <p:column headerText="Más">
+                            <p:link outcome="Eventos" value="Ver más">
+                                <f:param name="Evento" value="#{events.id}"/>
+                            </p:link>	
+                        </p:column>
+                    </p:dataTable>
+                </c:otherwise>
+            </c:choose>
         </div>
     </ui:define>
 </ui:composition>
