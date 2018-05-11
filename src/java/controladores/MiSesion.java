@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import clases.Perfil;
 import clases.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -81,6 +82,10 @@ public class MiSesion implements Serializable {
      */
     public void setUsers(List<Usuario> users) {
         this.users = users;
+    }
+    
+    public boolean isCoord() {
+        return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN);
     }
     
 }
