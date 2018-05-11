@@ -21,36 +21,28 @@ import javax.persistence.OneToMany;
 @Entity
 public class Seccion implements Serializable {
 
-    
-    
+     public enum Secciones{
+      Castores, Lobatos, Tropa_Scout, Escultas_Pioneros, Rovers_Compañeros, Scouter_Apoyo, TODAS;
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable=false)
-    private String Nombre;
+    @Column(nullable = false)
+    private Secciones Nombre;
     private Integer Edad_minima;
     private Integer Edad_maxima;
-    
+
     @OneToMany(mappedBy = "seccion")
     private List<Usuario> usuarios;
-    
+
     @OneToMany(mappedBy = "seccion")
     private List<Evento> eventos;
-    
-    /**
-     * @return the Nombre
-     */
-    public String getNombre() {
-        return Nombre;
+
+    public Seccion(Secciones nombre) {
+        this.Nombre = nombre;
     }
 
-    /**
-     * @param Nombre the Nombre to set
-     */
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
 
     /**
      * @return the Edad_minima
@@ -64,6 +56,14 @@ public class Seccion implements Serializable {
      */
     public void setEdad_minima(Integer Edad_minima) {
         this.Edad_minima = Edad_minima;
+    }
+
+    public Secciones getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(Secciones Nombre) {
+        this.Nombre = Nombre;
     }
 
     /**
@@ -140,5 +140,5 @@ public class Seccion implements Serializable {
     public String toString() {
         return "trabajo.Seccion[ id=" + id + " ]";
     }
-    
+
 }
