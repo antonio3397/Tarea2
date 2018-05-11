@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
@@ -70,7 +71,12 @@ public class Control_Eventos implements Serializable{
     
     public String CrearEvento(){
         
-        idcrear=eventosj.get(eventosj.size()-1).getId()+1L;
+        if(eventosj.isEmpty() || eventosj==null){
+            Random rd = new Random();
+            idcrear=(long)rd.nextInt(2000);
+        } else {
+            idcrear=eventosj.get(eventosj.size()-1).getId()+1L;
+        }
         Seccion sec=null;
         int año=Integer.parseInt(añocrear);
         int mes=Integer.parseInt(mescrear);
@@ -103,6 +109,17 @@ public class Control_Eventos implements Serializable{
         Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, precio, sec);
         
         eventosj.add(ev);
+        
+        añocrear=null;
+        mescrear=null;
+        diacrear=null;
+        idcrear=null;
+        titulocrear=null;
+        localizacioncrear=null;
+        descripcioncrear=null;
+        preciocrear=null;
+        seccioncrear=null;
+        
         
         return "Lista_eventos.xhtml";
     }

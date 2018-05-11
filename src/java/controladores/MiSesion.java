@@ -24,13 +24,6 @@ public class MiSesion implements Serializable {
     private Usuario user;
     private List<Usuario> users;
 
-    public Usuario getUser() {
-        return user;
-    }
-
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
     /**
      * Creates a new instance of MiSesion
      */
@@ -82,6 +75,14 @@ public class MiSesion implements Serializable {
      */
     public void setUsers(List<Usuario> users) {
         this.users = users;
+    }
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
     
     public boolean isCoordGen() {
