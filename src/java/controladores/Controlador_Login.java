@@ -108,7 +108,7 @@ public class Controlador_Login implements Serializable {
 
         ctrle.setEventosj(events);
         List<Evento> events2 = new ArrayList<>();
-        if (aux.getPerfiles().equals(Perfil.Rol.COORDGEN)) {
+        if (aux.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN)) {
             for (Evento e : events) {
                 events2.add(e);
             }
