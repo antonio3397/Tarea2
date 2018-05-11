@@ -24,7 +24,7 @@
         </blockquote>
         <p><h:outputText value="#{Eventos.verEvento().descripcion}"/></p>
         <p><h:outputText value="Se hará en #{Eventos.verEvento().localizacion} en #{Eventos.verEvento().fecha}"/></p>
-        <img src="Senderismo.jpeg" alt="Senderismo"></img>
+        <img class= "ml-5" src="Senderismo.jpeg" alt="Senderismo"></img>
         <br/><br/>
         <c:choose>
             <c:when test = "#{miSesion.user.eventos.contains(Eventos.verEvento())}">
