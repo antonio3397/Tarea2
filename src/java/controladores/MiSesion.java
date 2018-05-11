@@ -13,6 +13,18 @@ import java.io.Serializable;
 import java.util.List;
 import javax.faces.context.FacesContext;
 
+/*
+Tipos de id que tiene cada sección:
+TODAS -> 0L
+CASTORES -> 1L
+LOBATOS -> 2L
+ROVERS COMPAÑEROS -> 3L
+TROPA SCOUT -> 4L
+ESCULTAS PIONEROS -> 5L
+*/
+
+
+
 /**
  *
  * @author DavidDR
