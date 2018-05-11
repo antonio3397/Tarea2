@@ -14,37 +14,67 @@
     <ui:define name="title">Eventos</ui:define>
 
     <ui:define name="content">
-        <div class = "container-fluid">
-            <button type="button" class="btn btn-success" href="#">CREAR USUARIO +</button>
-        </div>
-        <br/>
-        <div class="container-fluid">
-            <p:dataTable var="users" value="#{miSesion.users2}">                 
-                <p:column headerText="ID">
-                    <h:outputText value="#{users.id}" />
-                </p:column>
-                <p:column headerText="DNI">
-                    <h:outputText value="#{users.NIF}" />
-                </p:column>
 
-                <p:column headerText="Nombre">
-                    <h:outputText value="#{users.nombre}" />
-                </p:column>
+        <c:choose>
+            <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
+                <div class = "container-fluid">
+                    <button type="button" class="btn btn-success" href="#">CREAR USUARIO +</button>
+                </div>
+                <br/>
+                <div class="container-fluid">
+                    <p:dataTable var="users" value="#{miSesion.users2}">                 
+                        <p:column headerText="ID">
+                            <h:outputText value="#{users.id}" />
+                        </p:column>
+                        <p:column headerText="DNI">
+                            <h:outputText value="#{users.NIF}" />
+                        </p:column>
 
-                <p:column headerText="Apellidos">
-                    <h:outputText value="#{users.apellidos}" />
-                </p:column>
-                <p:column headerText="Más">                          
-                    <p:link outcome="OtroPerfil" value="Ver perfil">
-                        <f:param name="us" value="#{users.id}"/>
-                    </p:link>	
-                </p:column>
-                <p:column headerText="Borrar">
-                    <h:form>
-                        <p:commandButton value="Eliminar" ajax="false" actionListener="#{miSesion.borrarUsuario(users.id)}"></p:commandButton>
-                    </h:form>
-                </p:column>
-            </p:dataTable>
-        </div>
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{users.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="Apellidos">
+                            <h:outputText value="#{users.apellidos}" />
+                        </p:column>
+                        <p:column headerText="Más">                          
+                            <p:link outcome="OtroPerfil" value="Ver perfil">
+                                <f:param name="us" value="#{users.id}"/>
+                            </p:link>	
+                        </p:column>
+                        <p:column headerText="Borrar">
+                            <h:form>
+                                <p:commandButton value="Eliminar" ajax="false" actionListener="#{miSesion.borrarUsuario(users.id)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </c:when>
+            <c:when test="#{miSesion.scouter}">
+                <div class="container-fluid">
+                    <p:dataTable var="users" value="#{miSesion.users2}">                 
+                        <p:column headerText="ID">
+                            <h:outputText value="#{users.id}" />
+                        </p:column>
+                        <p:column headerText="DNI">
+                            <h:outputText value="#{users.NIF}" />
+                        </p:column>
+
+                        <p:column headerText="Nombre">
+                            <h:outputText value="#{users.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="Apellidos">
+                            <h:outputText value="#{users.apellidos}" />
+                        </p:column>
+                        <p:column headerText="Más">                          
+                            <p:link outcome="OtroPerfil" value="Ver perfil">
+                                <f:param name="us" value="#{users.id}"/>
+                            </p:link>	
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </c:when>
+        </c:choose>
     </ui:define>
 </ui:composition>
