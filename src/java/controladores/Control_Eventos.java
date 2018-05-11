@@ -87,19 +87,19 @@ public class Control_Eventos implements Serializable{
         
         switch (seccioncrear) {
             case "Castores":
-                sec= new Seccion(Seccion.Secciones.Castores);
+                sec= new Seccion(1L, Seccion.Secciones.Castores);
                 break;
             case "Lobatos":
-                sec= new Seccion(Seccion.Secciones.Lobatos);
+                sec= new Seccion(2L, Seccion.Secciones.Lobatos);
                 break;
             case "Scouts":
-                sec= new Seccion(Seccion.Secciones.Tropa_Scout);
+                sec= new Seccion(4L, Seccion.Secciones.Tropa_Scout);
                 break;
             case "Escultas":
-                sec= new Seccion(Seccion.Secciones.Escultas_Pioneros);
+                sec= new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
                 break;
             case "Rovers":
-                sec= new Seccion(Seccion.Secciones.Rovers_Compañeros);
+                sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
                 break;
             default:
                 break;

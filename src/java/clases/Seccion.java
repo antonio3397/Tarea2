@@ -39,7 +39,8 @@ public class Seccion implements Serializable {
     @OneToMany(mappedBy = "seccion")
     private List<Evento> eventos;
 
-    public Seccion(Secciones nombre) {
+    public Seccion(Long id, Secciones nombre) {
+        this.id = id;
         this.Nombre = nombre;
     }
 
