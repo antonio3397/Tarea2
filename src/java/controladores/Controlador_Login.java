@@ -30,27 +30,33 @@ public class Controlador_Login implements Serializable {
     private String password;
     private String email;
     private List<Usuario> users;
-    
+    private List<Evento> events;
     private String otro;
 
     private Usuario user;
-    
-   @Inject
-   private MiSesion ctrl;
-  
-   public Controlador_Login() {
+
+    @Inject
+    private MiSesion ctrl;
+
+    @Inject
+    private Control_Eventos ctrle;
+
+    public Controlador_Login() {
         users = new ArrayList<>();
         users.add(new Usuario(121L, "123456", "78556410V", "paco_mg99@hotmail.com", "Francisco", "Marin Garzón", "Hombre", new Date(1997 - 1900, 3, 2), 29610, "C/Luisa Ordoñez n15 1ºB", "Málaga", "Málaga", new Date(2015 - 1900, 3, 2), 50, 921121314, 654121314, "Tarjeta_Crédito", new Perfil(Perfil.Rol.EDUCANDO)));
         users.add(new Usuario(122L, "234567", "71156411N", "paula_vp@hotmail.com", "Paula", "Vergara Perez", "Mujer", new Date(1997 - 1900, 11, 6), 29615, "C/Santa Rosa n17 5ºC", "Málaga", "Málaga", new Date(2015 - 1900, 10, 11), 75, 921675432, 654960584, "Tarjeta_Crédito", new Perfil(Perfil.Rol.COORDGEN)));
-        
-        List<Evento> events = new ArrayList<>();
-        events.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        users.get(0).setEventos(events);
+        events = new ArrayList<>();
+        events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
+        events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+
+        List<Evento> eventsaux = new ArrayList<>();
+        eventsaux.add(events.get(0));
+        users.get(0).setEventos(eventsaux);
     }
 
     public String autenticar() {
 
-        
         Iterator<Usuario> iter = users.iterator();
 
         boolean pV = false, exist = false;
@@ -78,15 +84,22 @@ public class Controlador_Login implements Serializable {
             return null;
         }
 
+        List<Evento> listaEvents;
+        listaEvents = new ArrayList<>();
+        listaEvents = events;
+
         ctrl.setUsers(users);
         ctrl.setUser(aux);
+        ctrle.setEventosj(listaEvents);
         return "Inicio.xhtml";
     }
-    
-        public Usuario verUsuario(){
+
+    public Usuario verUsuario() {
         int ID = Integer.decode(otro);
-        int i=0;
-        while(i<users.size()&&users.get(i).getId()!=ID)i++;
+        int i = 0;
+        while (i < users.size() && users.get(i).getId() != ID) {
+            i++;
+        }
         return users.get(i);
     }
 
@@ -172,6 +185,20 @@ public class Controlador_Login implements Serializable {
      */
     public void setCtrl(MiSesion ctrl) {
         this.ctrl = ctrl;
+    }
+
+    /**
+     * @return the events
+     */
+    public List<Evento> getEvents() {
+        return events;
+    }
+
+    /**
+     * @param events the events to set
+     */
+    public void setEvents(List<Evento> events) {
+        this.events = events;
     }
 
 }
