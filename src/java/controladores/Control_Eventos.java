@@ -160,6 +160,7 @@ public class Control_Eventos implements Serializable{
         return eventosj.get(i);
     }
 
+
     /**
      * @return the añocrear
      */
@@ -285,4 +286,5 @@ public class Control_Eventos implements Serializable{
     public void setSeccioncrear(String seccioncrear) {
         this.seccioncrear = seccioncrear;
     }
+
 }
