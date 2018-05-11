@@ -8,19 +8,29 @@ package controladores;
 import clases.Usuario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
  * @author josealonso
  */
 @Named(value = "control_Registro")
-@Dependent
+@ManagedBean
+@RequestScoped
 public class Control_Registro {
+
+    
     
     private Usuario user=new Usuario();
     private List<Usuario> list_User=new ArrayList<>();
+    private boolean tieneLegal;
+    private String rol;
+    
+    
     /**
      * Creates a new instance of Control_Registro
      */
@@ -34,6 +44,33 @@ public class Control_Registro {
         return user;
     }
 
+    /**
+     * @return the rol
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    /**
+     * @return the tieneLegal
+     */
+    public boolean isTieneLegal() {
+        return tieneLegal;
+    }
+
+    /**
+     * @param tieneLegal the tieneLegal to set
+     */
+    public void setTieneLegal(boolean tieneLegal) {
+        this.tieneLegal = tieneLegal;
+    }
     /**
      * @param user the user to set
      */
@@ -55,8 +92,21 @@ public class Control_Registro {
         this.list_User = list_User;
     }
     
-    public void agregarPersona (){
+    public String agregarPersona (){
         this.list_User.add(user);
+        return "exitoRegistro.xhtml";
     }
-    
+   public String quien(){
+       if(rol.equalsIgnoreCase("SCOUTER") && !tieneLegal){
+           return "registroSCOUTER.xhtml";
+       } else if(rol.equalsIgnoreCase("EDUCANDO") && tieneLegal){
+           return "registroEDUCANDO_PADRES.xhtml";
+       } else if(rol.equalsIgnoreCase("EDUCANDO") && !tieneLegal){
+           return "registroEDUCANDO_NO_PADRES.xhtml";
+       } else {
+          FacesContext fm = FacesContext.getCurrentInstance();
+           fm.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El scouter no puede ser menor", "Contrasenia incorrecta"));
+       }
+       return null;
+   }
 }
