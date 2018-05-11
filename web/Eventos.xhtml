@@ -26,24 +26,28 @@
         <p><h:outputText value="Se hará en #{Eventos.verEvento().localizacion} en #{Eventos.verEvento().fecha}"/></p>
         <img src="Senderismo.jpeg" alt="Senderismo"></img>
         <br/><br/>
-        <h:button value="Inscribirse" ></h:button>
+        <h:button value="Inscribirse" ><br></br></h:button> <h:button value="Modificar" ></h:button>
         <br></br><br></br>
         <h5>Comentarios</h5>
         <c:choose>
-            <c:when test="#{Eventos.verEvento().comentarios==null}">
+            <c:when test="#{Comentarios.hayComentarios(Eventos.verEvento())}">
                 <h:outputText value="Sea el primero en comentar"></h:outputText><br />
             </c:when>
             <c:otherwise>
-                <c:forEach items="#{Eventos.verEvento().comentarios}" var="comments" varStatus="metadata">
-                    <p:fieldset legend="#{comments.usuario} #{comments.fecha_creacion}" toggleable="true" toggleSpeed="500">
-                        <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="#{comments.texto}"></h:outputText>
-                        </h:panelGrid>
-                    </p:fieldset>
+                <c:forEach items="#{Comentarios.buscarComentarios(Eventos.verEvento())}" var="comments">
+                    <p:layout style="min-width:400px;min-height:200px;">
+                        <p:layoutUnit position="west" resizable="true" size="300" minSize="40" maxSize="500">
+                            <h:outputText value="#{comments.usuario.nombre} #{comments.usuario.apellidos} #{comments.fecha_creacion}" />
+                        </p:layoutUnit>
+                            
+                        <p:layoutUnit position="center">
+                            <h:outputText value="#{comments.texto}" />
+                        </p:layoutUnit>
+                    </p:layout>
                 </c:forEach>
             </c:otherwise>
         </c:choose>
+        <br />
         <h:form>           
             <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
                 
