@@ -6,6 +6,7 @@
 package clases;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -27,6 +28,15 @@ public class Notificacion implements Serializable {
     private String titulo;
     @Column(nullable=false)
     private String texto;
+    @Column(nullable=false)
+    private Date fecha;
+    
+    public Notificacion(NotificacionID nID,String tit, String text, Date fecha){
+        id = nID;
+        titulo = tit;
+        texto = text;
+        this.fecha = fecha;
+    }
     
     @ManyToOne
     @MapsId("usuario_id")
@@ -131,4 +141,6 @@ public class Notificacion implements Serializable {
         this.evento = evento;
     }
     
+    public Date getFecha() { return fecha; }
+    public void setEvento(Date fecha) { this.fecha = fecha; }
 }
