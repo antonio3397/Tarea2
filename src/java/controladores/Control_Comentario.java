@@ -8,6 +8,7 @@ package controladores;
 import clases.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -69,6 +70,30 @@ public class Control_Comentario {
 
     public boolean hayComentarios(String event) throws EventoException {
         return buscarComentarios(event).isEmpty();
+    }
+
+    public Comentario buscarComentario(Long id) throws ComentarioException {
+        Comentario c = null;
+        Iterator<Comentario> iter = Comentarios.iterator();
+        while (iter.hasNext() && c == null) {
+            Comentario aux = iter.next();
+            if (aux.getId().equals(id)) {
+                c = aux;
+            }
+        }
+
+        if (c == null) {
+            throw new ComentarioException("Comentario no encontrado");
+        }
+        
+        return c;
+        
+    }
+
+    public String borrarComentario(Long id) throws ComentarioException {
+        Comentario c = buscarComentario (id);
+        Comentarios.remove(c);
+        return "Eventos.html";
     }
 
     public void agnadirComentario(String event, Usuario user) throws EventoException {
