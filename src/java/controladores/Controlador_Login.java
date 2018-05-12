@@ -35,9 +35,6 @@ public class Controlador_Login implements Serializable {
     private List<Evento> events;
     private String otro;
 
-    private Usuario usermod;
-    private String seccionmod;
-
     @Inject
     private MiSesion ctrl;
 
@@ -133,71 +130,7 @@ public class Controlador_Login implements Serializable {
             i++;
         }
         
-        usermod=users.get(i);
         return users.get(i);
-    }
-    
-    public String aceptarCambios(){
-        
-        boolean enc=false;
-        int i=0;
-        Seccion sec=null;
-        
-        while(!enc && i<users.size()){
-            if(users.get(i).getId().equals(usermod.getId())){
-                enc=true;
-            }
-            i++;
-        }
-        
-        switch (seccionmod) {
-            case "Castores":
-                sec= new Seccion(1L, Seccion.Secciones.Castores);
-                break;
-            case "Lobatos":
-                sec= new Seccion(2L, Seccion.Secciones.Lobatos);
-                break;
-            case "Scouts":
-                sec= new Seccion(4L, Seccion.Secciones.Tropa_Scout);
-                break;
-            case "Escultas":
-                sec= new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
-                break;
-            case "Rovers":
-                sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
-                break;
-            default:
-                break;
-        }
-        
-        usermod.setSeccion(sec);
-        
-        users.get(i-1).setApellidos(usermod.getApellidos());
-        users.get(i-1).setCodigo_postal(usermod.getCodigo_postal());
-        users.get(i-1).setContrasenia(usermod.getContrasenia());
-        users.get(i-1).setCuota_total(usermod.getCuota_total());
-        users.get(i-1).setDireccion(usermod.getDireccion());
-        users.get(i-1).setEmail(usermod.getEmail());
-        users.get(i-1).setFecha_baja(usermod.getFecha_baja());
-        users.get(i-1).setFecha_ingreso(usermod.getFecha_ingreso());
-        users.get(i-1).setFecha_nacimiento(usermod.getFecha_nacimiento());
-        users.get(i-1).setLocalidad(usermod.getLocalidad());
-        users.get(i-1).setMetodo_pago(usermod.getMetodo_pago());
-        users.get(i-1).setMovil(usermod.getMovil());
-        users.get(i-1).setNIF(usermod.getNIF());
-        users.get(i-1).setNombre(usermod.getNombre());
-        users.get(i-1).setProvincia(usermod.getProvincia());
-        users.get(i-1).setSeccion(usermod.getSeccion());
-        users.get(i-1).setSexo(usermod.getSexo());
-        users.get(i-1).setTelefono(usermod.getTelefono());
-        
-        
-        return "Lista_Usuarios.xhtml";
-    }
-    
-    public String rechazarCambios(){
-        usermod=null;
-        return "Lista_Usuarios.xhtml";
     }
 
     /**
@@ -257,20 +190,6 @@ public class Controlador_Login implements Serializable {
     }
 
     /**
-     * @return the usermod
-     */
-    public Usuario getUsermod() {
-        return usermod;
-    }
-
-    /**
-     * @param usermod the usermod to set
-     */
-    public void setUsermod(Usuario usermod) {
-        this.usermod = usermod;
-    }
-
-    /**
      * @return the ctrl
      */
     public MiSesion getCtrl() {
@@ -310,19 +229,5 @@ public class Controlador_Login implements Serializable {
      */
     public void setCtrle(Control_Eventos ctrle) {
         this.ctrle = ctrle;
-    }
-
-    /**
-     * @return the seccionmod
-     */
-    public String getSeccionmod() {
-        return seccionmod;
-    }
-
-    /**
-     * @param seccionmod the seccionmod to set
-     */
-    public void setSeccionmod(String seccionmod) {
-        this.seccionmod = seccionmod;
     }
 }
