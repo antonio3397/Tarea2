@@ -29,25 +29,13 @@ public class Control_Eventos implements Serializable{
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
     private String event;
-    private String añocrear;
-    private String mescrear;
-    private String diacrear;
     private Long idcrear;
+    private Date fechacrear;
     private String titulocrear;
     private String localizacioncrear;
     private String descripcioncrear;
     private String preciocrear;
     private String seccioncrear;
-    
-   /* 
-    @PostConstruct
-    public void init() {
-        
-        eventosj = new ArrayList<>();
-        eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24,9, 30),"Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24,9,30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27,11,0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
-    }*/
 
     public Evento buscarEvento(Long id) throws EventoException{
         Evento enc=null;
@@ -65,6 +53,7 @@ public class Control_Eventos implements Serializable{
     public String borrarEvento(Long id) throws EventoException{
         Evento b=buscarEvento(id);
         eventosj.remove(b);
+        eventosj2.remove(b);
         return "Lista_eventos.xhtml";
     }
     
@@ -79,12 +68,7 @@ public class Control_Eventos implements Serializable{
             idcrear=eventosj.get(eventosj.size()-1).getId()+1L;
         }
         Seccion sec=null;
-        int año=Integer.parseInt(añocrear);
-        int mes=Integer.parseInt(mescrear);
-        int dia=Integer.parseInt(diacrear);
         int precio=Integer.parseInt(preciocrear);
-        
-        Date fechacrear=new Date(año-1900, mes-1, dia);
         
         switch (seccioncrear) {
             case "Castores":
@@ -110,10 +94,9 @@ public class Control_Eventos implements Serializable{
         Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, precio, sec);
         
         eventosj.add(ev);
+        eventosj2.add(ev);
         
-        añocrear=null;
-        mescrear=null;
-        diacrear=null;
+        fechacrear=null;
         idcrear=null;
         titulocrear=null;
         localizacioncrear=null;
@@ -121,6 +104,18 @@ public class Control_Eventos implements Serializable{
         preciocrear=null;
         seccioncrear=null;
         
+        
+        return "Lista_eventos.xhtml";
+    }
+    
+    public String cancelarcrear(){
+        fechacrear=null;
+        idcrear=null;
+        titulocrear=null;
+        localizacioncrear=null;
+        descripcioncrear=null;
+        preciocrear=null;
+        seccioncrear=null;
         
         return "Lista_eventos.xhtml";
     }
@@ -159,49 +154,6 @@ public class Control_Eventos implements Serializable{
         int i=0;
         while(i<eventosj.size()&&eventosj.get(i).getId()!=ID)i++;
         return eventosj.get(i);
-    }
-
-
-    /**
-     * @return the añocrear
-     */
-    public String getAñocrear() {
-        return añocrear;
-    }
-
-    /**
-     * @param añocrear the añocrear to set
-     */
-    public void setAñocrear(String añocrear) {
-        this.añocrear = añocrear;
-    }
-
-    /**
-     * @return the mescrear
-     */
-    public String getMescrear() {
-        return mescrear;
-    }
-
-    /**
-     * @param mescrear the mescrear to set
-     */
-    public void setMescrear(String mescrear) {
-        this.mescrear = mescrear;
-    }
-
-    /**
-     * @return the diacrear
-     */
-    public String getDiacrear() {
-        return diacrear;
-    }
-
-    /**
-     * @param diacrear the diacrear to set
-     */
-    public void setDiacrear(String diacrear) {
-        this.diacrear = diacrear;
     }
 
     /**
@@ -300,6 +252,20 @@ public class Control_Eventos implements Serializable{
      */
     public void setEventosj2(List<Evento> eventosj2) {
         this.eventosj2 = eventosj2;
+    }
+
+    /**
+     * @return the fechacrear
+     */
+    public Date getFechacrear() {
+        return fechacrear;
+    }
+
+    /**
+     * @param fechacrear the fechacrear to set
+     */
+    public void setFechacrear(Date fechacrear) {
+        this.fechacrear = fechacrear;
     }
 
 }

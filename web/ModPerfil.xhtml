@@ -9,9 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
+    
     <f:metadata>
-        <f:viewParam name="us" value="#{controlador_Login.otro}"/>
+        <f:viewParam name="use" value="#{controlador_Login.usermod}"/>
     </f:metadata>
     <ui:define name="title">Documentos</ui:define>
 
@@ -20,42 +20,48 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nombre: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().nombre}"/>
+                    <p:inputText value="#{controlador_Login.usermod.nombre}"/>
                     <h:outputLabel value="Apellidos: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().apellidos}"/>
+                    <p:inputText value="#{controlador_Login.usermod.apellidos}"/>
                     <h:outputLabel value="Nif: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().NIF}"/>
+                    <p:inputText value="#{controlador_Login.usermod.NIF}"/>
                     <h:outputLabel value="Sexo: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().sexo}"/>
+                    <p:inputText value="#{controlador_Login.usermod.sexo}"/>
                     <h:outputLabel value="Email: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().email}"/>
+                    <p:inputText value="#{controlador_Login.usermod.email}"/>
                     <h:outputLabel value="Fecha de nacimiento: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().fecha_nacimiento}"/>
+                    <p:calendar value="#{controlador_Login.usermod.fecha_nacimiento}" navigator="true"/>
                     <h:outputLabel value="Código postal: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().codigo_postal}"/>
+                    <p:inputText value="#{controlador_Login.usermod.codigo_postal}"/>
                     <h:outputLabel value="Dirección: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().direccion}"/>
+                    <p:inputText value="#{controlador_Login.usermod.direccion}"/>
                     <h:outputLabel value="Provincia: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().provincia}"/>
+                    <p:inputText value="#{controlador_Login.usermod.provincia}"/>
                     <h:outputLabel value="Localidad: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().localidad}"/>
+                    <p:inputText value="#{controlador_Login.usermod.localidad}"/>
                     <h:outputLabel value="Fecha de ingreso: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().fecha_ingreso}"/>
+                    <p:calendar navigator="true" value="#{controlador_Login.usermod.fecha_ingreso}" />
                     <h:outputLabel value="Fecha de baja: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().fecha_baja}"/>
+                    <p:calendar navigator="true" value="#{controlador_Login.usermod.fecha_baja}" />
                     <h:outputLabel value="Cuota total: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().cuota_total}"/>
+                    <p:inputText value="#{controlador_Login.usermod.cuota_total}"/>
                     <h:outputLabel value="Teléfono: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().telefono}"/>
+                    <p:inputText value="#{controlador_Login.usermod.telefono}"/>
                     <h:outputLabel value="Móvil: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().movil}"/>
+                    <p:inputText value="#{controlador_Login.usermod.movil}"/>
                     <h:outputLabel value="Método de pago: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().metodo_pago}"/>
+                    <p:inputText value="#{controlador_Login.usermod.metodo_pago}"/>
                     <h:outputLabel value="Sección: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().seccion.nombre}"/>
-                    <p:link outcome="ModPerfil.xhtml" value="MODIFICAR PERFIL">
-                        <f:param name="use" value="#{controlador_Login.usermod}"/>
-                    </p:link>
+                    <p:selectOneMenu value="#{controlador_Login.seccionmod}">
+                    <f:selectItem itemLabel="Selecciona uno" itemValue="" />
+                    <f:selectItem itemLabel="Castores" itemValue="Castores" />
+                    <f:selectItem itemLabel="Lobatos" itemValue="Lobatos" />
+                    <f:selectItem itemLabel="Scouts" itemValue="Scouts" />
+                    <f:selectItem itemLabel="Escultas" itemValue="Escultas" />
+                    <f:selectItem itemLabel="Rovers" itemValue="Rovers" />
+                    </p:selectOneMenu>
+                    <p:commandButton value="Aceptar cambios" action="#{controlador_Login.autenticar()}" ajax="false"/>
+                    <p:commandButton value="Rechazar cambios" action="#{controlador_Login.autenticar()}" ajax="false"/>
                 </h:panelGrid>
             </h:form>
         </div>
