@@ -50,7 +50,11 @@ and open the template in the editor.
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="Perfil.xhtml">Mis datos</a>
                             <a class="dropdown-item" href="Lista_notificaciones.xhtml">Notificaciones</a>
-                            <a class="dropdown-item" href="inscripciones.xhtml">Mis eventos</a>
+                            <c:choose>
+                                <c:when test="#{miSesion.scouter || miSesion.educando}">
+                                    <a class="dropdown-item" href="inscripciones.xhtml">Mis eventos</a>
+                                </c:when>
+                            </c:choose>
                             <div class="dropdown-divider"></div>
                             <h:form>
                                 <p:commandButton value="Cerrar Sesión" action="#{miSesion.logout()}" ajax="false" styleClass="ui-priority-primary"/>
