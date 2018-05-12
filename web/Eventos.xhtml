@@ -68,7 +68,7 @@
                         </p:layoutUnit>
 
                         <p:layoutUnit position="center">
-                            <h:outputText value="#{comments.texto}" />
+                            <h:outputText value="#{comments.texto}" style="white-space:pre;"  />
                         </p:layoutUnit>
                     </p:layout>
                 </c:forEach>
@@ -76,12 +76,12 @@
         </c:choose>
         <br />
         <h:form>
-            <p:editor id="editor" widgetVar="editorWidget" value="#{editorView.text}" width="600" />
+            <p:inputTextarea rows="10" cols="50" value="#{Comentarios.mensaje}" />
             
             <h:panelGrid columns="2" style="margin-top: 10px">
-                <p:commandButton value="Submit" update="display" oncomplete="PF('editorWidget').clear();" icon="ui-icon-disk" ajax="false" actionListener="#{Comentarios.agnadirComentario(editorView.text, Eventos.event, miSesion.user)}" />
-                
-                <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+
+                <p:commandButton value="Submit" update="display" ajax="false" actionListener="#{Comentarios.agnadirComentario(Eventos.event, miSesion.user)}" icon="ui-icon-disk"  />
+
             </h:panelGrid>
         </h:form> 
     </ui:define>
