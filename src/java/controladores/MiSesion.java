@@ -112,6 +112,10 @@ public class MiSesion implements Serializable {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.SCOUTER);
     }
 
+    public boolean isEducando() {
+        return this.user.getPerfiles().getRol().equals(Perfil.Rol.EDUCANDO);
+    }
+    
     /**
      * @return the users2
      */
