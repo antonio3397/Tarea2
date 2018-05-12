@@ -10,6 +10,7 @@ import clases.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.context.FacesContext;
 
@@ -21,10 +22,7 @@ LOBATOS -> 2L
 ROVERS COMPAÑEROS -> 3L
 TROPA SCOUT -> 4L
 ESCULTAS PIONEROS -> 5L
-*/
-
-
-
+ */
 /**
  *
  * @author DavidDR
@@ -42,7 +40,7 @@ public class MiSesion implements Serializable {
      */
     public MiSesion() {
     }
-    
+
     public String logout() {
         // Destruye la sesión (y con ello, el ámbito de este bean)
         FacesContext ctx = FacesContext.getCurrentInstance();
@@ -50,16 +48,19 @@ public class MiSesion implements Serializable {
         user = null;
         return "login.xhtml";
     }
-    
+
     public Usuario buscarUsuario(Long id) throws UsuarioException {
-        
+
         Usuario aux = null;
 
-        for (Usuario u : users) {
-            if (u.getId().equals(id)) {
-                aux = u;
+        Iterator<Usuario> iter = users.iterator();
+        while (iter.hasNext() && aux == null) {
+            Usuario it = iter.next();
+            if (it.getId().equals(id)) {
+                aux = it;
             }
         }
+
         if (aux == null) {
             throw new UsuarioException("Usuarios no existente");
         }
@@ -98,15 +99,15 @@ public class MiSesion implements Serializable {
     public void setUser(Usuario user) {
         this.user = user;
     }
-    
+
     public boolean isCoordGen() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN);
     }
-    
+
     public boolean isCordSec() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.COORDSEC);
     }
-    
+
     public boolean isScouter() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.SCOUTER);
     }
@@ -124,5 +125,5 @@ public class MiSesion implements Serializable {
     public void setUsers2(List<Usuario> users2) {
         this.users2 = users2;
     }
-    
+
 }

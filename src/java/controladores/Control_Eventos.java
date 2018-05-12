@@ -5,12 +5,12 @@ package controladores;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import clases.Evento;
 import clases.Seccion;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -23,8 +23,8 @@ import javax.enterprise.context.SessionScoped;
  * @author anton
  */
 @SessionScoped
-@Named(value ="Eventos")
-public class Control_Eventos implements Serializable{
+@Named(value = "Eventos")
+public class Control_Eventos implements Serializable {
 
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
@@ -37,89 +37,89 @@ public class Control_Eventos implements Serializable{
     private String preciocrear;
     private String seccioncrear;
 
-    public Evento buscarEvento(Long id) throws EventoException{
-        Evento enc=null;
-        for(Evento e : eventosj){
-            if(e.getId().equals(id)){
-                enc=e;
+    public Evento buscarEvento(Long id) throws EventoException {
+        Evento enc = null;
+        Iterator<Evento> iter = eventosj.iterator();
+        while (iter.hasNext() && enc == null) {
+            Evento aux = iter.next();
+            if (aux.getId().equals(id)) {
+                enc = aux;
             }
+
         }
-        if(enc==null){
+
+        if (enc == null) {
             throw new EventoException("Evento no encontrado");
         }
         return enc;
     }
-    
-    public String borrarEvento(Long id) throws EventoException{
-        Evento b=buscarEvento(id);
+
+    public String borrarEvento(Long id) throws EventoException {
+        Evento b = buscarEvento(id);
         eventosj.remove(b);
         eventosj2.remove(b);
         return "Lista_eventos.xhtml";
     }
-    
-    
-    
-    public String CrearEvento(){
-        
-        if(eventosj.isEmpty() || eventosj==null){
+
+    public String CrearEvento() {
+
+        if (eventosj.isEmpty() || eventosj == null) {
             Random rd = new Random();
-            idcrear=(long)rd.nextInt(2000);
+            idcrear = (long) rd.nextInt(2000);
         } else {
-            idcrear=eventosj.get(eventosj.size()-1).getId()+1L;
+            idcrear = eventosj.get(eventosj.size() - 1).getId() + 1L;
         }
-        Seccion sec=null;
-        int precio=Integer.parseInt(preciocrear);
-        
+        Seccion sec = null;
+        int precio = Integer.parseInt(preciocrear);
+
         switch (seccioncrear) {
             case "Castores":
-                sec= new Seccion(1L, Seccion.Secciones.Castores);
+                sec = new Seccion(1L, Seccion.Secciones.Castores);
                 break;
             case "Lobatos":
-                sec= new Seccion(2L, Seccion.Secciones.Lobatos);
+                sec = new Seccion(2L, Seccion.Secciones.Lobatos);
                 break;
             case "Scouts":
-                sec= new Seccion(4L, Seccion.Secciones.Tropa_Scout);
+                sec = new Seccion(4L, Seccion.Secciones.Tropa_Scout);
                 break;
             case "Escultas":
-                sec= new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
+                sec = new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
                 break;
             case "Rovers":
-                sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
+                sec = new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
                 break;
             default:
                 break;
         }
-        
-        
+
         Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, precio, sec);
-        
+
         eventosj.add(ev);
         eventosj2.add(ev);
-        
-        fechacrear=null;
-        idcrear=null;
-        titulocrear=null;
-        localizacioncrear=null;
-        descripcioncrear=null;
-        preciocrear=null;
-        seccioncrear=null;
-        
-        
+
+        fechacrear = null;
+        idcrear = null;
+        titulocrear = null;
+        localizacioncrear = null;
+        descripcioncrear = null;
+        preciocrear = null;
+        seccioncrear = null;
+
         return "Lista_eventos.xhtml";
     }
-    
-    public String cancelarcrear(){
-        fechacrear=null;
-        idcrear=null;
-        titulocrear=null;
-        localizacioncrear=null;
-        descripcioncrear=null;
-        preciocrear=null;
-        seccioncrear=null;
-        
+
+    public String cancelarcrear() {
+        fechacrear = null;
+        idcrear = null;
+        titulocrear = null;
+        localizacioncrear = null;
+        descripcioncrear = null;
+        preciocrear = null;
+        seccioncrear = null;
+
         return "Lista_eventos.xhtml";
     }
-    
+
     /**
      * @return the eventosj
      */
@@ -141,18 +141,19 @@ public class Control_Eventos implements Serializable{
     public void setEvent(String event) {
         this.event = event;
     }
-    
-   /* public String VerFecha(Evento event){
+
+    /* public String VerFecha(Evento event){
         Date fecha = event.getFecha();
         try(Scanner sc = new Scanner(fecha.toString())){
             
         }
     }*/
-
-    public Evento verEvento(){
+    public Evento verEvento() {
         int ID = Integer.decode(event);
-        int i=0;
-        while(i<eventosj.size()&&eventosj.get(i).getId()!=ID)i++;
+        int i = 0;
+        while (i < eventosj.size() && eventosj.get(i).getId() != ID) {
+            i++;
+        }
         return eventosj.get(i);
     }
 
