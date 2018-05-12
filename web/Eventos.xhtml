@@ -33,7 +33,9 @@
             <c:otherwise>
                 <c:choose>
                     <c:when test="#{!(miSesion.coordGen || miSesion.cordSec)}">
-                        <h:button value="Inscribirse" ></h:button>
+                        <h:form>
+                            <p:commandButton value="Inscribirse" ajax="false" actionListener="#{miSesion.user.eventos.add(Eventos.verEvento())}"></p:commandButton>
+                        </h:form>
                         <br></br><br></br>
                     </c:when>
                 </c:choose>
