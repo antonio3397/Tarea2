@@ -79,7 +79,9 @@
             <p:inputTextarea rows="10" cols="50" value="#{Comentarios.mensaje}" />
             
             <h:panelGrid columns="2" style="margin-top: 10px">
+
                 <p:commandButton value="Submit" update="display" ajax="false" actionListener="#{Comentarios.agnadirComentario(Eventos.event, miSesion.user)}" icon="ui-icon-disk"  />
+
             </h:panelGrid>
         </h:form> 
     </ui:define>

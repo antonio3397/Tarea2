@@ -87,7 +87,5 @@ public class Control_Comentario {
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
-    }
-    
     
 }
