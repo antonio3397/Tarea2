@@ -6,6 +6,7 @@
 package controladores;
 
 import clases.Perfil;
+import clases.Seccion;
 import clases.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -114,6 +115,23 @@ public class MiSesion implements Serializable {
 
     public boolean isEducando() {
         return this.user.getPerfiles().getRol().equals(Perfil.Rol.EDUCANDO);
+    }
+    
+    public String getSeccion() {
+        String salida = "";
+        if (user.getSeccion().getNombre().equals(Seccion.Secciones.Castores)) {
+            salida = "Castores";
+        } else if (user.getSeccion().getNombre().equals(Seccion.Secciones.Escultas_Pioneros)){
+            salida = "Escultas";
+        } else if (user.getSeccion().getNombre().equals(Seccion.Secciones.Lobatos)) {
+            salida = "Lobatos";
+        } else if (user.getSeccion().getNombre().equals(Seccion.Secciones.Rovers_Compañeros)) {
+            salida = "Rovers";
+        } else if (user.getSeccion().getNombre().equals(Seccion.Secciones.Tropa_Scout)) {
+            salida = "Scouts";
+        }
+        
+       return salida;
     }
     
     /**
