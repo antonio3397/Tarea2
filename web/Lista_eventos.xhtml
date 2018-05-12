@@ -15,7 +15,7 @@
 
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{miSesion.isCoord()}">
+            <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
                 <div class = "container-fluid">
                     <a class="btn btn-success" href="CrearEvento.xhtml" role="button">CREAR EVENTO +</a>
                 </div>
@@ -23,7 +23,7 @@
             </c:when>
         </c:choose>
         <div class="container-fluid">
-            <p:dataTable var="events" value="#{Eventos.eventosj}">
+            <p:dataTable var="events" value="#{Eventos.eventosj2}">
                 <p:column headerText="Titulo">
                     <h:outputText value="#{events.titulo}" />
                 </p:column>
@@ -46,7 +46,7 @@
                     </p:link>	
                 </p:column>
                 <c:choose>
-                    <c:when test="#{miSesion.isCoord()}">
+                    <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
                         <p:column headerText="Borrar">
                             <h:form>
                                 <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>

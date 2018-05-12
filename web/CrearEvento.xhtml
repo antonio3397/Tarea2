@@ -18,42 +18,29 @@
             <h:form>
                 <h:outputText value="Titulo:" />
                 <br/>
-                <p:inputText value="#{controlador_Login.titulocrear}"/>
+                <p:inputText value="#{Eventos.titulocrear}"/>
                 <br/><br/>
                 <h:outputText value="Fecha:" />
                 <br/>
-                <div class="row">
-                    <div class="col-sm">
-                        <h:outputText value="Día:" />
-                        <p:inputText value="#{controlador_Login.diacrear}"/>
-                    </div>
-                    <div class="col-sm">
-                        <h:outputText value="Mes:" />
-                        <p:inputText value="#{controlador_Login.mescrear}"/>
-                    </div>
-                    <div class="col-sm">
-                        <h:outputText value="Año:" />
-                        <p:inputText value="#{controlador_Login.añocrear}"/>
-                    </div>
-                </div>
+                <p:calendar value="#{Eventos.fechacrear}" locale="es" pattern="MM/dd/yyyy HH:mm" navigator="true"/>
                 <br/><br/>
                 <h:outputText value="Localización:" />
                 <br/>
-                <p:inputText value="#{controlador_Login.localizacioncrear}"/>
+                <p:inputText value="#{Eventos.localizacioncrear}"/>
                 <br/><br/>
                 <h:outputText value="Descripción:" />
                 <br/>
-                <p:inputTextarea rows="10" cols="60" counter="display" maxlength="1200" counterTemplate="{0} Carácteres restantes." value="#{controlador_Login.descripcioncrear}"/>
+                <p:inputTextarea rows="10" cols="60" counter="display" maxlength="1200" counterTemplate="{0} Carácteres restantes." value="#{Eventos.descripcioncrear}"/>
                 <br/>
                 <h:outputText id="display" />
                 <br/><br/>
                 <h:outputText value="Precio:" />
                 <br/>
-                <p:inputText value="#{controlador_Login.preciocrear}"/>
+                <p:inputText value="#{Eventos.preciocrear}"/>
                 <br/><br/>
                 <h:outputText value="Sección:" />
                 <br/>
-                <p:selectOneMenu value="#{controlador_Login.seccioncrear}">
+                <p:selectOneMenu value="#{Eventos.seccioncrear}">
                     <f:selectItem itemLabel="Selecciona uno" itemValue="" />
                     <f:selectItem itemLabel="Castores" itemValue="Castores" />
                     <f:selectItem itemLabel="Lobatos" itemValue="Lobatos" />
@@ -62,7 +49,8 @@
                     <f:selectItem itemLabel="Rovers" itemValue="Rovers" />
                 </p:selectOneMenu>
                 <br/><br/><br/><br/>
-                <p:commandButton value="CREAR" action="#{controlador_Login.CrearEvento()}" ajax="false"/>
+                <p:commandButton value="CREAR" action="#{Eventos.CrearEvento()}" ajax="false"/>
+                <p:commandButton value="Cancelar" action="#{Eventos.cancelarcrear()}" ajax="false"/>
             </h:form>
         </div>
     </ui:define>

@@ -17,9 +17,6 @@
         <br/>
         <div class="container-fluid">
             <c:choose>
-                <c:when test="#{miSesion.user.eventos == null}">
-                    <h:outputText value="No te has suscrito a ningún evento"></h:outputText><br />
-                </c:when>
                 <c:when test="#{miSesion.user.eventos.size() == 0}">
                     <h:outputText value="No te has suscrito a ningún evento"></h:outputText><br />
                 </c:when>
