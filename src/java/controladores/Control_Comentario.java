@@ -24,6 +24,8 @@ import javax.inject.Inject;
 @ManagedBean(name = "Comentarios")
 @SessionScoped
 public class Control_Comentario {
+    
+    private String mensaje;
     private List<Comentario> Comentarios;
     @Inject
     private Control_Eventos ev;
@@ -33,6 +35,7 @@ public class Control_Comentario {
     @PostConstruct
     public void init() {
         try {
+            mensaje="";
             Comentarios = new ArrayList<>();
             Comentarios.add(new Comentario(1L, "Ay que emoción, ojala ya poder ir allí", new Date(2018-1900,3,3,20,02,00), ev.buscarEvento(1L), lg.buscarUsuario(121L)));
             Comentarios.add(new Comentario(2L, "Ay, espero poder ir a esta excursion. Me hace mucha ilu ver ardillitas >.< ", new Date(2018-1900,8,8,15,30,30), ev.buscarEvento(3L), lg.buscarUsuario(121L)));
@@ -67,13 +70,23 @@ public class Control_Comentario {
         return buscarComentarios(event).isEmpty();
     }
     
-    public void agnadirComentario(String men, String event, Usuario user) throws EventoException{
-        long ID = Integer.decode(event);
-        Evento evento = ev.buscarEvento(ID);
-        long tam = Comentarios.size();
-        Comentario coment = new Comentario(tam, men, new Date(), evento, user);
-        Comentarios.add(coment);
-        
+    public void agnadirComentario(String event, Usuario user) throws EventoException{
+        if(!"".equals(mensaje)){
+            long ID = Integer.decode(event);
+            Evento evento = ev.buscarEvento(ID);
+            long tam = Comentarios.size();
+            Comentario coment = new Comentario(tam, mensaje, new Date(), evento, user);
+            Comentarios.add(coment);
+            mensaje="";
+        }
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
     
     
