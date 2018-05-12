@@ -67,11 +67,11 @@ public class Control_Comentario {
         return buscarComentarios(event).isEmpty();
     }
     
-    public void agnadirComentario(String men, Date dia, String event, Usuario user) throws EventoException{
+    public void agnadirComentario(String men, String event, Usuario user) throws EventoException{
         long ID = Integer.decode(event);
         Evento evento = ev.buscarEvento(ID);
         long tam = Comentarios.size();
-        Comentario coment = new Comentario(tam, men, dia, evento, user);
+        Comentario coment = new Comentario(tam, men, new Date(), evento, user);
         Comentarios.add(coment);
         
     }
