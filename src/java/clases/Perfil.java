@@ -24,18 +24,27 @@ import javax.persistence.OneToMany;
 @Entity
 public class Perfil implements Serializable {
 
+    public enum Rol {
+        EDUCANDO, COORDGEN, COORDSEC, SCOUTER;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long rol;
-    private String nombre_rol;
-    @OneToMany (mappedBy="perfiles")
+    private Rol rol;
+
+    @OneToMany(mappedBy = "perfiles")
     private List<Usuario> usuarios;
     @ManyToMany
-    @JoinTable(name="privilegios_asociados",joinColumns = @JoinColumn(name = "perfil_user"),
+    @JoinTable(name = "privilegios_asociados", joinColumns = @JoinColumn(name = "perfil_user"),
             inverseJoinColumns = @JoinColumn(name = "privilegios_user"))
     private List<Privilegios> priv;
 
+    public Perfil(Rol rol) {
+        this.rol = rol;
+    }
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -68,39 +77,9 @@ public class Perfil implements Serializable {
         return priv;
     }
 
-    /**
-     * @param priv the priv to set
-     */
-    public void setPriv(List<Privilegios> priv) {
-        this.priv = priv;
-    }
-
-    /**
-     * @return the rol
-     */
-    public Long getRol() {
-        return rol;
-    }
-
-    /**
-     * @param rol the rol to set
-     */
-    public void setRol(Long rol) {
-        this.rol = rol;
-    }
-
-    /**
-     * @return the nombre_rol
-     */
-    public String getNombre_rol() {
-        return nombre_rol;
-    }
-
-    /**
-     * @param nombre_rol the nombre_rol to set
-     */
-    public void setNombre_rol(String nombre_rol) {
-        this.nombre_rol = nombre_rol;
+    @Override
+    public String toString() {
+        return "trabajo.Perfil[ id=" + getRol() + " ]";
     }
 
     /**
@@ -116,5 +95,19 @@ public class Perfil implements Serializable {
     public void setUsuarios(List<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-    
+
+    /**
+     * @return the rol
+     */
+    public Rol getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
 }

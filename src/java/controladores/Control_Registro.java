@@ -25,7 +25,8 @@ public class Control_Registro {
 
     
     
-    private Usuario user=new Usuario();
+    Usuario user;
+    //private Usuario user=new Usuario();
     private List<Usuario> list_User=new ArrayList<>();
     private boolean tieneLegal;
     private String rol;
