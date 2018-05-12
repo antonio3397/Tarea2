@@ -31,6 +31,8 @@ public class Responsable_Legal implements Serializable {
     private String Apellidos;
     @Column(nullable=false)
     private String Email;
+    @Column(nullable=false)
+    private String NIF;
     
     @OneToMany(mappedBy = "responsable")
     private List<Usuario> usuarios;
@@ -108,6 +110,20 @@ public class Responsable_Legal implements Serializable {
      */
     public void setEmail(String Email) {
         this.Email = Email;
+    }
+
+    /**
+     * @return the NIF
+     */
+    public String getNIF() {
+        return NIF;
+    }
+
+    /**
+     * @param NIF the NIF to set
+     */
+    public void setNIF(String NIF) {
+        this.NIF = NIF;
     }
 
     /**
