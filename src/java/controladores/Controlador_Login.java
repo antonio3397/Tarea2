@@ -35,8 +35,6 @@ public class Controlador_Login implements Serializable {
     private List<Evento> events;
     private String otro;
 
-    private Usuario user;
-
     @Inject
     private MiSesion ctrl;
 
@@ -131,6 +129,7 @@ public class Controlador_Login implements Serializable {
         while (i < users.size() && users.get(i).getId() != ID) {
             i++;
         }
+        
         return users.get(i);
     }
 
@@ -188,20 +187,6 @@ public class Controlador_Login implements Serializable {
      */
     public void setOtro(String otro) {
         this.otro = otro;
-    }
-
-    /**
-     * @return the user
-     */
-    public Usuario getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(Usuario user) {
-        this.user = user;
     }
 
     /**

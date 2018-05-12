@@ -22,26 +22,7 @@
                 <br/><br/>
                 <h:outputText value="Fecha:" />
                 <br/>
-                <div class="row">
-                    <div class="col-sm">
-                        <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputText value="Día:" />
-                        <p:inputText value="#{Eventos.diacrear}"/>
-                        </h:panelGrid>
-                    </div>
-                    <div class="col-sm">
-                        <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputText value="Mes:" />
-                        <p:inputText value="#{Eventos.mescrear}"/>
-                        </h:panelGrid>
-                    </div>
-                    <div class="col-sm">
-                        <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputText value="Año:" />
-                        <p:inputText value="#{Eventos.añocrear}"/>
-                        </h:panelGrid>
-                    </div>
-                </div>
+                <p:calendar value="#{Eventos.fechacrear}" locale="es" pattern="MM/dd/yyyy HH:mm" navigator="true"/>
                 <br/><br/>
                 <h:outputText value="Localización:" />
                 <br/>
@@ -69,6 +50,7 @@
                 </p:selectOneMenu>
                 <br/><br/><br/><br/>
                 <p:commandButton value="CREAR" action="#{Eventos.CrearEvento()}" ajax="false"/>
+                <p:commandButton value="Cancelar" action="#{Eventos.cancelarcrear()}" ajax="false"/>
             </h:form>
         </div>
     </ui:define>
