@@ -24,6 +24,16 @@
         </blockquote>
         <p><h:outputText value="#{Eventos.verEvento().descripcion}"/></p>
         <p><h:outputText value="Se hará en #{Eventos.verEvento().localizacion} en #{Eventos.verEvento().fecha}"/></p>
+        <h:outputText value="Precio: " />
+        <c:choose>
+            <c:when test = "#{Eventos.verEvento().precio==0}">
+                <h:outputText value="Gratis"/> 
+            </c:when>
+            <c:otherwise>
+                <h:outputText value="#{Eventos.verEvento().precio}" />
+            </c:otherwise>
+        </c:choose>
+        <br/><br/>
         <img src="Senderismo.jpeg" alt="Senderismo"></img>
         <br/><br/>
         <c:choose>
