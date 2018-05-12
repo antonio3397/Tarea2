@@ -38,11 +38,13 @@
                         </h:form>
                         <br></br><br></br>
                     </c:when>
+                    <c:otherwise>
+                        <h:button value="Modificar" ></h:button>
+                        <br></br><br></br>
+                    </c:otherwise>
                 </c:choose>
             </c:otherwise>
         </c:choose>
-        <h:button value="Modificar" ></h:button>
-        <br></br><br></br>
         <h5>Comentarios</h5>
         <c:choose>
             <c:when test="#{Comentarios.hayComentarios(Eventos.event)}">
