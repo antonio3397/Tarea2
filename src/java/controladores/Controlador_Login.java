@@ -34,6 +34,24 @@ public class Controlador_Login implements Serializable {
     private List<Usuario> users;
     private List<Evento> events;
     private String otro;
+    
+    private String nombremod;
+    private String apellidosmod;
+    private String nifmod;
+    private String sexomod;
+    private String emailmod;
+    private Date nacimientomod;
+    private int codigopostalmod;
+    private String direcmod;
+    private String provmod;
+    private String localmod;
+    private Date ingresomod;
+    private int cuotamod;
+    private int telefonomod;
+    private int movilmod;
+    private String metodopagomod;
+    private String seccionmod;
+    private Usuario usermod;
 
     @Inject
     private MiSesion ctrl;
@@ -129,6 +147,86 @@ public class Controlador_Login implements Serializable {
         }
         
         return users.get(i);
+    }
+    
+    public String modificarboton(Usuario u){
+        usermod=u;
+        nombremod=u.getNombre();
+        apellidosmod=u.getApellidos();
+        nifmod=u.getNIF();
+        sexomod=u.getSexo();
+        emailmod=u.getEmail();
+        nacimientomod=u.getFecha_nacimiento();
+        codigopostalmod=u.getCodigo_postal();
+        direcmod=u.getDireccion();
+        provmod=u.getProvincia();
+        localmod=u.getLocalidad();
+        ingresomod=u.getFecha_ingreso();
+        cuotamod=u.getCuota_total();
+        telefonomod=u.getTelefono();
+        movilmod=u.getMovil();
+        metodopagomod=u.getMetodo_pago();
+        
+        return "ModPerf.xhtml";
+    }
+    
+    public String aceptarmod(){
+        
+        Seccion sec;
+        
+        switch (seccionmod) {
+            case "Castores":
+                sec= new Seccion(1L, Seccion.Secciones.Castores);
+                break;
+            case "Lobatos":
+                sec= new Seccion(2L, Seccion.Secciones.Lobatos);
+                break;
+            case "Scouts":
+                sec= new Seccion(4L, Seccion.Secciones.Tropa_Scout);
+                break;
+            case "Escultas":
+                sec= new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
+                break;
+            case "Rovers":
+                sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
+                break;
+            default:
+                sec= usermod.getSeccion();
+                break;
+        }
+        
+        int i=0;
+        boolean enc=false;
+        while(i<users.size() && !enc){
+            if(users.get(i).getId().equals(usermod.getId())){
+                enc=true;
+            }
+            i++;
+        }
+        users.get(i-1).setNombre(nombremod);
+        users.get(i-1).setApellidos(apellidosmod);
+        users.get(i-1).setNIF(nifmod);
+        users.get(i-1).setSexo(sexomod);
+        users.get(i-1).setEmail(emailmod);
+        users.get(i-1).setFecha_nacimiento(nacimientomod);
+        users.get(i-1).setCodigo_postal(codigopostalmod);
+        users.get(i-1).setDireccion(direcmod);
+        users.get(i-1).setProvincia(provmod);
+        users.get(i-1).setLocalidad(localmod);
+        users.get(i-1).setFecha_ingreso(ingresomod);
+        users.get(i-1).setCuota_total(cuotamod);
+        users.get(i-1).setTelefono(telefonomod);
+        users.get(i-1).setMovil(movilmod);
+        users.get(i-1).setMetodo_pago(metodopagomod);
+        users.get(i-1).setSeccion(sec);
+        
+        return "Lista_Usuarios.xhtml";
+    }
+    
+    public String cancelarmod(){
+        usermod=null;
+        
+        return "Lista_Usuarios.xhtml";
     }
 
     /**
@@ -227,5 +325,243 @@ public class Controlador_Login implements Serializable {
      */
     public void setCtrle(Control_Eventos ctrle) {
         this.ctrle = ctrle;
+    }
+
+    /**
+     * @return the seccionmod
+     */
+    public String getSeccionmod() {
+        return seccionmod;
+    }
+
+    /**
+     * @param seccionmod the seccionmod to set
+     */
+    public void setSeccionmod(String seccionmod) {
+        this.seccionmod = seccionmod;
+    }
+
+    /**
+     * @return the nombremod
+     */
+    public String getNombremod() {
+        return nombremod;
+    }
+
+    /**
+     * @param nombremod the nombremod to set
+     */
+    public void setNombremod(String nombremod) {
+        this.nombremod = nombremod;
+    }
+
+    /**
+     * @return the apellidosmod
+     */
+    public String getApellidosmod() {
+        return apellidosmod;
+    }
+
+    /**
+     * @param apellidosmod the apellidosmod to set
+     */
+    public void setApellidosmod(String apellidosmod) {
+        this.apellidosmod = apellidosmod;
+    }
+
+    /**
+     * @return the nifmod
+     */
+    public String getNifmod() {
+        return nifmod;
+    }
+
+    /**
+     * @param nifmod the nifmod to set
+     */
+    public void setNifmod(String nifmod) {
+        this.nifmod = nifmod;
+    }
+
+    /**
+     * @return the sexomod
+     */
+    public String getSexomod() {
+        return sexomod;
+    }
+
+    /**
+     * @param sexomod the sexomod to set
+     */
+    public void setSexomod(String sexomod) {
+        this.sexomod = sexomod;
+    }
+
+    /**
+     * @return the emailmod
+     */
+    public String getEmailmod() {
+        return emailmod;
+    }
+
+    /**
+     * @param emailmod the emailmod to set
+     */
+    public void setEmailmod(String emailmod) {
+        this.emailmod = emailmod;
+    }
+
+    /**
+     * @return the nacimientomod
+     */
+    public Date getNacimientomod() {
+        return nacimientomod;
+    }
+
+    /**
+     * @param nacimientomod the nacimientomod to set
+     */
+    public void setNacimientomod(Date nacimientomod) {
+        this.nacimientomod = nacimientomod;
+    }
+
+    /**
+     * @return the codigopostalmod
+     */
+    public int getCodigopostalmod() {
+        return codigopostalmod;
+    }
+
+    /**
+     * @param codigopostalmod the codigopostalmod to set
+     */
+    public void setCodigopostalmod(int codigopostalmod) {
+        this.codigopostalmod = codigopostalmod;
+    }
+
+    /**
+     * @return the direcmod
+     */
+    public String getDirecmod() {
+        return direcmod;
+    }
+
+    /**
+     * @param direcmod the direcmod to set
+     */
+    public void setDirecmod(String direcmod) {
+        this.direcmod = direcmod;
+    }
+
+    /**
+     * @return the provmod
+     */
+    public String getProvmod() {
+        return provmod;
+    }
+
+    /**
+     * @param provmod the provmod to set
+     */
+    public void setProvmod(String provmod) {
+        this.provmod = provmod;
+    }
+
+    /**
+     * @return the localmod
+     */
+    public String getLocalmod() {
+        return localmod;
+    }
+
+    /**
+     * @param localmod the localmod to set
+     */
+    public void setLocalmod(String localmod) {
+        this.localmod = localmod;
+    }
+
+    /**
+     * @return the ingresomod
+     */
+    public Date getIngresomod() {
+        return ingresomod;
+    }
+
+    /**
+     * @param ingresomod the ingresomod to set
+     */
+    public void setIngresomod(Date ingresomod) {
+        this.ingresomod = ingresomod;
+    }
+
+    /**
+     * @return the cuotamod
+     */
+    public int getCuotamod() {
+        return cuotamod;
+    }
+
+    /**
+     * @param cuotamod the cuotamod to set
+     */
+    public void setCuotamod(int cuotamod) {
+        this.cuotamod = cuotamod;
+    }
+
+    /**
+     * @return the telefonomod
+     */
+    public int getTelefonomod() {
+        return telefonomod;
+    }
+
+    /**
+     * @param telefonomod the telefonomod to set
+     */
+    public void setTelefonomod(int telefonomod) {
+        this.telefonomod = telefonomod;
+    }
+
+    /**
+     * @return the movilmod
+     */
+    public int getMovilmod() {
+        return movilmod;
+    }
+
+    /**
+     * @param movilmod the movilmod to set
+     */
+    public void setMovilmod(int movilmod) {
+        this.movilmod = movilmod;
+    }
+
+    /**
+     * @return the metodopagomod
+     */
+    public String getMetodopagomod() {
+        return metodopagomod;
+    }
+
+    /**
+     * @param metodopagomod the metodopagomod to set
+     */
+    public void setMetodopagomod(String metodopagomod) {
+        this.metodopagomod = metodopagomod;
+    }
+
+    /**
+     * @return the usermod
+     */
+    public Usuario getUsermod() {
+        return usermod;
+    }
+
+    /**
+     * @param usermod the usermod to set
+     */
+    public void setUsermod(Usuario usermod) {
+        this.usermod = usermod;
     }
 }
