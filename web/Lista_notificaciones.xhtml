@@ -25,7 +25,7 @@
                 </c:when>
                 
                 <c:otherwise>
-                <c:forEach items="#{notificaciones.buscarNotificaciones()}" var="notificacion">
+                    <c:forEach items="#{notificaciones.buscarNotificaciones()}" var="notificacion">
                     <p:layout style="min-width:70px;min-height:180px;">                   
                         <p:layoutUnit position="center">
                             <h:outputText value="#{notificacion.titulo}" style="color:#FF0000"/>
@@ -37,7 +37,7 @@
                         </p:layoutUnit>                   
                     </p:layout>
                     <h:form>
-                        <p:commandButton value="Elminar" actionListener="#{notificaciones.borrarNotificacion(notificacion.id)}" ajax="false"/>
+                        <p:commandButton value="Eliminar" actionListener="#{notificaciones.borrarNotificacion(notificacion.id)}" ajax="false"/>
                     </h:form>
                     <hr />
                 </c:forEach>
