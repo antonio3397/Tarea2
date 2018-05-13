@@ -15,19 +15,34 @@
 
     <ui:define name="content">
         <div class="container">
-            <c:forEach items="#{notificaciones.buscarNotificaciones()}" var="notificacion">
-                <p:layout style="min-width:70px;min-height:200px;">                   
-                    <p:layoutUnit position="center">
-                        <h:outputText value="#{notificacion.titulo}" style="color:#FF0000"/>
-                        <br/>                      
-                        <h:outputText value="#{notificacion.texto}" style="color:#000000"/>
-                        <br/><br/>
-                        <h:outputText value="#{notificacion.fecha}" style="color:blue"/>
-                        <br/><br/>
-                    </p:layoutUnit>
-                </p:layout>
-                <hr />
-            </c:forEach>
+            <c:choose>
+                <c:when test="#{miSesion.user.id == null}">
+                    <h:outputText value="Parece que hay algún error con tu sesión x("></h:outputText><br />
+                </c:when>
+                
+                <c:when test="#{notificaciones.buscarNotificaciones().size() == 0}">
+                    <h:outputText value="No hay ninguna notificación de los eventos suscritos"></h:outputText><br />
+                </c:when>
+                
+                <c:otherwise>
+                <c:forEach items="#{notificaciones.buscarNotificaciones()}" var="notificacion">
+                    <p:layout style="min-width:70px;min-height:180px;">                   
+                        <p:layoutUnit position="center">
+                            <h:outputText value="#{notificacion.titulo}" style="color:#FF0000"/>
+                            <br/>                      
+                            <h:outputText value="#{notificacion.texto}" style="color:#000000"/>
+                            <br/><br/>
+                            <h:outputText value="#{notificacion.fecha}" style="color:blue"/>
+                            <br/><br/>
+                        </p:layoutUnit>                   
+                    </p:layout>
+                    <h:form>
+                        <p:commandButton value="Elminar" actionListener="#{notificaciones.borrarNotificacion(notificacion.id)}" ajax="false"/>
+                    </h:form>
+                    <hr />
+                </c:forEach>
+                </c:otherwise>
+            </c:choose>
         </div>
     </ui:define>
 </ui:composition>

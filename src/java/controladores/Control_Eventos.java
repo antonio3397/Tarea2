@@ -23,7 +23,7 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 @Named(value = "Eventos")
 public class Control_Eventos implements Serializable {
-
+    
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
     private Evento event;
@@ -119,7 +119,7 @@ public class Control_Eventos implements Serializable {
         descripcioncrear = null;
         preciocrear = null;
         seccioncrear = null;
-
+        
         return "Lista_eventos.xhtml";
     }
 
