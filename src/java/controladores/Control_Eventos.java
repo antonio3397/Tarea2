@@ -68,7 +68,7 @@ public class Control_Eventos implements Serializable {
         b.setLocalizacion(aux.getLocalizacion());
         b.setPrecio(aux.getPrecio());
         
-        switch (seccionMod) {
+        switch (getSeccionMod()) {
             case "Castores":
                 b.setSeccion(new Seccion(1L,Seccion.Secciones.Castores));
                 break;
@@ -92,7 +92,10 @@ public class Control_Eventos implements Serializable {
         
         return "Lista_eventos.xhtml";
     }
-    
+    public String cancelarMod(){
+        
+        return "Eventos.xhtml";
+    }
     public String borrarEvento(Long id) throws EventoException {
         Evento b = buscarEvento(id);
         eventosj.remove(b);
@@ -320,6 +323,20 @@ public class Control_Eventos implements Serializable {
      */
     public void setAux(Evento aux) {
         this.aux = aux;
+    }
+
+    /**
+     * @return the seccionMod
+     */
+    public String getSeccionMod() {
+        return seccionMod;
+    }
+
+    /**
+     * @param seccionMod the seccionMod to set
+     */
+    public void setSeccionMod(String seccionMod) {
+        this.seccionMod = seccionMod;
     }
 
 }

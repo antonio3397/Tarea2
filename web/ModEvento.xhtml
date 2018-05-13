@@ -33,6 +33,8 @@
                     <p:inputText value="#{Eventos.aux.precio}"/>
                     
                     <h:outputLabel value="Sección"/>
+                   
+                    
                     <p:selectOneMenu value="#{Eventos.seccionMod}">
                     <c:choose>
                         <c:when test="#{miSesion.coordGen}">
@@ -47,10 +49,10 @@
                             <f:selectItem itemLabel="#{miSesion.seccion}" itemValue="#{miSesion.seccion}"/>
                         </c:otherwise>
                     </c:choose>
-                </p:selectOneMenu>
+                    </p:selectOneMenu>
                     
                     <p:commandButton value="Modificar" action="#{Eventos.aceptarMod()}" ajax="false"/>
-                    
+                    <p:commandButton value="Cancelar" action="#{Eventos.cancelarMod()}" ajax="false"/>
                 </h:panelGrid>
                 
             </h:form>
