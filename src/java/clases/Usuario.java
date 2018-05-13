@@ -6,6 +6,7 @@
 package clases;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -125,6 +126,8 @@ public class Usuario implements Serializable {
         this.metodo_pago=metodo_pago;
         this.perfiles = perfil;
         this.seccion=seccion;
+        this.cuota_total=cuota_total;
+        this.eventos=new ArrayList<>();
     }
     
     public Long getId() {

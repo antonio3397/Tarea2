@@ -8,12 +8,14 @@ package controladores;
 import clases.Evento;
 import clases.Perfil;
 import clases.Seccion;
+import clases.Seccion.Secciones;
 import clases.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
@@ -32,9 +34,8 @@ public class Controlador_Login implements Serializable {
     private String email;
     private List<Usuario> users;
     private List<Evento> events;
-    private String otro;
-
-    private Usuario user;
+    private Usuario otro;
+    private String seccionmod;
 
     @Inject
     private MiSesion ctrl;
@@ -44,18 +45,16 @@ public class Controlador_Login implements Serializable {
 
     public Controlador_Login() {
         users = new ArrayList<>();
-        users.add(new Usuario(121L, "1234", "78556410V", "paco_mg99@hotmail.com", "Francisco", "Marin Garzón", "Hombre", new Date(1997 - 1900, 3, 2), 29610, "C/Luisa Ordoñez n15 1ºB", "Málaga", "Málaga", new Date(2015 - 1900, 3, 2), 50, 921121314, 654121314, "Tarjeta_Crédito", new Perfil(Perfil.Rol.EDUCANDO), new Seccion(Seccion.Secciones.Castores)));
-        users.add(new Usuario(122L, "1234", "71156411N", "paula_vp@hotmail.com", "Paula", "Vergara Perez", "Mujer", new Date(1997 - 1900, 11, 6), 29615, "C/Santa Rosa n17 5ºC", "Málaga", "Málaga", new Date(2015 - 1900, 10, 11), 75, 921675432, 654960584, "Tarjeta_Crédito", new Perfil(Perfil.Rol.COORDGEN), new Seccion(Seccion.Secciones.TODAS) ));
-        users.add(new Usuario(123L, "1234", "22551122H", "pepe_ss@gmail.com", "José", "Salas Segura", "Hombre", new Date(1997 - 1900, 11, 6), 29700, "C/Agustina n22 2ºI", "Málaga", "Málaga", new Date(2015 - 1900, 4, 1), 80, 950221436, 651203344, "Efectivo", new Perfil(Perfil.Rol.SCOUTER), new Seccion(Seccion.Secciones.Scouter_Apoyo)));
-        users.add(new Usuario(124L, "1234", "12345678A", "anam_gg@gmail.com", "Ana María", "González Gómez", "Mujer", new Date(1997 - 1900, 22, 4), 29720, "C/Manuela Carmona n1 1ºF", "Málaga", "Málaga", new Date(2015 - 1900, 2, 1), 65, 953646811, 621300044, "Efectivo", new Perfil(Perfil.Rol.COORDSEC), new Seccion(Seccion.Secciones.Lobatos)));
+        users.add(new Usuario(121L, "1234", "78556410V", "paco_mg99@hotmail.com", "Francisco", "Marin Garzón", "Hombre", new Date(1997 - 1900, 3, 2), 29610, "C/Luisa Ordoñez n15 1ºB", "Málaga", "Málaga", new Date(2015 - 1900, 3, 2), 50, 921121314, 654121314, "Tarjeta_Crédito", new Perfil(Perfil.Rol.EDUCANDO), new Seccion(1L, Seccion.Secciones.Castores)));
+        users.add(new Usuario(122L, "1234", "71156411N", "paula_vp@hotmail.com", "Paula", "Vergara Perez", "Mujer", new Date(1997 - 1900, 11, 6), 29615, "C/Santa Rosa n17 5ºC", "Málaga", "Málaga", new Date(2015 - 1900, 10, 11), 75, 921675432, 654960584, "Tarjeta_Crédito", new Perfil(Perfil.Rol.COORDGEN), new Seccion(0L, Seccion.Secciones.TODAS)));
+        users.add(new Usuario(123L, "1234", "22551122H", "pepe_ss@gmail.com", "José", "Salas Segura", "Hombre", new Date(1997 - 1900, 11, 6), 29700, "C/Agustina n22 2ºI", "Málaga", "Málaga", new Date(2015 - 1900, 4, 1), 80, 950221436, 651203344, "Efectivo", new Perfil(Perfil.Rol.SCOUTER), new Seccion(1L, Seccion.Secciones.Castores)));
+        users.add(new Usuario(124L, "1234", "12345678A", "anam_gg@gmail.com", "Ana María", "González Gómez", "Mujer", new Date(1997 - 1900, 22, 4), 29720, "C/Manuela Carmona n1 1ºF", "Málaga", "Málaga", new Date(2015 - 1900, 2, 1), 65, 953646811, 621300044, "Efectivo", new Perfil(Perfil.Rol.COORDSEC), new Seccion(2L, Seccion.Secciones.Lobatos)));
         events = new ArrayList<>();
-        events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
+        events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(1L, Secciones.Castores)));
+        events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(2L, Secciones.Lobatos)));
+        events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200, new Seccion(3L, Secciones.Rovers_Compañeros)));
 
-        List<Evento> eventsaux = new ArrayList<>();
-        eventsaux.add(events.get(0));
-        users.get(0).setEventos(eventsaux);
+        users.get(0).getEventos().add(events.get(0));
     }
 
     public String autenticar() {
@@ -86,23 +85,56 @@ public class Controlador_Login implements Serializable {
             ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Password incorrecto", "Password incorrecto"));
             return null;
         }
-
-        List<Evento> listaEvents;
-        listaEvents = events;
-
         ctrl.setUsers(users);
         ctrl.setUser(aux);
-        ctrle.setEventosj(listaEvents);
+
+        List<Usuario> auxs = new ArrayList<>();
+        if (aux.getPerfiles().getRol().equals(Perfil.Rol.COORDSEC) || aux.getPerfiles().getRol().equals(Perfil.Rol.SCOUTER)) {
+            for (Usuario u : users) {
+                if (!u.equals(aux) && u.getSeccion().equals(aux.getSeccion())) {
+                    auxs.add(u);
+                }
+            }
+        } else {
+            for (Usuario u : users) {
+                if (!u.equals(aux)) {
+                    auxs.add(u);
+                }
+            }
+        }
+        ctrl.setUsers2(auxs);
+
+        ctrle.setEventosj(events);
+        List<Evento> events2 = new ArrayList<>();
+        if (aux.getPerfiles().getRol().equals(Perfil.Rol.COORDGEN)) {
+            for (Evento e : events) {
+                events2.add(e);
+            }
+        } else {
+            for (Evento e : events) {
+                if (aux.getSeccion().equals(e.getSeccion())) {
+                    events2.add(e);
+                }
+            }
+        }
+
+        ctrle.setEventosj2(events2);
+
         return "Inicio.xhtml";
     }
 
-    public Usuario verUsuario() {
-        int ID = Integer.decode(otro);
-        int i = 0;
-        while (i < users.size() && users.get(i).getId() != ID) {
-            i++;
+    public String verUsuario(Long id) {
+
+        Iterator<Usuario> iter = users.iterator();
+        Usuario u = iter.next();
+        while(iter.hasNext()&& id != u.getId()) {
+            u = iter.next();
         }
-        return users.get(i);
+        if (id == u.getId()) {
+            otro = u;
+        }
+
+        return "OtroPerfil.xhtml";
     }
 
     /**
@@ -150,29 +182,15 @@ public class Controlador_Login implements Serializable {
     /**
      * @return the otro
      */
-    public String getOtro() {
+    public Usuario getOtro() {
         return otro;
     }
 
     /**
      * @param otro the otro to set
      */
-    public void setOtro(String otro) {
+    public void setOtro(Usuario otro) {
         this.otro = otro;
-    }
-
-    /**
-     * @return the user
-     */
-    public Usuario getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(Usuario user) {
-        this.user = user;
     }
 
     /**
@@ -203,4 +221,31 @@ public class Controlador_Login implements Serializable {
         this.events = events;
     }
 
+    /**
+     * @return the ctrle
+     */
+    public Control_Eventos getCtrle() {
+        return ctrle;
+    }
+
+    /**
+     * @param ctrle the ctrle to set
+     */
+    public void setCtrle(Control_Eventos ctrle) {
+        this.ctrle = ctrle;
+    }
+
+    /**
+     * @return the seccionmod
+     */
+    public String getSeccionmod() {
+        return seccionmod;
+    }
+
+    /**
+     * @param seccionmod the seccionmod to set
+     */
+    public void setSeccionmod(String seccionmod) {
+        this.seccionmod = seccionmod;
+    }
 }
