@@ -62,7 +62,7 @@ and open the template in the editor.
                                     <c:when test="#{miSesion.educando}">
                                         <p:growl id="messages" showDetail="true" />
                                         <p:fileUpload value="#{subirArchivo.file}" mode="simple"/>
-                                        <p:commandButton value="Enviar" ajax="false" actionListener="#{subirArchivo.upload}" disabled="true" />
+                                        <p:commandButton value="Enviar" ajax="false" actionListener="#{subirArchivo.upload}"/>
                                         <br/><br/>
                                     </c:when>
                                 </c:choose>
