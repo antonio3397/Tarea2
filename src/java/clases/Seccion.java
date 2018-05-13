@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 public class Seccion implements Serializable {
 
      public enum Secciones{
-      Castores, Lobatos, Tropa_Scout, Escultas_Pioneros, Rovers_Compañeros, Scouter_Apoyo, TODAS;
+      Castores, Lobatos, Tropa_Scout, Escultas_Pioneros, Rovers_Compañeros, TODAS;
     }
     private static final long serialVersionUID = 1L;
     @Id
