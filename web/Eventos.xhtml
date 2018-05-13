@@ -49,7 +49,9 @@
                         <br></br><br></br>
                     </c:when>
                     <c:otherwise>
-                        <h:button value="Modificar" ></h:button>
+                        <h:form>
+                        <p:commandButton value="Modificar" action="#{Eventos.modificarEvento()}" ajax="false"/>
+                        </h:form>
                         <br></br><br></br>
                     </c:otherwise>
                 </c:choose>

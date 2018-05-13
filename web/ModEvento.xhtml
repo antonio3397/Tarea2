@@ -18,18 +18,19 @@
                 <!--titulo,fecha,localizacion,descripcion,precio-->
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Título: "/>
-                    <p:inputText value=""/><!--en cada input text me deberia salir la informacion del evento correspondiente-->
+                    <p:inputText value="#{Eventos.aux.titulo}"/><!--en cada input text me deberia salir la informacion del evento correspondiente-->
                     <h:outputLabel value="Fecha: "/>
-                    <p:inputText value=""/>
+                    <p:calendar value="#{Eventos.aux.fecha}"/>
                     <h:outputLabel value="Localización: "/>
-                    <p:inputText value=""/>
+                    <p:inputText value="#{Eventos.aux.localizacion}"/>
                     <h:outputLabel value="Descripción: "/>
-                    <p:inputText value=""/>
+                    <p:inputText value="#{Eventos.aux.descripcion}"/>
                     <h:outputLabel value="Precio: "/>
-                    <p:inputText value=""/>
-                    
-                    
+                    <p:inputText value="#{Eventos.aux.precio}"/>
+                    <!--<p:commandButton value="Modificar" action="#{Eventos.modificarEvento(Eventos.aux.id)}" ajax="false"/>
+                    -->
                 </h:panelGrid>
+                
             </h:form>
         </div>
     </ui:define>
