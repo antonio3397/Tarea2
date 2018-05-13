@@ -127,7 +127,7 @@ public class Usuario implements Serializable {
         this.perfiles = perfil;
         this.seccion=seccion;
         this.cuota_total=cuota_total;
-        this.setEventos(new ArrayList<>());
+        this.eventos=new ArrayList<>();
     }
     
     public Long getId() {
