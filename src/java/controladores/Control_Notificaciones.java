@@ -25,9 +25,23 @@ import javax.inject.Inject;
 @SessionScoped
 public class Control_Notificaciones implements Serializable{
 
+    /**
+     * @return the login
+     */
+    public MiSesion getLogin() {
+        return login;
+    }
+
+    /**
+     * @param login the login to set
+     */
+    public void setLogin(MiSesion login) {
+        this.login = login;
+    }
+
     private List<Notificacion> notificame;
     @Inject
-    MiSesion login;
+    private MiSesion login;
 
     @PostConstruct
     public void init() {
@@ -42,11 +56,11 @@ public class Control_Notificaciones implements Serializable{
 
     public List<Notificacion> buscarNotificaciones() throws NotificacionException{
         List<Notificacion> misNotificaciones = new ArrayList<>();
-        Long miID = login.getUser().getId();
+        Long miID = getLogin().getUser().getId();
         for(Notificacion noti: notificame){
             if(noti.getId().getUsuario_id().equals(miID)){  // Va entrando las notificaciones de Eventos
                 misNotificaciones.add(noti);
-            } else if(noti.getId().getUsuario_id().equals(login.getUser().getSeccion().getId())){  // Va entrando las notificaciones de la Seccion
+            } else if(noti.getId().getUsuario_id().equals(getLogin().getUser().getSeccion().getId())){  // Va entrando las notificaciones de la Seccion
                 misNotificaciones.add(noti);
             }
         }

@@ -25,24 +25,52 @@ import javax.inject.Inject;
 @SessionScoped
 public class Control_Comentario {
 
+    /**
+     * @return the ev
+     */
+    public Control_Eventos getEv() {
+        return ev;
+    }
+
+    /**
+     * @param ev the ev to set
+     */
+    public void setEv(Control_Eventos ev) {
+        this.ev = ev;
+    }
+
+    /**
+     * @return the lg
+     */
+    public MiSesion getLg() {
+        return lg;
+    }
+
+    /**
+     * @param lg the lg to set
+     */
+    public void setLg(MiSesion lg) {
+        this.lg = lg;
+    }
+
     private String mensaje;
     private List<Comentario> Comentarios;
     @Inject
     private Control_Eventos ev;
     @Inject
-    MiSesion lg;
+    private MiSesion lg;
 
     @PostConstruct
     public void init() {
         try {
             mensaje = "";
             Comentarios = new ArrayList<>();
-            Comentarios.add(new Comentario(1L, "Ay que emoción, ojala ya poder ir allí", new Date(2018 - 1900, 3, 3, 20, 02, 00), ev.buscarEvento(1L), lg.buscarUsuario(121L)));
-            Comentarios.add(new Comentario(2L, "Ay, espero poder ir a esta excursion. Me hace mucha ilu ver ardillitas >.< ", new Date(2018 - 1900, 8, 8, 15, 30, 30), ev.buscarEvento(3L), lg.buscarUsuario(121L)));
-            Comentarios.add(new Comentario(3L, "Este evento está bien organizado? Es que hace una calor alli que nos vamos a morir", new Date(2018 - 1900, 3, 3, 15, 03, 26), ev.buscarEvento(2L), lg.buscarUsuario(122L)));
-            Comentarios.add(new Comentario(4L, "Pero que tonteria de excursion. Es mas, es imposible conseguir ese dinero aunque vendiesemos magdalenas", new Date(2018 - 1900, 8, 8, 20, 20, 20), ev.buscarEvento(3L), lg.buscarUsuario(122L)));
-            Comentarios.add(new Comentario(5L, "Ay, que negativo eres uwu. Yo casi tengo el dinero para ir", new Date(2018 - 1900, 10, 8, 10, 9, 59), ev.buscarEvento(3L), lg.buscarUsuario(121L)));
-            Comentarios.add(new Comentario(6L, "Meh. Seguramente sea otra excursión igual que cuando fuimos a los montes de Malaga", new Date(2018 - 1900, 3, 3, 21, 03, 02), ev.buscarEvento(1L), lg.buscarUsuario(122L)));
+            Comentarios.add(new Comentario(1L, "Ay que emoción, ojala ya poder ir allí", new Date(2018 - 1900, 3, 3, 20, 02, 00), getEv().buscarEvento(1L), getLg().buscarUsuario(121L)));
+            Comentarios.add(new Comentario(2L, "Ay, espero poder ir a esta excursion. Me hace mucha ilu ver ardillitas >.< ", new Date(2018 - 1900, 8, 8, 15, 30, 30), getEv().buscarEvento(3L), getLg().buscarUsuario(121L)));
+            Comentarios.add(new Comentario(3L, "Este evento está bien organizado? Es que hace una calor alli que nos vamos a morir", new Date(2018 - 1900, 3, 3, 15, 03, 26), getEv().buscarEvento(2L), getLg().buscarUsuario(122L)));
+            Comentarios.add(new Comentario(4L, "Pero que tonteria de excursion. Es mas, es imposible conseguir ese dinero aunque vendiesemos magdalenas", new Date(2018 - 1900, 8, 8, 20, 20, 20), getEv().buscarEvento(3L), getLg().buscarUsuario(122L)));
+            Comentarios.add(new Comentario(5L, "Ay, que negativo eres uwu. Yo casi tengo el dinero para ir", new Date(2018 - 1900, 10, 8, 10, 9, 59), getEv().buscarEvento(3L), getLg().buscarUsuario(121L)));
+            Comentarios.add(new Comentario(6L, "Meh. Seguramente sea otra excursión igual que cuando fuimos a los montes de Malaga", new Date(2018 - 1900, 3, 3, 21, 03, 02), getEv().buscarEvento(1L), getLg().buscarUsuario(122L)));
         } catch (EventoException | UsuarioException ex) {
             Logger.getLogger(Control_Comentario.class.getName()).log(Level.SEVERE, null, ex);
         }
