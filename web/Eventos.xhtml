@@ -10,41 +10,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-    <f:metadata>
-        <f:viewParam name="Evento" value="#{Eventos.event}"/>
-    </f:metadata>
     <ui:define name="title">
-        <h:outputText value="#{Eventos.verEvento().titulo}"/>
+        <h:outputText value="#{Eventos.event.titulo}"/>
     </ui:define>
     <ui:define name="content">
         <blockquote class="blockquote text-center">
             <h1 class="display-1"><em>
-                    <h:outputText value="#{Eventos.verEvento().titulo}"/>
+                    <h:outputText value="#{Eventos.event.titulo}"/>
                 </em></h1>
         </blockquote>
-        <p><h:outputText value="#{Eventos.verEvento().descripcion}"/></p>
-        <p><h:outputText value="Se hará en #{Eventos.verEvento().localizacion} en #{Eventos.verEvento().fecha}"/></p>
+        <p><h:outputText value="#{Eventos.event.descripcion}"/></p>
+        <p><h:outputText value="Se hará en #{Eventos.event.localizacion} en #{Eventos.event.fecha}"/></p>
         <h:outputText value="Precio: " />
         <c:choose>
-            <c:when test = "#{Eventos.verEvento().precio==0}">
+            <c:when test = "#{Eventos.event.precio==0}">
                 <h:outputText value="Gratis"/> 
             </c:when>
             <c:otherwise>
-                <h:outputText value="#{Eventos.verEvento().precio}" />
+                <h:outputText value="#{Eventos.event.precio}" />
             </c:otherwise>
         </c:choose>
         <br/><br/>
         <img class= "ml-5" src="Senderismo.jpeg" alt="Senderismo"></img>
         <br/><br/>
         <c:choose>
-            <c:when test = "#{miSesion.user.eventos.contains(Eventos.verEvento())}">
+            <c:when test = "#{miSesion.user.eventos.contains(Eventos.event)}">
                 <p> Estás inscrito en este evento.</p>
             </c:when>
             <c:otherwise>
                 <c:choose>
                     <c:when test="#{!(miSesion.coordGen || miSesion.cordSec)}">
                         <h:form>
-                            <p:commandButton value="Inscribirse" ajax="false" actionListener="#{miSesion.user.eventos.add(Eventos.verEvento())}"></p:commandButton>
+                            <p:commandButton value="Inscribirse" ajax="false" action="#{miSesion.inscribirse(Eventos.event)}"></p:commandButton>
                         </h:form>
                         <br></br><br></br>
                     </c:when>

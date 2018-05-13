@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -25,7 +26,7 @@ public class Control_Eventos implements Serializable {
 
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
-    private String event;
+    private Evento event;
     private Long idcrear;
     private Date fechacrear;
     private String titulocrear;
@@ -116,6 +117,20 @@ public class Control_Eventos implements Serializable {
 
         return "Lista_eventos.xhtml";
     }
+    
+    public String verEvento(Long id) {
+        
+        Iterator<Evento> iter = eventosj.iterator();
+        Evento u = iter.next();
+        while (iter.hasNext() && !Objects.equals(id, u.getId())) {
+            u = iter.next();
+        }
+        if (Objects.equals(id, u.getId())) {
+            setEvent(u);
+        }
+        
+        return "Eventos.xhtml";
+    }
 
     /**
      * @return the eventosj
@@ -131,27 +146,12 @@ public class Control_Eventos implements Serializable {
         this.eventosj = eventosj;
     }
 
-    public String getEvent() {
+    public Evento getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Evento event) {
         this.event = event;
-    }
-
-    /* public String VerFecha(Evento event){
-        Date fecha = event.getFecha();
-        try(Scanner sc = new Scanner(fecha.toString())){
-            
-        }
-    }*/
-    public Evento verEvento() {
-        int ID = Integer.decode(event);
-        int i = 0;
-        while (i < eventosj.size() && eventosj.get(i).getId() != ID) {
-            i++;
-        }
-        return eventosj.get(i);
     }
 
     /**

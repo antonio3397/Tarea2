@@ -41,9 +41,9 @@
                     <h:outputText value="#{events.localizacion}" />
                 </p:column>
                 <p:column headerText="Más">
-                    <p:link outcome="Eventos" value="Ver más">
-                        <f:param name="Evento" value="#{events.id}"/>
-                    </p:link>	
+                    <h:form>
+                        <p:commandButton value="Ver más" action="#{Eventos.verEvento(events.id)}" ajax="false"/>
+                    </h:form>
                 </p:column>
                 <c:choose>
                     <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
