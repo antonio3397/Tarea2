@@ -32,20 +32,11 @@
                 </p:column>
                 
                 <p:column headerText="Descargas">
-                    <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
-                    <p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
-                    </p:dialog>
- 
                     <h:form>
-                        <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
-                            <p:fileDownload value="#{descargarArchivo.file}" />
-                        </p:commandButton>
+                        <h:commandLink>
+                            <a href="Archivo.jpg" download="Archivo.jpg"><img src="pdf.png" width="50"/>Descargar PDF</a>
+                        </h:commandLink>
                     </h:form>
- 
-                    <script type="text/javascript">
-                    function start() {PF('statusDialog').show();}
-                    function stop() {PF('statusDialog').hide();}
-                    </script>
                 </p:column>
                 
             </p:dataTable>
