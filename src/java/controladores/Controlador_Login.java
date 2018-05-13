@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
@@ -33,9 +34,8 @@ public class Controlador_Login implements Serializable {
     private String email;
     private List<Usuario> users;
     private List<Evento> events;
-    private String otro;
-
-    private Usuario user;
+    private Usuario otro;
+    private String seccionmod;
 
     @Inject
     private MiSesion ctrl;
@@ -54,9 +54,7 @@ public class Controlador_Login implements Serializable {
         events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(2L, Secciones.Lobatos)));
         events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200, new Seccion(3L, Secciones.Rovers_Compañeros)));
 
-        List<Evento> eventsaux = new ArrayList<>();
-        eventsaux.add(events.get(0));
-        users.get(0).setEventos(eventsaux);
+        users.get(0).getEventos().add(events.get(0));
     }
 
     public String autenticar() {
@@ -119,19 +117,24 @@ public class Controlador_Login implements Serializable {
                 }
             }
         }
-        
+
         ctrle.setEventosj2(events2);
 
         return "Inicio.xhtml";
     }
 
-    public Usuario verUsuario() {
-        int ID = Integer.decode(otro);
-        int i = 0;
-        while (i < users.size() && users.get(i).getId() != ID) {
-            i++;
+    public String verUsuario(Long id) {
+
+        Iterator<Usuario> iter = users.iterator();
+        Usuario u = iter.next();
+        while(iter.hasNext()&& id != u.getId()) {
+            u = iter.next();
         }
-        return users.get(i);
+        if (id == u.getId()) {
+            otro = u;
+        }
+
+        return "OtroPerfil.xhtml";
     }
 
     /**
@@ -179,29 +182,15 @@ public class Controlador_Login implements Serializable {
     /**
      * @return the otro
      */
-    public String getOtro() {
+    public Usuario getOtro() {
         return otro;
     }
 
     /**
      * @param otro the otro to set
      */
-    public void setOtro(String otro) {
+    public void setOtro(Usuario otro) {
         this.otro = otro;
-    }
-
-    /**
-     * @return the user
-     */
-    public Usuario getUser() {
-        return user;
-    }
-
-    /**
-     * @param user the user to set
-     */
-    public void setUser(Usuario user) {
-        this.user = user;
     }
 
     /**
@@ -244,5 +233,19 @@ public class Controlador_Login implements Serializable {
      */
     public void setCtrle(Control_Eventos ctrle) {
         this.ctrle = ctrle;
+    }
+
+    /**
+     * @return the seccionmod
+     */
+    public String getSeccionmod() {
+        return seccionmod;
+    }
+
+    /**
+     * @param seccionmod the seccionmod to set
+     */
+    public void setSeccionmod(String seccionmod) {
+        this.seccionmod = seccionmod;
     }
 }

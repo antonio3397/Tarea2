@@ -5,16 +5,14 @@ package controladores;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import clases.Evento;
 import clases.Seccion;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
-import java.util.Scanner;
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 
@@ -23,108 +21,117 @@ import javax.enterprise.context.SessionScoped;
  * @author anton
  */
 @SessionScoped
-@Named(value ="Eventos")
-public class Control_Eventos implements Serializable{
+@Named(value = "Eventos")
+public class Control_Eventos implements Serializable {
 
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
-    private String event;
-    private String añocrear;
-    private String mescrear;
-    private String diacrear;
+    private Evento event;
     private Long idcrear;
+    private Date fechacrear;
     private String titulocrear;
     private String localizacioncrear;
     private String descripcioncrear;
     private String preciocrear;
     private String seccioncrear;
-    
-   /* 
-    @PostConstruct
-    public void init() {
-        
-        eventosj = new ArrayList<>();
-        eventosj.add(new Evento(1L, "Viaje al monte", new Date(2018-1900,3,24,9, 30),"Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(2L, "Viaje al monte 2", new Date(2018-1900,6,24,9,30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20));
-        eventosj.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019-1900,9,27,11,0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200));
-    }*/
 
-    public Evento buscarEvento(Long id) throws EventoException{
-        Evento enc=null;
-        for(Evento e : eventosj){
-            if(e.getId().equals(id)){
-                enc=e;
+    public Evento buscarEvento(Long id) throws EventoException {
+        Evento enc = null;
+        Iterator<Evento> iter = eventosj.iterator();
+        while (iter.hasNext() && enc == null) {
+            Evento aux = iter.next();
+            if (aux.getId().equals(id)) {
+                enc = aux;
             }
+
         }
-        if(enc==null){
+
+        if (enc == null) {
             throw new EventoException("Evento no encontrado");
         }
         return enc;
     }
-    
-    public String borrarEvento(Long id) throws EventoException{
-        Evento b=buscarEvento(id);
+
+    public String borrarEvento(Long id) throws EventoException {
+        Evento b = buscarEvento(id);
         eventosj.remove(b);
+        eventosj2.remove(b);
         return "Lista_eventos.xhtml";
     }
-    
-    
-    
-    public String CrearEvento(){
-        
-        if(eventosj.isEmpty() || eventosj==null){
+
+    public String CrearEvento() {
+
+        if (eventosj.isEmpty() || eventosj == null) {
             Random rd = new Random();
-            idcrear=(long)rd.nextInt(2000);
+            idcrear = (long) rd.nextInt(2000);
         } else {
-            idcrear=eventosj.get(eventosj.size()-1).getId()+1L;
+            idcrear = eventosj.get(eventosj.size() - 1).getId() + 1L;
         }
-        Seccion sec=null;
-        int año=Integer.parseInt(añocrear);
-        int mes=Integer.parseInt(mescrear);
-        int dia=Integer.parseInt(diacrear);
-        int precio=Integer.parseInt(preciocrear);
-        
-        Date fechacrear=new Date(año-1900, mes-1, dia);
-        
+        Seccion sec = null;
+        int precio = Integer.parseInt(preciocrear);
+
         switch (seccioncrear) {
             case "Castores":
-                sec= new Seccion(1L, Seccion.Secciones.Castores);
+                sec = new Seccion(1L, Seccion.Secciones.Castores);
                 break;
             case "Lobatos":
-                sec= new Seccion(2L, Seccion.Secciones.Lobatos);
+                sec = new Seccion(2L, Seccion.Secciones.Lobatos);
                 break;
             case "Scouts":
-                sec= new Seccion(4L, Seccion.Secciones.Tropa_Scout);
+                sec = new Seccion(4L, Seccion.Secciones.Tropa_Scout);
                 break;
             case "Escultas":
-                sec= new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
+                sec = new Seccion(5L, Seccion.Secciones.Escultas_Pioneros);
                 break;
             case "Rovers":
-                sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
+                sec = new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
                 break;
             default:
                 break;
         }
-        
-        
+
         Evento ev = new Evento(idcrear, titulocrear, fechacrear, localizacioncrear, descripcioncrear, precio, sec);
-        
+
         eventosj.add(ev);
-        
-        añocrear=null;
-        mescrear=null;
-        diacrear=null;
-        idcrear=null;
-        titulocrear=null;
-        localizacioncrear=null;
-        descripcioncrear=null;
-        preciocrear=null;
-        seccioncrear=null;
-        
-        
+        eventosj2.add(ev);
+
+        fechacrear = null;
+        idcrear = null;
+        titulocrear = null;
+        localizacioncrear = null;
+        descripcioncrear = null;
+        preciocrear = null;
+        seccioncrear = null;
+
+        return "Lista_eventos.xhtml";
+    }
+
+    public String cancelarcrear() {
+        fechacrear = null;
+        idcrear = null;
+        titulocrear = null;
+        localizacioncrear = null;
+        descripcioncrear = null;
+        preciocrear = null;
+        seccioncrear = null;
+
         return "Lista_eventos.xhtml";
     }
     
+    public String verEvento(Long id) {
+        
+        Iterator<Evento> iter = eventosj.iterator();
+        Evento u = iter.next();
+        while (iter.hasNext() && !Objects.equals(id, u.getId())) {
+            u = iter.next();
+        }
+        if (Objects.equals(id, u.getId())) {
+            setEvent(u);
+        }
+        
+        return "Eventos.xhtml";
+    }
+
     /**
      * @return the eventosj
      */
@@ -139,69 +146,12 @@ public class Control_Eventos implements Serializable{
         this.eventosj = eventosj;
     }
 
-    public String getEvent() {
+    public Evento getEvent() {
         return event;
     }
 
-    public void setEvent(String event) {
+    public void setEvent(Evento event) {
         this.event = event;
-    }
-    
-   /* public String VerFecha(Evento event){
-        Date fecha = event.getFecha();
-        try(Scanner sc = new Scanner(fecha.toString())){
-            
-        }
-    }*/
-
-    public Evento verEvento(){
-        int ID = Integer.decode(event);
-        int i=0;
-        while(i<eventosj.size()&&eventosj.get(i).getId()!=ID)i++;
-        return eventosj.get(i);
-    }
-
-
-    /**
-     * @return the añocrear
-     */
-    public String getAñocrear() {
-        return añocrear;
-    }
-
-    /**
-     * @param añocrear the añocrear to set
-     */
-    public void setAñocrear(String añocrear) {
-        this.añocrear = añocrear;
-    }
-
-    /**
-     * @return the mescrear
-     */
-    public String getMescrear() {
-        return mescrear;
-    }
-
-    /**
-     * @param mescrear the mescrear to set
-     */
-    public void setMescrear(String mescrear) {
-        this.mescrear = mescrear;
-    }
-
-    /**
-     * @return the diacrear
-     */
-    public String getDiacrear() {
-        return diacrear;
-    }
-
-    /**
-     * @param diacrear the diacrear to set
-     */
-    public void setDiacrear(String diacrear) {
-        this.diacrear = diacrear;
     }
 
     /**
@@ -300,6 +250,20 @@ public class Control_Eventos implements Serializable{
      */
     public void setEventosj2(List<Evento> eventosj2) {
         this.eventosj2 = eventosj2;
+    }
+
+    /**
+     * @return the fechacrear
+     */
+    public Date getFechacrear() {
+        return fechacrear;
+    }
+
+    /**
+     * @param fechacrear the fechacrear to set
+     */
+    public void setFechacrear(Date fechacrear) {
+        this.fechacrear = fechacrear;
     }
 
 }
