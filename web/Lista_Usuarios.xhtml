@@ -69,7 +69,7 @@
                         </p:column>
                         <p:column headerText="Más">                          
                             <p:link outcome="OtroPerfil" value="Ver perfil">
-                                <f:param name="us" value="#{users.id}"/>
+                                <f:param name="us" value="#{miSesion.verUsuario(users.id)}"/>
                             </p:link>	
                         </p:column>
                     </p:dataTable>
