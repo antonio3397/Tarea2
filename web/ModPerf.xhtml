@@ -17,37 +17,37 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nombre: "/>
-                    <p:inputText value="#{controlador_Login.otro.nombre}"/>
+                    <p:inputText value="#{miSesion.otro.nombre}"/>
                     <h:outputLabel value="Apellidos: "/>
-                    <p:inputText value="#{controlador_Login.otro.apellidos}"/>
+                    <p:inputText value="#{miSesion.otro.apellidos}"/>
                     <h:outputLabel value="Nif: "/>
-                    <p:inputText value="#{controlador_Login.otro.NIF}"/>
+                    <p:inputText value="#{miSesion.otro.NIF}"/>
                     <h:outputLabel value="Sexo: "/>
-                    <p:inputText value="#{controlador_Login.otro.sexo}"/>
+                    <p:inputText value="#{miSesion.otro.sexo}"/>
                     <h:outputLabel value="Email: "/>
-                    <p:inputText value="#{controlador_Login.otro.email}"/>
+                    <p:inputText value="#{miSesion.otro.email}"/>
                     <h:outputLabel value="Fecha de nacimiento: "/>
-                    <p:calendar value="#{controlador_Login.otro.fecha_nacimiento}" pattern="MM/dd/yyyy" navigator="true"/>
+                    <p:calendar value="#{miSesion.otro.fecha_nacimiento}" pattern="MM/dd/yyyy" navigator="true"/>
                     <h:outputLabel value="Código postal: "/>
-                    <p:inputText value="#{controlador_Login.otro.codigo_postal}"/>
+                    <p:inputText value="#{miSesion.otro.codigo_postal}"/>
                     <h:outputLabel value="Dirección: "/>
-                    <p:inputText value="#{controlador_Login.otro.direccion}"/>
+                    <p:inputText value="#{miSesion.otro.direccion}"/>
                     <h:outputLabel value="Provincia: "/>
-                    <p:inputText value="#{controlador_Login.otro.provincia}"/>
+                    <p:inputText value="#{miSesion.otro.provincia}"/>
                     <h:outputLabel value="Localidad: "/>
-                    <p:inputText value="#{controlador_Login.otro.localidad}"/>
+                    <p:inputText value="#{miSesion.otro.localidad}"/>
                     <h:outputLabel value="Fecha de ingreso: "/>
-                    <p:calendar value="#{controlador_Login.otro.fecha_ingreso}" pattern="MM/dd/yyyy" navigator="true"/>
+                    <p:calendar value="#{miSesion.otro.fecha_ingreso}" pattern="MM/dd/yyyy" navigator="true"/>
                     <h:outputLabel value="Cuota total: "/>
-                    <p:inputText value="#{controlador_Login.otro.cuota_total}"/>
+                    <p:inputText value="#{miSesion.otro.cuota_total}"/>
                     <h:outputLabel value="Teléfono: "/>
-                    <p:inputText value="#{controlador_Login.otro.telefono}"/>
+                    <p:inputText value="#{miSesion.otro.telefono}"/>
                     <h:outputLabel value="Móvil: "/>
-                    <p:inputText value="#{controlador_Login.otro.movil}"/>
+                    <p:inputText value="#{miSesion.otro.movil}"/>
                     <h:outputLabel value="Método de pago: "/>
-                    <p:inputText value="#{controlador_Login.otro.metodo_pago}"/>
+                    <p:inputText value="#{miSesion.otro.metodo_pago}"/>
                     <h:outputLabel value="Sección: "/>
-                    <p:selectOneMenu value="#{controlador_Login.otro.seccion}">
+                    <p:selectOneMenu value="#{miSesion.seccionmod}">
                         <f:selectItem itemLabel="Dejar asi para no modificar" itemValue="antigua" />
                         <f:selectItem itemLabel="Castores" itemValue="Castores" />
                         <f:selectItem itemLabel="Lobatos" itemValue="Lobatos" />
@@ -55,8 +55,8 @@
                         <f:selectItem itemLabel="Escultas" itemValue="Escultas" />
                         <f:selectItem itemLabel="Rovers" itemValue="Rovers" />
                     </p:selectOneMenu>
-                    <p:commandButton value="ACEPTAR" action="#{controlador_Login.aceptarmod()}" ajax="false"/>
-                    <p:commandButton value="Cancelar" action="#{controlador_Login.cancelarmod()}" ajax="false"/>
+                    <p:commandButton value="ACEPTAR" action="#{miSesion.aceptarmod()}" ajax="false"/>
+                    <p:commandButton value="Cancelar" action="Lista_Usuarios.xhtml" ajax="false"/>
                 </h:panelGrid>
             </h:form>
         </div>
