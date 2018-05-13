@@ -37,6 +37,20 @@ ESCULTAS PIONEROS -> 5L
 @SessionScoped
 public class MiSesion implements Serializable {
 
+    /**
+     * @return the ctre
+     */
+    public Control_Eventos getCtre() {
+        return ctre;
+    }
+
+    /**
+     * @param ctre the ctre to set
+     */
+    public void setCtre(Control_Eventos ctre) {
+        this.ctre = ctre;
+    }
+
     private Usuario user;
     private List<Usuario> users;
     private List<Usuario> users2;

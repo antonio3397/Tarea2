@@ -53,6 +53,7 @@ public class Controlador_Login implements Serializable {
         events.add(new Evento(1L, "Viaje al monte", new Date(2018 - 1900, 3, 24), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(1L, Secciones.Castores)));
         events.add(new Evento(2L, "Viaje al monte 2", new Date(2018 - 1900, 6, 24, 9, 30), "Córdoba", "Viaje a córdoba a una de las sierras mas bonitas", 20, new Seccion(2L, Secciones.Lobatos)));
         events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200, new Seccion(3L, Secciones.Rovers_Compañeros)));
+        events.add(new Evento(4L, "Viaje a la Playa", new Date(2019 - 1900, 5, 10, 11, 0), "Sevilla", "Vamos a refrescarnos un poco", 10, new Seccion(1L, Secciones.Castores)));
 
         users.get(0).getEventos().add(events.get(0));
     }
