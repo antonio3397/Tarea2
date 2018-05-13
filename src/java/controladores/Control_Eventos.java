@@ -62,6 +62,10 @@ public class Control_Eventos implements Serializable {
     }
     public String aceptarMod()throws EventoException{
         Evento b=buscarEvento(aux.getId());
+        b.setTitulo(aux.getTitulo());
+        b.setFecha(aux.getFecha());
+        b.setLocalizacion(aux.getLocalizacion());
+        b.setPrecio(aux.getPrecio());
         
         
         return "Lista_eventos.xhtml";
