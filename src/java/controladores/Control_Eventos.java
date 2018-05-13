@@ -6,6 +6,8 @@ package controladores;
  * and open the template in the editor.
  */
 import clases.Evento;
+import clases.Notificacion;
+import clases.NotificacionID;
 import clases.Seccion;
 import clases.Usuario;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ import java.util.Objects;
 import java.util.Random;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
@@ -38,6 +41,9 @@ public class Control_Eventos implements Serializable {
     private Evento aux;
 
     private String seccionMod;
+    
+    @Inject
+    Control_Notificaciones CN;
 
     public Evento buscarEvento(Long id) throws EventoException {
         Evento enc = null;
@@ -142,6 +148,8 @@ public class Control_Eventos implements Serializable {
         eventosj.add(ev);
         eventosj2.add(ev);
 
+        CN.addNotificame(new Notificacion(new NotificacionID(sec.getId(), idcrear), titulocrear, descripcioncrear, fechacrear));  
+        
         fechacrear = null;
         idcrear = null;
         titulocrear = null;
