@@ -55,6 +55,7 @@ public class Controlador_Login implements Serializable {
         events.add(new Evento(3L, "Salvemos a las ardillas", new Date(2019 - 1900, 9, 27, 11, 0), "EEUU", "Viaje a EEUU para salvar a las ardillas", 1200, new Seccion(3L, Secciones.Rovers_Compañeros)));
 
         users.get(0).getEventos().add(events.get(0));
+        events.get(0).getUsuarios().add(users.get(0));
     }
 
     public String autenticar() {

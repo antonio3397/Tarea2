@@ -8,6 +8,7 @@ package clases;
 import clases.Comentario;
 import clases.Seccion.Secciones;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
@@ -70,6 +71,7 @@ public class Evento implements Serializable {
         this.precio=precio;
         this.titulo=titulo;
         this.seccion=seccion;
+        this.usuarios=new ArrayList<>();
     }
     
     /**

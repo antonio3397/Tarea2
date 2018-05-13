@@ -7,6 +7,7 @@ package controladores;
  */
 import clases.Evento;
 import clases.Seccion;
+import clases.Usuario;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Iterator;

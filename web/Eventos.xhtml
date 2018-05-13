@@ -47,7 +47,24 @@
                     </c:when>
                     <c:otherwise>
                         <h:form>
-                            <p:commandButton value="Modificar" action="#{Eventos.modificarEvento(Eventos.event.id)}" ajax="false"/>
+                            <p:commandButton value="Modificar" action="#{Eventos.modificarEvento(Eventos.event.id)}" ajax="false" />
+                            <br/><br/>
+                            <p:dataTable id="tbl" var="inscritos" value="#{Eventos.event.usuarios}" rendered="false">
+                                <p:column headerText="DNI">
+                                    <h:outputText value="#{inscritos.NIF}" />
+                                </p:column>
+
+                                <p:column headerText="Nombre">
+                                    <h:outputText value="#{inscritos.nombre}" />
+                                </p:column>
+
+                                <p:column headerText="Apellidos">
+                                    <h:outputText value="#{inscritos.apellidos}" />
+                                </p:column>
+                            </p:dataTable>
+                            <h:commandLink value="Usuarios inscritos">
+                                <p:dataExporter type="xls" target="tbl" fileName="Inscritos" pageOnly="true"/>
+                            </h:commandLink>
                         </h:form>
                         <br></br><br></br>
                     </c:otherwise>
