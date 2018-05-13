@@ -31,8 +31,28 @@
                     
                     <h:outputLabel value="Precio: "/>
                     <p:inputText value="#{Eventos.aux.precio}"/>
-                    <p:commandButton value="Modificar" action="#{Eventos.aceptarMod()}" ajax="false"/>
                     
+                    <h:outputLabel value="Sección"/>
+                   
+                    
+                    <p:selectOneMenu value="#{Eventos.seccionMod}">
+                    <c:choose>
+                        <c:when test="#{miSesion.coordGen}">
+                            <f:selectItem itemLabel="Dejar así para no modificar" itemValue="antigua" />
+                            <f:selectItem itemLabel="Castores" itemValue="Castores" />
+                            <f:selectItem itemLabel="Lobatos" itemValue="Lobatos" />
+                            <f:selectItem itemLabel="Scouts" itemValue="Scouts" />
+                            <f:selectItem itemLabel="Escultas" itemValue="Escultas" />
+                            <f:selectItem itemLabel="Rovers" itemValue="Rovers" />
+                        </c:when>
+                        <c:otherwise>
+                            <f:selectItem itemLabel="#{miSesion.seccion}" itemValue="#{miSesion.seccion}"/>
+                        </c:otherwise>
+                    </c:choose>
+                    </p:selectOneMenu>
+                    
+                    <p:commandButton value="Modificar" action="#{Eventos.aceptarMod()}" ajax="false"/>
+                    <p:commandButton value="Cancelar" action="#{Eventos.cancelarMod()}" ajax="false"/>
                 </h:panelGrid>
                 
             </h:form>

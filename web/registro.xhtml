@@ -7,18 +7,18 @@
         <title>Registro</title>
     </h:head>
     <h:body>
-       <h:form>
-           <h:panelGrid columns="2">
-                 <h:outputLabel value="Cargo"/>
-                 <h:selectOneMenu value="#{control_Registro.rol}">
-                     <f:selectItem itemLabel="EDUCANDO" itemValue="EDUCANDO"/>
-                      <f:selectItem itemLabel="SCOUTER" itemValue="SCOUTER"/>
-                 </h:selectOneMenu>
-                 <h:outputLabel value="Tiene responsable legal"/>
-                 <h:selectBooleanCheckbox value="#{control_Registro.tieneLegal}" />
-             </h:panelGrid>
-        <h:commandButton value="IR" action="#{control_Registro.quien()}"/>
-        <h:messages/>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Cargo"/>
+                <h:selectOneMenu value="#{control_Registro.rol}">
+                    <f:selectItem itemLabel="EDUCANDO" itemValue="EDUCANDO"/>
+                    <f:selectItem itemLabel="SCOUTER" itemValue="SCOUTER"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="Tiene responsable legal"/>
+                <h:selectBooleanCheckbox value="#{control_Registro.tieneLegal}" />
+            </h:panelGrid>
+            <h:commandButton value="IR" action="#{control_Registro.quien()}"/>
+            <h:messages/>
         </h:form>
     </h:body>
 </html>

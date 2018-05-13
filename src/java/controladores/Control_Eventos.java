@@ -23,7 +23,7 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 @Named(value = "Eventos")
 public class Control_Eventos implements Serializable {
-    
+
     private List<Evento> eventosj;
     private List<Evento> eventosj2;
     private Evento event;
@@ -35,6 +35,8 @@ public class Control_Eventos implements Serializable {
     private String preciocrear;
     private String seccioncrear;
     private Evento aux;
+
+    private String seccionMod;
 
     public Evento buscarEvento(Long id) throws EventoException {
         Evento enc = null;
@@ -52,23 +54,50 @@ public class Control_Eventos implements Serializable {
         }
         return enc;
     }
-    
-    public String modificarEvento(Long id)throws EventoException{
+  
+    public String modificarEvento(Long id) throws EventoException {
         Evento b = buscarEvento(id);
-        setAux(new Evento(id, b.getTitulo(), b.getFecha(), b.getLocalizacion(), b.getDescripcion(), b.getPrecio(),b.getSeccion()));
+        setAux(new Evento(id, b.getTitulo(), b.getFecha(), b.getLocalizacion(), b.getDescripcion(), b.getPrecio(), b.getSeccion()));
         return "ModEvento.xhtml";
     }
-    public String aceptarMod()throws EventoException{
-        Evento b=buscarEvento(aux.getId());
+
+    public String aceptarMod() throws EventoException {
+        Evento b = buscarEvento(aux.getId());
+
         b.setTitulo(aux.getTitulo());
         b.setFecha(aux.getFecha());
         b.setLocalizacion(aux.getLocalizacion());
         b.setPrecio(aux.getPrecio());
-        
-        
+
+        switch (getSeccionMod()) {
+            case "Castores":
+                b.setSeccion(new Seccion(1L, Seccion.Secciones.Castores));
+                break;
+            case "Lobatos":
+                b.setSeccion(new Seccion(2L, Seccion.Secciones.Lobatos));
+                break;
+            case "Scouts":
+                b.setSeccion(new Seccion(4L, Seccion.Secciones.Tropa_Scout));
+                break;
+            case "Escultas":
+                b.setSeccion(new Seccion(5L, Seccion.Secciones.Escultas_Pioneros));
+                break;
+            case "Rovers":
+                b.setSeccion(new Seccion(3L, Seccion.Secciones.Rovers_Compañeros));
+                break;
+            default:
+                break;
+        }
+        seccionMod = null;
+
         return "Lista_eventos.xhtml";
     }
-    
+
+    public String cancelarMod() {
+
+        return "Eventos.xhtml";
+    }
+
     public String borrarEvento(Long id) throws EventoException {
         Evento b = buscarEvento(id);
         eventosj.remove(b);
@@ -119,7 +148,7 @@ public class Control_Eventos implements Serializable {
         descripcioncrear = null;
         preciocrear = null;
         seccioncrear = null;
-        
+
         return "Lista_eventos.xhtml";
     }
 
@@ -134,9 +163,9 @@ public class Control_Eventos implements Serializable {
 
         return "Lista_eventos.xhtml";
     }
-    
+
     public String verEvento(Long id) {
-        
+
         Iterator<Evento> iter = eventosj.iterator();
         Evento u = iter.next();
         while (iter.hasNext() && !Objects.equals(id, u.getId())) {
@@ -145,7 +174,7 @@ public class Control_Eventos implements Serializable {
         if (Objects.equals(id, u.getId())) {
             setEvent(u);
         }
-        
+
         return "Eventos.xhtml";
     }
 
@@ -297,4 +326,17 @@ public class Control_Eventos implements Serializable {
         this.aux = aux;
     }
 
+    /**
+     * @return the seccionMod
+     */
+    public String getSeccionMod() {
+        return seccionMod;
+    }
+
+    /**
+     * @param seccionMod the seccionMod to set
+     */
+    public void setSeccionMod(String seccionMod) {
+        this.seccionMod = seccionMod;
+    }
 }
