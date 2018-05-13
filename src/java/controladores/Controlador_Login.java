@@ -35,24 +35,7 @@ public class Controlador_Login implements Serializable {
     private List<Usuario> users;
     private List<Evento> events;
     private Usuario otro;
-
-    /*private String nombremod;
-    private String apellidosmod;
-    private String nifmod;
-    private String sexomod;
-    private String emailmod;
-    private Date nacimientomod;
-    private int codigopostalmod;
-    private String direcmod;
-    private String provmod;
-    private String localmod;
-    private Date ingresomod;
-    private int cuotamod;
-    private int telefonomod;
-    private int movilmod;
-    private String metodopagomod;*/
     private String seccionmod;
-    /*private Usuario usermod;*/
 
     @Inject
     private MiSesion ctrl;

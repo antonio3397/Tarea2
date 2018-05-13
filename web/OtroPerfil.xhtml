@@ -17,38 +17,38 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nombre: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.nombre}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.nombre}"/>
                     <h:outputLabel value="Apellidos: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.apellidos}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.apellidos}"/>
                     <h:outputLabel value="Nif: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.NIF}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.NIF}"/>
                     <h:outputLabel value="Sexo: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.sexo}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.sexo}"/>
                     <h:outputLabel value="Email: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.email}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.email}"/>
                     <h:outputLabel value="Fecha de nacimiento: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.fecha_nacimiento}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.fecha_nacimiento}"/>
                     <h:outputLabel value="Código postal: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.codigo_postal}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.codigo_postal}"/>
                     <h:outputLabel value="Dirección: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.direccion}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.direccion}"/>
                     <h:outputLabel value="Provincia: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.provincia}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.provincia}"/>
                     <h:outputLabel value="Localidad: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.localidad}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.localidad}"/>
                     <h:outputLabel value="Fecha de ingreso: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.fecha_ingreso}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.fecha_ingreso}"/>
                     <h:outputLabel value="Cuota total: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.cuota_total}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.cuota_total}"/>
                     <h:outputLabel value="Teléfono: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.telefono}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.telefono}"/>
                     <h:outputLabel value="Móvil: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.movil}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.movil}"/>
                     <h:outputLabel value="Método de pago: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.metodo_pago}"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.metodo_pago}"/>
                     <h:outputLabel value="Sección: "/>
-                    <h:outputLabel value="#{controlador_Login.otro.seccion.nombre}"/>
-                    <p:commandButton value="Modificar" action="#{miSesion.modificarboton(controlador_Login.otro.id)}" ajax="false"/>
+                    <h:outputLabel value="#{miSesion.auxiliar.seccion.nombre}"/>
+                    <p:commandButton value="Modificar" action="#{miSesion.modificarboton()}" ajax="false"/>
                 </h:panelGrid>
             </h:form>
         </div>
