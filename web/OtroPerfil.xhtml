@@ -10,9 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-    <f:metadata>
-        <f:viewParam name="us" value="#{controlador_Login.otro}"/>
-    </f:metadata>
     <ui:define name="title">Documentos</ui:define>
 
     <ui:define name="content">
@@ -20,38 +17,38 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nombre: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().nombre}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.nombre}"/>
                     <h:outputLabel value="Apellidos: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().apellidos}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.apellidos}"/>
                     <h:outputLabel value="Nif: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().NIF}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.NIF}"/>
                     <h:outputLabel value="Sexo: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().sexo}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.sexo}"/>
                     <h:outputLabel value="Email: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().email}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.email}"/>
                     <h:outputLabel value="Fecha de nacimiento: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().fecha_nacimiento}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.fecha_nacimiento}"/>
                     <h:outputLabel value="Código postal: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().codigo_postal}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.codigo_postal}"/>
                     <h:outputLabel value="Dirección: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().direccion}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.direccion}"/>
                     <h:outputLabel value="Provincia: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().provincia}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.provincia}"/>
                     <h:outputLabel value="Localidad: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().localidad}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.localidad}"/>
                     <h:outputLabel value="Fecha de ingreso: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().fecha_ingreso}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.fecha_ingreso}"/>
                     <h:outputLabel value="Cuota total: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().cuota_total}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.cuota_total}"/>
                     <h:outputLabel value="Teléfono: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().telefono}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.telefono}"/>
                     <h:outputLabel value="Móvil: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().movil}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.movil}"/>
                     <h:outputLabel value="Método de pago: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().metodo_pago}"/>
+                    <h:outputLabel value="#{controlador_Login.otro.metodo_pago}"/>
                     <h:outputLabel value="Sección: "/>
-                    <h:outputLabel value="#{controlador_Login.verUsuario().seccion.nombre}"/>
-                    <p:commandButton value="Modificar" action="#{controlador_Login.modificarboton(controlador_Login.verUsuario())}" ajax="false"/>
+                    <h:outputLabel value="#{controlador_Login.otro.seccion.nombre}"/>
+                    <p:commandButton value="Modificar" action="#{controlador_Login.modificarboton(controlador_Login.otro.id)}" ajax="false"/>
                 </h:panelGrid>
             </h:form>
         </div>

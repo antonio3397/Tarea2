@@ -37,10 +37,10 @@
                         <p:column headerText="Apellidos">
                             <h:outputText value="#{users.apellidos}" />
                         </p:column>
-                        <p:column headerText="Más">                          
-                            <p:link outcome="OtroPerfil" value="Ver perfil">
-                                <f:param name="us" value="#{users.id}"/>
-                            </p:link>	
+                        <p:column headerText="Más">
+                            <h:form>
+                                <p:commandButton value="Ver perfil" action="#{controlador_Login.verUsuario(users.id)}" ajax="false"/>
+                            </h:form>
                         </p:column>
                         <p:column headerText="Borrar">
                             <h:form>

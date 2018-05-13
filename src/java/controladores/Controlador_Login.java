@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.faces.application.FacesMessage;
@@ -33,9 +34,9 @@ public class Controlador_Login implements Serializable {
     private String email;
     private List<Usuario> users;
     private List<Evento> events;
-    private String otro;
+    private Usuario otro;
     
-    private String nombremod;
+    /*private String nombremod;
     private String apellidosmod;
     private String nifmod;
     private String sexomod;
@@ -49,9 +50,9 @@ public class Controlador_Login implements Serializable {
     private int cuotamod;
     private int telefonomod;
     private int movilmod;
-    private String metodopagomod;
+    private String metodopagomod;*/
     private String seccionmod;
-    private Usuario usermod;
+    /*private Usuario usermod;*/
 
     @Inject
     private MiSesion ctrl;
@@ -139,19 +140,55 @@ public class Controlador_Login implements Serializable {
         return "Inicio.xhtml";
     }
 
-    public Usuario verUsuario() {
-        int ID = Integer.decode(otro);
-        int i = 0;
-        while (i < users.size() && users.get(i).getId() != ID) {
-            i++;
+    public String verUsuario(Long id) {
+        
+        for(Usuario a : users){
+            if(id.equals(a.getId())){
+                otro=a;
+            }
         }
         
-        return users.get(i);
+        return "OtroPerfil.xhtml";
     }
     
-    public String modificarboton(Usuario u){
-        usermod=u;
-        nombremod=u.getNombre();
+    public String modificarboton(Long id){
+        
+        for(Usuario a : users){
+            if(id.equals(a.getId())){
+                otro=a;
+            }
+        }
+        
+        //usermod=new Usuario(id, u.getContrasenia(), u.getNIF(), u.getEmail(), u.getNombre(), u.getApellidos(), u.getSexo(), u.getFecha_nacimiento(), u.getCodigo_postal(),u.getDireccion(), u.getProvincia(), u.getLocalidad(), u.getFecha_ingreso(), u.getCuota_total(), u.getTelefono(), u.getMovil(), u.getMetodo_pago(), u.getPerfiles(), u.getSeccion());
+        
+        /*usermod.setId(id);
+        usermod.setNombre(u.getNombre());
+        usermod.setApellidos(u.getApellidos());
+        usermod.setContrasenia(u.getContrasenia());
+        usermod.setNIF(u.getNIF());
+        usermod.setEmail(u.getEmail());
+        usermod.setSexo(u.getSexo());
+        usermod.setFecha_nacimiento(u.getFecha_nacimiento());
+        usermod.setCodigo_postal(u.getCodigo_postal());
+        usermod.setDireccion(u.getDireccion());
+        usermod.setProvincia(u.getProvincia());
+        usermod.setLocalidad(u.getLocalidad());
+        usermod.setFecha_ingreso(u.getFecha_ingreso());
+        usermod.setFecha_baja(u.getFecha_baja());
+        usermod.setCuota_total(u.getCuota_total());
+        usermod.setTelefono(u.getTelefono());
+        usermod.setMovil(u.getMovil());
+        usermod.setMetodo_pago(u.getMetodo_pago());
+        usermod.setDocumentos(u.getDocumentos());
+        usermod.setComentarios(u.getComentarios());
+        usermod.setPerfiles(u.getPerfiles());
+        usermod.setPago(u.getPago());
+        usermod.setSeccion(u.getSeccion());
+        usermod.setEventos(u.getEventos());
+        usermod.setNotificaciones(u.getNotificaciones());
+        usermod.setInscripciones(u.getInscripciones());
+        usermod.setResponsable(u.getResponsable());*/
+        /*nombremod=u.getNombre();
         apellidosmod=u.getApellidos();
         nifmod=u.getNIF();
         sexomod=u.getSexo();
@@ -165,7 +202,7 @@ public class Controlador_Login implements Serializable {
         cuotamod=u.getCuota_total();
         telefonomod=u.getTelefono();
         movilmod=u.getMovil();
-        metodopagomod=u.getMetodo_pago();
+        metodopagomod=u.getMetodo_pago();*/
         
         return "ModPerf.xhtml";
     }
@@ -191,19 +228,21 @@ public class Controlador_Login implements Serializable {
                 sec= new Seccion(3L, Seccion.Secciones.Rovers_Compañeros);
                 break;
             default:
-                sec= usermod.getSeccion();
+                sec= otro.getSeccion();
                 break;
         }
+        
+        otro.setSeccion(sec);
         
         int i=0;
         boolean enc=false;
         while(i<users.size() && !enc){
-            if(users.get(i).getId().equals(usermod.getId())){
+            if(Objects.equals(users.get(i).getId(), otro.getId())){
                 enc=true;
             }
             i++;
         }
-        users.get(i-1).setNombre(nombremod);
+        /*users.get(i-1).setNombre(nombremod);
         users.get(i-1).setApellidos(apellidosmod);
         users.get(i-1).setNIF(nifmod);
         users.get(i-1).setSexo(sexomod);
@@ -218,15 +257,56 @@ public class Controlador_Login implements Serializable {
         users.get(i-1).setTelefono(telefonomod);
         users.get(i-1).setMovil(movilmod);
         users.get(i-1).setMetodo_pago(metodopagomod);
-        users.get(i-1).setSeccion(sec);
+        users.get(i-1).setSeccion(sec);*/
+        users.get(i-1).setNombre(otro.getNombre());
+        users.get(i-1).setApellidos(otro.getApellidos());
+        users.get(i-1).setNIF(otro.getNIF());
+        users.get(i-1).setSexo(otro.getSexo());
+        users.get(i-1).setEmail(otro.getEmail());
+        users.get(i-1).setFecha_nacimiento(otro.getFecha_nacimiento());
+        users.get(i-1).setCodigo_postal(otro.getCodigo_postal());
+        users.get(i-1).setDireccion(otro.getDireccion());
+        users.get(i-1).setProvincia(otro.getProvincia());
+        users.get(i-1).setLocalidad(otro.getLocalidad());
+        users.get(i-1).setFecha_ingreso(otro.getFecha_ingreso());
+        users.get(i-1).setCuota_total(otro.getCuota_total());
+        users.get(i-1).setTelefono(otro.getTelefono());
+        users.get(i-1).setMovil(otro.getMovil());
+        users.get(i-1).setMetodo_pago(otro.getMetodo_pago());
+        users.get(i-1).setSeccion(otro.getSeccion());
         
-        return "Lista_Usuarios.xhtml";
+        return "OtroPerfil.xhtml";
     }
     
     public String cancelarmod(){
-        usermod=null;
         
-        return "Lista_Usuarios.xhtml";
+        int i=0;
+        boolean enc=false;
+        while(i<users.size() && !enc){
+            if(Objects.equals(users.get(i).getId(), otro.getId())){
+                enc=true;
+            }
+            i++;
+        }
+        
+        otro.setNombre(users.get(i-1).getNombre());
+        otro.setApellidos(users.get(i-1).getApellidos());
+        otro.setNIF(users.get(i-1).getNIF());
+        otro.setSexo(users.get(i-1).getSexo());
+        otro.setEmail(users.get(i-1).getEmail());
+        otro.setFecha_nacimiento(users.get(i-1).getFecha_nacimiento());
+        otro.setCodigo_postal(users.get(i-1).getCodigo_postal());
+        otro.setDireccion(users.get(i-1).getDireccion());
+        otro.setProvincia(users.get(i-1).getProvincia());
+        otro.setLocalidad(users.get(i-1).getLocalidad());
+        otro.setFecha_ingreso(users.get(i-1).getFecha_ingreso());
+        otro.setCuota_total(users.get(i-1).getCuota_total());
+        otro.setTelefono(users.get(i-1).getTelefono());
+        otro.setMovil(users.get(i-1).getMovil());
+        otro.setMetodo_pago(users.get(i-1).getMetodo_pago());
+        otro.setSeccion(users.get(i-1).getSeccion());
+        
+        return "OtroPerfil.xhtml";
     }
 
     /**
@@ -274,14 +354,14 @@ public class Controlador_Login implements Serializable {
     /**
      * @return the otro
      */
-    public String getOtro() {
+    public Usuario getOtro() {
         return otro;
     }
 
     /**
      * @param otro the otro to set
      */
-    public void setOtro(String otro) {
+    public void setOtro(Usuario otro) {
         this.otro = otro;
     }
 
@@ -339,229 +419,5 @@ public class Controlador_Login implements Serializable {
      */
     public void setSeccionmod(String seccionmod) {
         this.seccionmod = seccionmod;
-    }
-
-    /**
-     * @return the nombremod
-     */
-    public String getNombremod() {
-        return nombremod;
-    }
-
-    /**
-     * @param nombremod the nombremod to set
-     */
-    public void setNombremod(String nombremod) {
-        this.nombremod = nombremod;
-    }
-
-    /**
-     * @return the apellidosmod
-     */
-    public String getApellidosmod() {
-        return apellidosmod;
-    }
-
-    /**
-     * @param apellidosmod the apellidosmod to set
-     */
-    public void setApellidosmod(String apellidosmod) {
-        this.apellidosmod = apellidosmod;
-    }
-
-    /**
-     * @return the nifmod
-     */
-    public String getNifmod() {
-        return nifmod;
-    }
-
-    /**
-     * @param nifmod the nifmod to set
-     */
-    public void setNifmod(String nifmod) {
-        this.nifmod = nifmod;
-    }
-
-    /**
-     * @return the sexomod
-     */
-    public String getSexomod() {
-        return sexomod;
-    }
-
-    /**
-     * @param sexomod the sexomod to set
-     */
-    public void setSexomod(String sexomod) {
-        this.sexomod = sexomod;
-    }
-
-    /**
-     * @return the emailmod
-     */
-    public String getEmailmod() {
-        return emailmod;
-    }
-
-    /**
-     * @param emailmod the emailmod to set
-     */
-    public void setEmailmod(String emailmod) {
-        this.emailmod = emailmod;
-    }
-
-    /**
-     * @return the nacimientomod
-     */
-    public Date getNacimientomod() {
-        return nacimientomod;
-    }
-
-    /**
-     * @param nacimientomod the nacimientomod to set
-     */
-    public void setNacimientomod(Date nacimientomod) {
-        this.nacimientomod = nacimientomod;
-    }
-
-    /**
-     * @return the codigopostalmod
-     */
-    public int getCodigopostalmod() {
-        return codigopostalmod;
-    }
-
-    /**
-     * @param codigopostalmod the codigopostalmod to set
-     */
-    public void setCodigopostalmod(int codigopostalmod) {
-        this.codigopostalmod = codigopostalmod;
-    }
-
-    /**
-     * @return the direcmod
-     */
-    public String getDirecmod() {
-        return direcmod;
-    }
-
-    /**
-     * @param direcmod the direcmod to set
-     */
-    public void setDirecmod(String direcmod) {
-        this.direcmod = direcmod;
-    }
-
-    /**
-     * @return the provmod
-     */
-    public String getProvmod() {
-        return provmod;
-    }
-
-    /**
-     * @param provmod the provmod to set
-     */
-    public void setProvmod(String provmod) {
-        this.provmod = provmod;
-    }
-
-    /**
-     * @return the localmod
-     */
-    public String getLocalmod() {
-        return localmod;
-    }
-
-    /**
-     * @param localmod the localmod to set
-     */
-    public void setLocalmod(String localmod) {
-        this.localmod = localmod;
-    }
-
-    /**
-     * @return the ingresomod
-     */
-    public Date getIngresomod() {
-        return ingresomod;
-    }
-
-    /**
-     * @param ingresomod the ingresomod to set
-     */
-    public void setIngresomod(Date ingresomod) {
-        this.ingresomod = ingresomod;
-    }
-
-    /**
-     * @return the cuotamod
-     */
-    public int getCuotamod() {
-        return cuotamod;
-    }
-
-    /**
-     * @param cuotamod the cuotamod to set
-     */
-    public void setCuotamod(int cuotamod) {
-        this.cuotamod = cuotamod;
-    }
-
-    /**
-     * @return the telefonomod
-     */
-    public int getTelefonomod() {
-        return telefonomod;
-    }
-
-    /**
-     * @param telefonomod the telefonomod to set
-     */
-    public void setTelefonomod(int telefonomod) {
-        this.telefonomod = telefonomod;
-    }
-
-    /**
-     * @return the movilmod
-     */
-    public int getMovilmod() {
-        return movilmod;
-    }
-
-    /**
-     * @param movilmod the movilmod to set
-     */
-    public void setMovilmod(int movilmod) {
-        this.movilmod = movilmod;
-    }
-
-    /**
-     * @return the metodopagomod
-     */
-    public String getMetodopagomod() {
-        return metodopagomod;
-    }
-
-    /**
-     * @param metodopagomod the metodopagomod to set
-     */
-    public void setMetodopagomod(String metodopagomod) {
-        this.metodopagomod = metodopagomod;
-    }
-
-    /**
-     * @return the usermod
-     */
-    public Usuario getUsermod() {
-        return usermod;
-    }
-
-    /**
-     * @param usermod the usermod to set
-     */
-    public void setUsermod(Usuario usermod) {
-        this.usermod = usermod;
     }
 }
