@@ -136,6 +136,7 @@ public class MiSesion implements Serializable {
                 sec = getOtro().getSeccion();
                 break;
         }
+        seccionmod = null;
 
         getOtro().setSeccion(sec);
 
@@ -164,6 +165,11 @@ public class MiSesion implements Serializable {
 
         getCtr().setUsers(getUsers());
 
+        return "Lista_Usuarios.xhtml";
+    }
+    
+    public String cancerlarMod () {
+        seccionmod = null;
         return "Lista_Usuarios.xhtml";
     }
 
