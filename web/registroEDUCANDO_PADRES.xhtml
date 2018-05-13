@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Educando menores</title>
     </h:head>
     <h:body>
+       
         <h1>EDUCANDOS MENORES</h1>
          <h:panelGrid columns="2">
                 <h:outputLabel value="Nombre"/>
@@ -19,7 +21,7 @@
                 <h:outputLabel value="EMAIL"/>
                 <h:inputText value="#{control_Registro.user.email}"/>
                 <h:outputLabel value="FECHA NACIMIENTO"/>
-                <h:inputText value="#{control_Registro.user.fecha_nacimiento}"/>
+                <p:calendar value="#{control_Registro.user.fecha_nacimiento}" locale="de" navigator="true" pattern="MM/dd/yyyy" />
                 <h:outputLabel value="CODIGO POSTAL"/>
                 <h:inputText value="#{control_Registro.user.codigo_postal}"/>
                 <h:outputLabel value="DIRRECIÓN"/>
@@ -29,11 +31,7 @@
                 <h:outputLabel value="LOCALIDAD"/>
                 <h:inputText value="#{control_Registro.user.localidad}"/>
                 <h:outputLabel value="FECHA DE INGRESO"/>
-                <h:inputText value="#{control_Registro.user.fecha_ingreso}"/>
-                <h:outputLabel value="FECHA DE BAJA"/>
-                <h:inputText value="#{control_Registro.user.fecha_baja}"/>
-                <h:outputLabel value="CUOTA TOTAL"/>
-                <h:inputText value="#{control_Registro.user.cuota_total}"/>
+                 <p:calendar  value="#{control_Registro.user.fecha_ingreso}" pattern="MM/dd/yyyy" />
                 <h:outputLabel value="TELÉFONO"/>
                 <h:inputText value="#{control_Registro.user.telefono}"/>
                 <h:outputLabel value="MÓVIL"/>
@@ -48,11 +46,9 @@
                 <h:outputLabel value="Apellidos"/>
                 <h:inputText value="#{control_Registro.user.responsable.apellidos}"/>
                 <h:outputLabel value="NIF"/>
-                <h:inputText value="#{control_Registro.user.responsable.hashCode}"/>
+                <h:inputText value="#{control_Registro.user.responsable.NIF}"/>
                 <h:outputLabel value="EMAIL"/>
                 <h:inputText value="#{control_Registro.user.responsable.email}"/>
-               
-                    <br/>
                     </h:panelGrid>
         <h:form>
             <h:commandButton value="Registrase" action="#{control_Registro.agregarPersona()}"/>
