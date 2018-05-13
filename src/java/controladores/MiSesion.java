@@ -224,6 +224,7 @@ public class MiSesion implements Serializable {
     
     public String inscribirse(Evento e) throws EventoException{
         user.getEventos().add(e);
+        e.getUsuarios().add(user);
         
         return "Eventos.xhtml";
         

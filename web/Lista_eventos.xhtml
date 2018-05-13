@@ -50,15 +50,7 @@
                     <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
                         <p:column headerText="Borrar">
                             <h:form>
-                            <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
-                            </h:form>
-                        </p:column>
-                        
-                        <p:column headerText="Excel">
-                            <h:form>
-                                <h:commandLink>
-                                    <a href="pppp.xlsx" download="pppp.xlsx"><img src="excel.jpg" width="50"/>Descargar Excel</a>
-                                </h:commandLink>
+                                <p:commandButton value="Eliminar" ajax="false" actionListener="#{Eventos.borrarEvento(events.id)}"></p:commandButton>
                             </h:form>
                         </p:column>
                     </c:when>

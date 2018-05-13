@@ -56,6 +56,7 @@ public class Controlador_Login implements Serializable {
         events.add(new Evento(4L, "Viaje a la Playa", new Date(2019 - 1900, 5, 10, 11, 0), "Sevilla", "Vamos a refrescarnos un poco", 10, new Seccion(1L, Secciones.Castores)));
 
         users.get(0).getEventos().add(events.get(0));
+        events.get(0).getUsuarios().add(users.get(0));
     }
 
     public String autenticar() {
