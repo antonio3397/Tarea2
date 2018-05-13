@@ -131,7 +131,7 @@ public class MiSesion implements Serializable {
         u.setFecha_nacimiento(otro.getFecha_nacimiento());
         u.setCodigo_postal(otro.getCodigo_postal());
         u.setDireccion(otro.getDireccion());
-        u.setProvincia(u.getProvincia());
+        u.setProvincia(otro.getProvincia());
         u.setLocalidad(otro.getLocalidad());
         u.setFecha_ingreso(otro.getFecha_ingreso());
         u.setCuota_total(otro.getCuota_total());
