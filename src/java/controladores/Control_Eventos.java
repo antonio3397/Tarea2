@@ -35,6 +35,7 @@ public class Control_Eventos implements Serializable {
     private String preciocrear;
     private String seccioncrear;
     private Evento aux;
+
     private String seccionMod;
 
     public Evento buscarEvento(Long id) throws EventoException {
@@ -53,7 +54,7 @@ public class Control_Eventos implements Serializable {
         }
         return enc;
     }
-
+  
     public String modificarEvento(Long id) throws EventoException {
         Evento b = buscarEvento(id);
         setAux(new Evento(id, b.getTitulo(), b.getFecha(), b.getLocalizacion(), b.getDescripcion(), b.getPrecio(), b.getSeccion()));
@@ -62,6 +63,7 @@ public class Control_Eventos implements Serializable {
 
     public String aceptarMod() throws EventoException {
         Evento b = buscarEvento(aux.getId());
+
         b.setTitulo(aux.getTitulo());
         b.setFecha(aux.getFecha());
         b.setLocalizacion(aux.getLocalizacion());
@@ -337,5 +339,4 @@ public class Control_Eventos implements Serializable {
     public void setSeccionMod(String seccionMod) {
         this.seccionMod = seccionMod;
     }
-
 }
