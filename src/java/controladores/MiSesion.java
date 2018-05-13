@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import clases.Evento;
 import clases.Perfil;
 import clases.Seccion;
 import clases.Usuario;
@@ -65,6 +66,9 @@ public class MiSesion implements Serializable {
 
     @Inject
     private Controlador_Login ctr;
+    
+    @Inject
+    private Control_Eventos ctre;
 
     /**
      * Creates a new instance of MiSesion
@@ -194,14 +198,21 @@ public class MiSesion implements Serializable {
 
         Iterator<Usuario> iter = getUsers().iterator();
         Usuario u = iter.next();
-        while (iter.hasNext() && id != u.getId()) {
+        while (iter.hasNext() && !Objects.equals(id, u.getId())) {
             u = iter.next();
         }
-        if (id == u.getId()) {
+        if (Objects.equals(id, u.getId())) {
             setAuxiliar(u);
         }
 
         return "OtroPerfil.xhtml";
+    }
+    
+    public String inscribirse(Evento e) throws EventoException{
+        user.getEventos().add(e);
+        
+        return "Eventos.xhtml";
+        
     }
 
     /**

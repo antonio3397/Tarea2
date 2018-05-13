@@ -56,19 +56,17 @@ public class Control_Comentario {
         this.Comentarios = Comentarios;
     }
 
-    public List<Comentario> buscarComentarios(String event) throws EventoException {
+    public List<Comentario> buscarComentarios(Evento event) throws EventoException {
         List<Comentario> aux = new ArrayList<>();
-        long ID = Integer.decode(event);
-        Evento evento = ev.buscarEvento(ID);
         for (Comentario comment : Comentarios) {
-            if (comment.getEvento().equals(evento)) {
+            if (comment.getEvento().equals(event)) {
                 aux.add(comment);
             }
         }
         return aux;
     }
 
-    public boolean hayComentarios(String event) throws EventoException {
+    public boolean hayComentarios(Evento event) throws EventoException {
         return buscarComentarios(event).isEmpty();
     }
 
@@ -96,12 +94,10 @@ public class Control_Comentario {
         return "Eventos.html";
     }
 
-    public void agnadirComentario(String event, Usuario user) throws EventoException {
+    public void agnadirComentario(Evento event, Usuario user) throws EventoException {
         if (!"".equals(mensaje)) {
-            long ID = Integer.decode(event);
-            Evento evento = ev.buscarEvento(ID);
             long tam = Comentarios.size();
-            Comentario coment = new Comentario(tam, mensaje, new Date(), evento, user);
+            Comentario coment = new Comentario(tam, mensaje, new Date(), event, user);
             Comentarios.add(coment);
             mensaje = "";
         }
