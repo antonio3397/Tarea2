@@ -18,7 +18,7 @@
         <c:choose>
             <c:when test="#{miSesion.coordGen || miSesion.cordSec}">
                 <div class = "container-fluid">
-                    <button type="button" class="btn btn-success" href="#">CREAR USUARIO +</button>
+                    <a class="btn btn-success" href="CrearUsuario.xhtml" role="button">CREAR USUARIO +</a>
                 </div>
                 <br/>
                 <div class="container-fluid">
@@ -69,7 +69,7 @@
                         </p:column>
                         <p:column headerText="Más">                          
                             <p:link outcome="OtroPerfil" value="Ver perfil">
-                                <f:param name="us" value="#{users.id}"/>
+                                <f:param name="us" value="#{miSesion.verUsuario(users.id)}"/>
                             </p:link>	
                         </p:column>
                     </p:dataTable>
