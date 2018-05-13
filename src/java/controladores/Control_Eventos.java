@@ -9,12 +9,9 @@ package controladores;
 import clases.Evento;
 import clases.Seccion;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 

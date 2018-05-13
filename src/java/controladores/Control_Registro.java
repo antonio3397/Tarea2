@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import clases.Perfil;
 import clases.Usuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,6 @@ public class Control_Registro {
     private List<Usuario> list_User=new ArrayList<>();
     private boolean tieneLegal;
     private String rol;
-    
     
     /**
      * Creates a new instance of Control_Registro
@@ -98,15 +98,15 @@ public class Control_Registro {
         return "exitoRegistro.xhtml";
     }
    public String quien(){
-       if(rol.equalsIgnoreCase("SCOUTER") && !tieneLegal){
+       if(rol.equals(Perfil.Rol.SCOUTER.toString()) && !tieneLegal){
            return "registroSCOUTER.xhtml";
-       } else if(rol.equalsIgnoreCase("EDUCANDO") && tieneLegal){
+       } else if(rol.equals(Perfil.Rol.EDUCANDO.toString()) && tieneLegal){
            return "registroEDUCANDO_PADRES.xhtml";
-       } else if(rol.equalsIgnoreCase("EDUCANDO") && !tieneLegal){
+       } else if(rol.equalsIgnoreCase(Perfil.Rol.EDUCANDO.toString()) && !tieneLegal){
            return "registroEDUCANDO_NO_PADRES.xhtml";
        } else {
           FacesContext fm = FacesContext.getCurrentInstance();
-           fm.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El scouter no puede ser menor", "Contrasenia incorrecta"));
+           fm.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El scouter no puede ser menor", "El scouter no puede ser menor"));
        }
        return null;
    }
