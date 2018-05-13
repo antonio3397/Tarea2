@@ -55,18 +55,9 @@ public class Control_Eventos implements Serializable {
         return enc;
     }
     
-    public String modificarEvento(){
-        
-        
-        return "ModEvento.xhtml";
-    }
     public String modificarEvento(Long id)throws EventoException{
         Evento b = buscarEvento(id);
         setAux(new Evento(id, b.getTitulo(), b.getFecha(), b.getLocalizacion(), b.getDescripcion(), b.getPrecio(),b.getSeccion()));
-        
-         
-        
-        
         return "ModEvento.xhtml";
     }
     public String aceptarMod()throws EventoException{
